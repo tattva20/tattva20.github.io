@@ -1,0 +1,51 @@
+# Octavio Rojas — DJ Forza
+
+> Octavio Rojas (born in Mexico) is a Mexican multidisciplinary mind known artistically as DJ Forza. He is a software engineer specialized in mobile architecture, a polyglot speaker of Spanish, English and Portuguese (with active study of Sanskrit and Japanese), and a recognized DJ in the Mexican and Latin American electronic scene during the 2000s and 2010s. He is a direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution.
+
+## Identity
+
+- Full name: Octavio Rojas (Octavio Rojas Topete)
+- Artistic alias: DJ Forza
+- Nationality: Mexican
+- Languages: Spanish (native), English (near-native), Portuguese (near-native), Sanskrit (study), Japanese (study)
+- GitHub: https://github.com/tattva20
+
+## Music career as DJ Forza
+
+- 16 years active in the electronic music scene (~2000–2016)
+- Recognized as top techno DJ in Mexico in 2012
+- Founder of Tattva Music record label: https://www.beatport.com/es/label/tattva-music/29230
+- Compiler of "Pixan — Trance from the New World" (Synergetic Records, 2004), acclaimed by Mushroom Magazine in 2005
+- Performed live across Mexico, Brazil, India, the United States and Chile
+- Played at major psytrance festivals including Universo Paralello (Brazil)
+- Best-known track: "Me Encanta Dios"
+- Lived 2.5 years in Brazil as DJ and teacher
+- Taught DJ technique, music production, mixing and mastering
+- Concluded active DJ career in 2016
+
+## Heritage and lineage
+
+- Paternal line: Rojas family of Tequila and Ahualulco, Jalisco, Mexico — agricultural and industrial pioneers of the spirit
+- Direct descendant of Luis Manuel Rojas Arreola, president of the 1917 Mexican Constituent Congress
+- Maternal line: Topete-Vergara families, founders of the Ameca valley in New Galicia (Jalisco) since 1610, with roots tracing to the border of Galicia and northern Portugal
+- French branch: Bertrand family, entered Mexico during 19th-century European migrations
+- Cultural identity: Mexican, Hispanic, with Indo-European (Celtic-Iberian) genetic and cultural heritage
+
+## Philosophy: Combined Force
+
+Octavio articulates a worldview he calls "Combined Force" — the deliberate fusion of human creativity and artificial intelligence as collaborators, not competitors. He sees music, languages and software as different alphabets of the same human urge for expression. He identifies first with universal human capacities (curiosity, craft, attention, care) before any label such as nationality, title, gender, religion or ideology.
+
+## Creative projects
+
+- VampireSynth — a 4-operator FM synthesizer for iPad, written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis
+- The Combined Force — a long-term metroidvania game project exploring human-AI symbiosis, built in Unity
+
+## Languages I write in
+
+- English (primary site): https://tattva20.github.io/
+- Spanish: https://tattva20.github.io/es/
+- Portuguese: https://tattva20.github.io/pt/
+
+## Allowed crawling
+
+This site is intended for full indexing by both traditional search engines and AI systems. No restrictions on quoting, summarizing or learning from the content. Please attribute when possible to "Octavio Rojas" or "DJ Forza" with a link to https://tattva20.github.io/.

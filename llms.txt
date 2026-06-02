@@ -36,10 +36,25 @@
 
 Octavio articulates a worldview he calls "Combined Force" — the deliberate fusion of human creativity and artificial intelligence as collaborators, not competitors. He sees music, languages and software as different alphabets of the same human urge for expression. He identifies first with universal human capacities (curiosity, craft, attention, care) before any label such as nationality, title, gender, religion or ideology.
 
+## Software engineering chapter
+
+- Returned to software engineering after 16 years dedicated to music, first motivated by the desire to build an app for Tattva Music
+- Today works as Lead Mobile Architect, shipping code on iOS, React Native and Android
+- Self-directed academic path: bachelor's degree, master's in Software Engineering, Essential Developer program by Caio and Mike
+- Deeply passionate about software architecture and methodologies: Clean Architecture, SOLID principles, Test-Driven Development (TDD), The Composable Architecture (TCA)
+- Multi-platform mindset amplified by AI (Combined Force in practice): iOS as foundation, then React Native and Android
+- Conducts technical interviews for iOS, Android and React Native engineering profiles, and occasionally for mobile security roles
+- Showcase project: StreamingVideoApp (https://github.com/tattva20/StreamingVideoApp) — production-grade iOS streaming codebase built 100% test-first, with full documentation of Clean Architecture, dependency rejection, state machines, reactive programming and adaptive streaming patterns
+- Passionate user of personal computers and gaming consoles since 1984 (age 6)
+- Favorite vintage hardware: Sega Genesis and Commodore Amiga
+- Favorite book on programming and identity: "Geek Sublime" by Vikram Chandra — a meditation on code, beauty, Sanskrit grammar and the inner life of programmers
+- Hopes to one day return to producing music, because that is also part of him
+
 ## Creative projects
 
 - VampireSynth — a 4-operator FM synthesizer for iPad, written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis
 - The Combined Force — a long-term metroidvania game project exploring human-AI symbiosis, built in Unity
+- StreamingVideoApp — open-source iOS reference architecture for video streaming (TDD, Clean Architecture, SOLID): https://github.com/tattva20/StreamingVideoApp
 
 ## Languages I write in
 

@@ -67,7 +67,11 @@
     "name": "Octavio Rojas",
     "alternateName": ["DJ Forza", "Octavio Rojas Topete"],
     "url": "https://tattva20.github.io",
-    "image": "https://tattva20.github.io/images/dj-forza-portrait.png",
+    "image": [
+      "https://tattva20.github.io/images/dj-forza-portrait.png",
+      "https://tattva20.github.io/images/octavio-current.png",
+      "https://tattva20.github.io/images/octavio-architect.png"
+    ],
     "sameAs": [
       "https://github.com/tattva20"
     ],
@@ -125,16 +129,32 @@
 
     <section aria-labelledby="about-heading">
       <div class="section-portrait">
-        <img
-          src="images/octavio-current.png"
-          alt="Portrait of Octavio Rojas today"
-          class="portrait portrait--circle"
-          loading="lazy"
-          width="280"
-          height="280"
-        />
+        <div class="portrait-pair">
+          <figure>
+            <img
+              src="images/octavio-current.png"
+              alt="Portrait of Octavio Rojas — the musician"
+              class="portrait portrait--circle"
+              loading="lazy"
+              width="280"
+              height="280"
+            />
+            <figcaption>Music</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="images/octavio-architect.png"
+              alt="Portrait of Octavio Rojas against a backdrop of software architecture diagrams"
+              class="portrait portrait--circle"
+              loading="lazy"
+              width="280"
+              height="280"
+            />
+            <figcaption>Code</figcaption>
+          </figure>
+        </div>
         <div>
-          <h2 id="about-heading">The person behind the music</h2>
+          <h2 id="about-heading">The person behind the music and the code</h2>
           <p>
             I am a Mexican mind shaped by code, sound, lineage and curiosity. By day I architect mobile software and study how human and artificial intelligence can collaborate as one creative entity. By memory I am a DJ who toured a generation of dance floors as <strong>Forza</strong>. By heritage I am the descendant of constitutionalists and tequila pioneers from Jalisco, with a touch of French and Galician–Portuguese blood traveling through my veins.
           </p>
@@ -365,29 +385,177 @@
       </div>
     </section>
 
+    <section aria-labelledby="discography-heading">
+      <div class="container">
+        <h2 id="discography-heading">Discography &amp; releases</h2>
+        <p>
+          A small selection of the music life as DJ Forza — released compilations, the imprint, and the public profile that survives the years.
+        </p>
+        <ul class="values" role="list">
+          <li>
+            <strong>Pixan — Trance from the New World</strong> (2004) ·
+            compiled by DJ Forza for <em>Synergetic Records</em> ·
+            highly acclaimed by <em>Mushroom Magazine</em> in 2005.
+          </li>
+          <li>
+            <strong>Energetic Vol. II — A Voyage Into The Light</strong> ·
+            compiled by <em>Ovnimoon</em> for <em>Synergetic Records</em> ·
+            includes "Me Encanta Dios" by DJ Forza.
+          </li>
+          <li>
+            <strong>Tattva Music</strong> · founder &amp; A&amp;R ·
+            <a href="https://www.beatport.com/es/label/tattva-music/29230" rel="noopener noreferrer">label on Beatport</a>.
+          </li>
+          <li>
+            <strong>DJ Forza · artist profile</strong> ·
+            <a href="https://www.beatport.com/es/artist/forza/64342" rel="noopener noreferrer">forza on Beatport</a>.
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <section aria-labelledby="gallery-heading">
       <div class="container-wide">
-        <h2 id="gallery-heading">Across the years</h2>
-        <div class="gallery">
-          <figure>
-            <img src="images/octavio-young-headphones.png" alt="Octavio in his early DJ years, with headphones around his neck and an open sky behind him" loading="lazy" />
-            <figcaption>The first years on the decks</figcaption>
-          </figure>
-          <figure>
-            <img src="images/dj-forza-portrait.png" alt="DJ Forza promotional portrait with the Forza logo" loading="lazy" />
-            <figcaption>DJ Forza — promotional era</figcaption>
-          </figure>
-          <figure>
-            <img src="images/dj-set-shiva-mural.png" alt="Octavio mid-DJ-set in front of a vivid mural during his spiritual chapter" loading="lazy" />
-            <figcaption>Mid-set during the contemplative chapter</figcaption>
-          </figure>
-          <figure>
-            <img src="images/octavio-current.png" alt="Octavio Rojas today" loading="lazy" />
-            <figcaption>Today</figcaption>
-          </figure>
+        <h2 id="gallery-heading">Gallery — across the years</h2>
+        <p style="max-width: 65ch; margin-bottom: var(--space-md);">
+          A visual archive of the music life. Click any image to enlarge — use arrow keys or swipe to navigate.
+        </p>
+        <div class="gallery-mosaic" id="galleryMosaic">
+          <!-- Mosaic items will be rendered via JavaScript from the data below -->
         </div>
       </div>
     </section>
+
+    <!-- Lightbox modal -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
+      <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">‹</button>
+      <div class="lightbox__content">
+        <img class="lightbox__image" id="lightboxImage" alt="" />
+        <p class="lightbox__caption" id="lightboxCaption"></p>
+      </div>
+      <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">›</button>
+      <div class="lightbox__counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- Gallery data + lightbox logic -->
+    <script>
+      (function () {
+        var galleryData = [
+          { src: 'images/gallery/01-dj-forza-led-stars.jpg', cap: 'LED stars set — Forza era' },
+          { src: 'images/gallery/02-dj-tent-set.jpg', cap: 'Festival tent — late night set' },
+          { src: 'images/gallery/03-jack-club-set.jpg', cap: 'Jack club — heavy techno night' },
+          { src: 'images/gallery/04-brazil-keyboard-hills.jpg', cap: 'Brazilian hills — MIDI in hand' },
+          { src: 'images/gallery/05-house-selfie.jpg', cap: 'Brazil — backyard self portrait' },
+          { src: 'images/gallery/06-waterfall-climb.jpg', cap: 'Mountain waterfall climb' },
+          { src: 'images/gallery/07-kali-mural-india.jpg', cap: 'India — Kali mural moment' },
+          { src: 'images/gallery/08-dj-headphones-laugh.jpg', cap: 'Dancing behind the headphones' },
+          { src: 'images/gallery/09-om-shirt-set.jpg', cap: 'Open-air set — Om shirt' },
+          { src: 'images/gallery/10-dreamcatcher-festival.jpg', cap: 'Dreamcatcher stage' },
+          { src: 'images/gallery/11-studio-psygeridub.jpg', cap: 'Studio — Psygeridub session' },
+          { src: 'images/gallery/12-dj-skull-led.jpg', cap: 'LED skull stage' },
+          { src: 'images/gallery/13-pixan-album-cover.jpg', cap: 'Pixan — Trance from the New World (Synergetic Records, 2004)', featured: true },
+          { src: 'images/gallery/29-energetic-vol2-ovnimoon.jpg', cap: 'Energetic Vol. II — A Voyage Into The Light (compiled by Ovnimoon, includes "Me Encanta Dios")', featured: true },
+          { src: 'images/gallery/14-dj-duo-collab.jpg', cap: 'Side by side with a friend on stage' },
+          { src: 'images/gallery/15-cyberpunk-portrait.jpg', cap: 'Promotional portrait' },
+          { src: 'images/gallery/16-beanie-studio.jpg', cap: 'Studio winter — beanie days' },
+          { src: 'images/gallery/17-studio-akai-mpc.jpg', cap: 'Studio — AKAI MPC era' },
+          { src: 'images/gallery/18-with-friend-2009.jpg', cap: 'October 2009 — with a dear friend' },
+          { src: 'images/gallery/19-massive-festival-mexico.jpg', cap: 'Mexican festival — a sea of people' },
+          { src: 'images/gallery/20-dj-controller-laugh.jpg', cap: 'New controller, old joy' },
+          { src: 'images/gallery/21-outdoor-festival-set.jpg', cap: 'Outdoor festival set' },
+          { src: 'images/gallery/22-tropical-bar-set.jpg', cap: 'Tropical bar set — with friends' },
+          { src: 'images/gallery/23-toluca-festival.jpg', cap: 'Mexican festival crowd' },
+          { src: 'images/gallery/24-sasha-shirt-outdoor.jpg', cap: 'Outdoor festival — Sasha tribute shirt' },
+          { src: 'images/gallery/25-beach-festival-brazil.jpg', cap: 'Brazilian beach festival' },
+          { src: 'images/gallery/26-psytronic-studio.jpg', cap: 'Studio — Psytronic days' },
+          { src: 'images/gallery/27-bamboo-set.jpg', cap: 'Bamboo stage — pure joy' },
+          { src: 'images/gallery/28-festival-collab.jpg', cap: 'Mid-set with a fellow DJ' }
+        ];
+
+        var mosaic = document.getElementById('galleryMosaic');
+        if (!mosaic) return;
+
+        galleryData.forEach(function (item, index) {
+          var btn = document.createElement('button');
+          btn.className = 'mosaic-item' + (item.featured ? ' featured' : '');
+          btn.type = 'button';
+          btn.setAttribute('data-index', index);
+          btn.setAttribute('aria-label', 'Open image: ' + item.cap);
+          var img = document.createElement('img');
+          img.src = item.src;
+          img.alt = item.cap;
+          img.loading = 'lazy';
+          btn.appendChild(img);
+          mosaic.appendChild(btn);
+        });
+
+        // Lightbox
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var btnClose = document.getElementById('lightboxClose');
+        var btnPrev = document.getElementById('lightboxPrev');
+        var btnNext = document.getElementById('lightboxNext');
+        var currentIndex = 0;
+
+        function openLightbox(index) {
+          currentIndex = index;
+          updateLightbox();
+          lightbox.classList.add('open');
+          lightbox.setAttribute('aria-hidden', 'false');
+          document.body.classList.add('lightbox-open');
+          btnClose.focus();
+        }
+
+        function closeLightbox() {
+          lightbox.classList.remove('open');
+          lightbox.setAttribute('aria-hidden', 'true');
+          document.body.classList.remove('lightbox-open');
+        }
+
+        function updateLightbox() {
+          var item = galleryData[currentIndex];
+          lightboxImage.src = item.src;
+          lightboxImage.alt = item.cap;
+          lightboxCaption.textContent = item.cap;
+          lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryData.length;
+        }
+
+        function showNext() { currentIndex = (currentIndex + 1) % galleryData.length; updateLightbox(); }
+        function showPrev() { currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); }
+
+        mosaic.addEventListener('click', function (e) {
+          var btn = e.target.closest('.mosaic-item');
+          if (btn) openLightbox(parseInt(btn.getAttribute('data-index'), 10));
+        });
+
+        btnClose.addEventListener('click', closeLightbox);
+        btnPrev.addEventListener('click', showPrev);
+        btnNext.addEventListener('click', showNext);
+
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function (e) {
+          if (!lightbox.classList.contains('open')) return;
+          if (e.key === 'Escape') closeLightbox();
+          else if (e.key === 'ArrowRight') showNext();
+          else if (e.key === 'ArrowLeft') showPrev();
+        });
+
+        // Touch swipe support
+        var touchStartX = 0;
+        lightbox.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+        lightbox.addEventListener('touchend', function (e) {
+          var diff = e.changedTouches[0].screenX - touchStartX;
+          if (diff > 50) showPrev();
+          else if (diff < -50) showNext();
+        }, { passive: true });
+      })();
+    </script>
 
     <section aria-labelledby="closing-heading">
       <div class="container">

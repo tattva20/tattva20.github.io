@@ -245,6 +245,14 @@ section:nth-child(even) {
     grid-template-columns: 280px 1fr;
     gap: var(--space-xl);
   }
+
+  .section-portrait > picture > img,
+  .section-portrait > img,
+  .section-portrait > .portrait-pair {
+    position: sticky;
+    top: var(--space-lg);
+    align-self: start;
+  }
 }
 
 .portrait {

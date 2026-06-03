@@ -262,6 +262,43 @@ section:nth-child(even) {
   object-fit: cover;
 }
 
+.portrait-pair {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-md);
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.portrait-pair figure {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  min-width: 0;
+}
+
+.portrait-pair .portrait {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.portrait-pair figcaption {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+@media (min-width: 768px) {
+  .portrait-pair {
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+}
+
 /* Quote callout */
 .callout {
   border-left: 3px solid var(--color-accent);
@@ -369,6 +406,183 @@ ul.values li::before {
   margin-top: 0.5rem;
   font-style: italic;
   text-align: center;
+}
+
+/* Extended gallery — grid mosaic */
+.gallery-mosaic {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: var(--space-lg) 0;
+}
+
+@media (min-width: 600px) {
+  .gallery-mosaic {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (min-width: 960px) {
+  .gallery-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+}
+
+.gallery-mosaic .mosaic-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+  aspect-ratio: 1;
+  background: var(--color-bg-alt);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.gallery-mosaic .mosaic-item:hover,
+.gallery-mosaic .mosaic-item:focus-visible {
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 6px 20px var(--color-shadow);
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.gallery-mosaic .mosaic-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.gallery-mosaic .mosaic-item:hover img {
+  transform: scale(1.05);
+}
+
+.gallery-mosaic .mosaic-item.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+  aspect-ratio: 1;
+}
+
+/* Lightbox modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox__content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  cursor: default;
+}
+
+.lightbox__image {
+  max-width: 100%;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+.lightbox__caption {
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 1rem;
+}
+
+.lightbox__close,
+.lightbox__nav {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast);
+  font-family: var(--font-body);
+}
+
+.lightbox__close:hover,
+.lightbox__nav:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.lightbox__close {
+  top: 1.5rem;
+  right: 1.5rem;
+}
+
+.lightbox__nav--prev {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav--next {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__counter {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 600px) {
+  .lightbox__close,
+  .lightbox__nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+  .lightbox__close { top: 1rem; right: 1rem; }
+  .lightbox__nav--prev { left: 0.5rem; }
+  .lightbox__nav--next { right: 0.5rem; }
+}
+
+body.lightbox-open {
+  overflow: hidden;
 }
 
 /* Footer */

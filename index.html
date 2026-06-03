@@ -3,6 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Language auto-detection — runs before render to avoid flash -->
+  <script>
+    (function () {
+      // Only redirect from root. Subpages are final destinations.
+      if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+
+      // Respect explicit user choice persisted from a previous visit
+      try {
+        var saved = localStorage.getItem('preferredLang');
+        if (saved === 'en') return;
+        if (saved === 'es') { window.location.replace('/es/'); return; }
+        if (saved === 'pt') { window.location.replace('/pt/'); return; }
+      } catch (e) { /* localStorage blocked, continue */ }
+
+      // Detect browser language(s). navigator.languages is the full list, ordered by preference.
+      var langs = navigator.languages || [navigator.language || navigator.userLanguage || 'en'];
+      var preferred = (langs[0] || 'en').toLowerCase();
+
+      if (preferred.indexOf('pt') === 0) {
+        window.location.replace('/pt/');
+      } else if (preferred.indexOf('es') === 0) {
+        window.location.replace('/es/');
+      }
+      // else: stay on English (root)
+    })();
+  </script>
+
   <title>Octavio Rojas — DJ Forza | The person behind the music and the code</title>
   <meta name="description" content="Octavio Rojas, known artistically as DJ Forza. Mexican multidisciplinary mind: musician, technologist, polyglot, descendant of historians and tequila pioneers. A combined force of art, lineage and curiosity." />
   <meta name="author" content="Octavio Rojas" />
@@ -376,6 +404,18 @@
       </div>
     </section>
   </main>
+
+  <!-- Remember user's manual language choice across visits -->
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { /* ignore */ }
+        }
+      });
+    });
+  </script>
 
   <footer>
     <div class="container">

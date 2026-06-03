@@ -508,6 +508,19 @@ ul.values li::before {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
+.lightbox__pic-slot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lightbox__pic-slot picture,
+.portrait-pair picture,
+.mosaic-item picture,
+.section-portrait > picture {
+  display: contents;
+}
+
 .lightbox__caption {
   color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-display);

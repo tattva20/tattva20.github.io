@@ -38,6 +38,7 @@
 
   <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://tattva20.github.io/" />
+  <link rel="preload" as="image" href="images/octavio-current.webp" type="image/webp" fetchpriority="high" />
   <link rel="alternate" hreflang="en" href="https://tattva20.github.io/" />
   <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/" />
   <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/" />
@@ -131,25 +132,31 @@
       <div class="section-portrait">
         <div class="portrait-pair">
           <figure>
-            <img
-              src="images/octavio-current.png"
-              alt="Portrait of Octavio Rojas — the musician"
-              class="portrait portrait--circle"
-              loading="lazy"
-              width="280"
-              height="280"
-            />
+            <picture>
+              <source srcset="images/octavio-current.webp" type="image/webp" />
+              <img
+                src="images/octavio-current.png"
+                alt="Portrait of Octavio Rojas — the musician"
+                class="portrait portrait--circle"
+                width="280"
+                height="280"
+                fetchpriority="high"
+              />
+            </picture>
             <figcaption>Music</figcaption>
           </figure>
           <figure>
-            <img
-              src="images/octavio-architect.png"
-              alt="Portrait of Octavio Rojas against a backdrop of software architecture diagrams"
-              class="portrait portrait--circle"
-              loading="lazy"
-              width="280"
-              height="280"
-            />
+            <picture>
+              <source srcset="images/octavio-architect.webp" type="image/webp" />
+              <img
+                src="images/octavio-architect.png"
+                alt="Portrait of Octavio Rojas against a backdrop of software architecture diagrams"
+                class="portrait portrait--circle"
+                loading="lazy"
+                width="280"
+                height="280"
+              />
+            </picture>
             <figcaption>Code</figcaption>
           </figure>
         </div>
@@ -168,14 +175,17 @@
 
     <section aria-labelledby="music-heading">
       <div class="section-portrait">
-        <img
-          src="images/dj-forza-portrait.png"
-          alt="DJ Forza portrait with headphones"
-          class="portrait"
-          loading="lazy"
-          width="280"
-          height="280"
-        />
+        <picture>
+          <source srcset="images/dj-forza-portrait.webp" type="image/webp" />
+          <img
+            src="images/dj-forza-portrait.png"
+            alt="DJ Forza portrait with headphones"
+            class="portrait"
+            loading="lazy"
+            width="280"
+            height="280"
+          />
+        </picture>
         <div>
           <h2 id="music-heading">DJ Forza — sixteen years on the decks</h2>
           <p>
@@ -431,131 +441,49 @@
       <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
       <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">‹</button>
       <div class="lightbox__content">
-        <img class="lightbox__image" id="lightboxImage" alt="" />
+        <div id="lightboxPictureSlot" class="lightbox__pic-slot"></div>
         <p class="lightbox__caption" id="lightboxCaption"></p>
       </div>
       <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">›</button>
       <div class="lightbox__counter" id="lightboxCounter"></div>
     </div>
 
-    <!-- Gallery data + lightbox logic -->
+    <!-- Gallery data (localized) -->
     <script>
-      (function () {
-        var galleryData = [
-          { src: 'images/gallery/01-dj-forza-led-stars.jpg', cap: 'LED stars set — Forza era' },
-          { src: 'images/gallery/02-dj-tent-set.jpg', cap: 'Festival tent — late night set' },
-          { src: 'images/gallery/03-jack-club-set.jpg', cap: 'Jack club — heavy techno night' },
-          { src: 'images/gallery/04-brazil-keyboard-hills.jpg', cap: 'Brazilian hills — MIDI in hand' },
-          { src: 'images/gallery/05-house-selfie.jpg', cap: 'Brazil — backyard self portrait' },
-          { src: 'images/gallery/06-waterfall-climb.jpg', cap: 'Mountain waterfall climb' },
-          { src: 'images/gallery/07-kali-mural-india.jpg', cap: 'India — Kali mural moment' },
-          { src: 'images/gallery/08-dj-headphones-laugh.jpg', cap: 'Dancing behind the headphones' },
-          { src: 'images/gallery/09-om-shirt-set.jpg', cap: 'Open-air set — Om shirt' },
-          { src: 'images/gallery/10-dreamcatcher-festival.jpg', cap: 'Dreamcatcher stage' },
-          { src: 'images/gallery/11-studio-psygeridub.jpg', cap: 'Studio — Psygeridub session' },
-          { src: 'images/gallery/12-dj-skull-led.jpg', cap: 'LED skull stage' },
-          { src: 'images/gallery/13-pixan-album-cover.jpg', cap: 'Pixan — Trance from the New World (Synergetic Records, 2004)', featured: true },
-          { src: 'images/gallery/29-energetic-vol2-ovnimoon.jpg', cap: 'Energetic Vol. II — A Voyage Into The Light (compiled by Ovnimoon, includes "Me Encanta Dios")', featured: true },
-          { src: 'images/gallery/14-dj-duo-collab.jpg', cap: 'Side by side with a friend on stage' },
-          { src: 'images/gallery/15-cyberpunk-portrait.jpg', cap: 'Promotional portrait' },
-          { src: 'images/gallery/16-beanie-studio.jpg', cap: 'Studio winter — beanie days' },
-          { src: 'images/gallery/17-studio-akai-mpc.jpg', cap: 'Studio — AKAI MPC era' },
-          { src: 'images/gallery/18-with-friend-2009.jpg', cap: 'October 2009 — with a dear friend' },
-          { src: 'images/gallery/19-massive-festival-mexico.jpg', cap: 'Mexican festival — a sea of people' },
-          { src: 'images/gallery/20-dj-controller-laugh.jpg', cap: 'New controller, old joy' },
-          { src: 'images/gallery/21-outdoor-festival-set.jpg', cap: 'Outdoor festival set' },
-          { src: 'images/gallery/22-tropical-bar-set.jpg', cap: 'Tropical bar set — with friends' },
-          { src: 'images/gallery/23-toluca-festival.jpg', cap: 'Mexican festival crowd' },
-          { src: 'images/gallery/24-sasha-shirt-outdoor.jpg', cap: 'Outdoor festival — Sasha tribute shirt' },
-          { src: 'images/gallery/25-beach-festival-brazil.jpg', cap: 'Brazilian beach festival' },
-          { src: 'images/gallery/26-psytronic-studio.jpg', cap: 'Studio — Psytronic days' },
-          { src: 'images/gallery/27-bamboo-set.jpg', cap: 'Bamboo stage — pure joy' },
-          { src: 'images/gallery/28-festival-collab.jpg', cap: 'Mid-set with a fellow DJ' }
-        ];
-
-        var mosaic = document.getElementById('galleryMosaic');
-        if (!mosaic) return;
-
-        galleryData.forEach(function (item, index) {
-          var btn = document.createElement('button');
-          btn.className = 'mosaic-item' + (item.featured ? ' featured' : '');
-          btn.type = 'button';
-          btn.setAttribute('data-index', index);
-          btn.setAttribute('aria-label', 'Open image: ' + item.cap);
-          var img = document.createElement('img');
-          img.src = item.src;
-          img.alt = item.cap;
-          img.loading = 'lazy';
-          btn.appendChild(img);
-          mosaic.appendChild(btn);
-        });
-
-        // Lightbox
-        var lightbox = document.getElementById('lightbox');
-        var lightboxImage = document.getElementById('lightboxImage');
-        var lightboxCaption = document.getElementById('lightboxCaption');
-        var lightboxCounter = document.getElementById('lightboxCounter');
-        var btnClose = document.getElementById('lightboxClose');
-        var btnPrev = document.getElementById('lightboxPrev');
-        var btnNext = document.getElementById('lightboxNext');
-        var currentIndex = 0;
-
-        function openLightbox(index) {
-          currentIndex = index;
-          updateLightbox();
-          lightbox.classList.add('open');
-          lightbox.setAttribute('aria-hidden', 'false');
-          document.body.classList.add('lightbox-open');
-          btnClose.focus();
-        }
-
-        function closeLightbox() {
-          lightbox.classList.remove('open');
-          lightbox.setAttribute('aria-hidden', 'true');
-          document.body.classList.remove('lightbox-open');
-        }
-
-        function updateLightbox() {
-          var item = galleryData[currentIndex];
-          lightboxImage.src = item.src;
-          lightboxImage.alt = item.cap;
-          lightboxCaption.textContent = item.cap;
-          lightboxCounter.textContent = (currentIndex + 1) + ' / ' + galleryData.length;
-        }
-
-        function showNext() { currentIndex = (currentIndex + 1) % galleryData.length; updateLightbox(); }
-        function showPrev() { currentIndex = (currentIndex - 1 + galleryData.length) % galleryData.length; updateLightbox(); }
-
-        mosaic.addEventListener('click', function (e) {
-          var btn = e.target.closest('.mosaic-item');
-          if (btn) openLightbox(parseInt(btn.getAttribute('data-index'), 10));
-        });
-
-        btnClose.addEventListener('click', closeLightbox);
-        btnPrev.addEventListener('click', showPrev);
-        btnNext.addEventListener('click', showNext);
-
-        lightbox.addEventListener('click', function (e) {
-          if (e.target === lightbox) closeLightbox();
-        });
-
-        document.addEventListener('keydown', function (e) {
-          if (!lightbox.classList.contains('open')) return;
-          if (e.key === 'Escape') closeLightbox();
-          else if (e.key === 'ArrowRight') showNext();
-          else if (e.key === 'ArrowLeft') showPrev();
-        });
-
-        // Touch swipe support
-        var touchStartX = 0;
-        lightbox.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
-        lightbox.addEventListener('touchend', function (e) {
-          var diff = e.changedTouches[0].screenX - touchStartX;
-          if (diff > 50) showPrev();
-          else if (diff < -50) showNext();
-        }, { passive: true });
-      })();
+      window.galleryLabels = { openImage: 'Open image' };
+      window.galleryData = [
+        { src: 'images/gallery/01-dj-forza-led-stars.jpg', cap: 'LED stars set — Forza era' },
+        { src: 'images/gallery/02-dj-tent-set.jpg', cap: 'Festival tent — late night set' },
+        { src: 'images/gallery/03-jack-club-set.jpg', cap: 'Jack club — heavy techno night' },
+        { src: 'images/gallery/04-brazil-keyboard-hills.jpg', cap: 'Brazilian hills — MIDI in hand' },
+        { src: 'images/gallery/05-house-selfie.jpg', cap: 'Brazil — backyard self portrait' },
+        { src: 'images/gallery/06-waterfall-climb.jpg', cap: 'Mountain waterfall climb' },
+        { src: 'images/gallery/07-kali-mural-india.jpg', cap: 'India — Kali mural moment' },
+        { src: 'images/gallery/08-dj-headphones-laugh.jpg', cap: 'Dancing behind the headphones' },
+        { src: 'images/gallery/09-om-shirt-set.jpg', cap: 'Open-air set — Om shirt' },
+        { src: 'images/gallery/10-dreamcatcher-festival.jpg', cap: 'Dreamcatcher stage' },
+        { src: 'images/gallery/11-studio-psygeridub.jpg', cap: 'Studio — Psygeridub session' },
+        { src: 'images/gallery/12-dj-skull-led.jpg', cap: 'LED skull stage' },
+        { src: 'images/gallery/13-pixan-album-cover.jpg', cap: 'Pixan — Trance from the New World (Synergetic Records, 2004)', featured: true },
+        { src: 'images/gallery/29-energetic-vol2-ovnimoon.jpg', cap: 'Energetic Vol. II — A Voyage Into The Light (compiled by Ovnimoon, includes "Me Encanta Dios")', featured: true },
+        { src: 'images/gallery/14-dj-duo-collab.jpg', cap: 'Side by side with a friend on stage' },
+        { src: 'images/gallery/15-cyberpunk-portrait.jpg', cap: 'Promotional portrait' },
+        { src: 'images/gallery/16-beanie-studio.jpg', cap: 'Studio winter — beanie days' },
+        { src: 'images/gallery/17-studio-akai-mpc.jpg', cap: 'Studio — AKAI MPC era' },
+        { src: 'images/gallery/18-with-friend-2009.jpg', cap: 'October 2009 — with a dear friend' },
+        { src: 'images/gallery/19-massive-festival-mexico.jpg', cap: 'Mexican festival — a sea of people' },
+        { src: 'images/gallery/20-dj-controller-laugh.jpg', cap: 'New controller, old joy' },
+        { src: 'images/gallery/21-outdoor-festival-set.jpg', cap: 'Outdoor festival set' },
+        { src: 'images/gallery/22-tropical-bar-set.jpg', cap: 'Tropical bar set — with friends' },
+        { src: 'images/gallery/23-toluca-festival.jpg', cap: 'Mexican festival crowd' },
+        { src: 'images/gallery/24-sasha-shirt-outdoor.jpg', cap: 'Outdoor festival — Sasha tribute shirt' },
+        { src: 'images/gallery/25-beach-festival-brazil.jpg', cap: 'Brazilian beach festival' },
+        { src: 'images/gallery/26-psytronic-studio.jpg', cap: 'Studio — Psytronic days' },
+        { src: 'images/gallery/27-bamboo-set.jpg', cap: 'Bamboo stage — pure joy' },
+        { src: 'images/gallery/28-festival-collab.jpg', cap: 'Mid-set with a fellow DJ' }
+      ];
     </script>
+    <script src="js/gallery.js" defer></script>
 
     <section aria-labelledby="closing-heading">
       <div class="container">

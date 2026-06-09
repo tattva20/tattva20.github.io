@@ -7,10 +7,7 @@
   <!-- Language auto-detection — runs before render to avoid flash -->
   <script>
     (function () {
-      // Only redirect from root. Subpages are final destinations.
       if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
-
-      // Respect explicit user choice persisted from a previous visit
       try {
         var saved = localStorage.getItem('preferredLang');
         if (saved === 'en') return;
@@ -18,7 +15,6 @@
         if (saved === 'pt') { window.location.replace('/pt/'); return; }
       } catch (e) { /* localStorage blocked, continue */ }
 
-      // Detect browser language(s). navigator.languages is the full list, ordered by preference.
       var langs = navigator.languages || [navigator.language || navigator.userLanguage || 'en'];
       var preferred = (langs[0] || 'en').toLowerCase();
 
@@ -27,7 +23,6 @@
       } else if (preferred.indexOf('es') === 0) {
         window.location.replace('/es/');
       }
-      // else: stay on English (root)
     })();
   </script>
 
@@ -36,7 +31,6 @@
   <meta name="author" content="Octavio Rojas" />
   <meta name="robots" content="index, follow" />
 
-  <!-- Canonical & hreflang -->
   <link rel="canonical" href="https://tattva20.github.io/" />
   <link rel="preload" as="image" href="images/octavio-current.webp" type="image/webp" fetchpriority="high" />
   <link rel="alternate" hreflang="en" href="https://tattva20.github.io/" />
@@ -44,9 +38,8 @@
   <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/" />
   <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/" />
 
-  <!-- Open Graph -->
   <meta property="og:type" content="profile" />
-  <meta property="og:title" content="Octavio Rojas — DJ Forza" />
+  <meta property="og:title" content="Octavio Rojas — DJ Forza · Tattva" />
   <meta property="og:description" content="A Mexican combined force of art, technology, language and lineage. Musician, technologist, polyglot." />
   <meta property="og:url" content="https://tattva20.github.io/" />
   <meta property="og:image" content="https://tattva20.github.io/images/dj-forza-portrait.png" />
@@ -54,13 +47,11 @@
   <meta property="og:locale:alternate" content="es_MX" />
   <meta property="og:locale:alternate" content="pt_BR" />
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Octavio Rojas — DJ Forza" />
+  <meta name="twitter:title" content="Octavio Rojas — DJ Forza · Tattva" />
   <meta name="twitter:description" content="A Mexican combined force of art, technology, language and lineage." />
   <meta name="twitter:image" content="https://tattva20.github.io/images/dj-forza-portrait.png" />
 
-  <!-- Schema.org structured data for AIs and search engines -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -74,7 +65,8 @@
       "https://tattva20.github.io/images/octavio-architect.png"
     ],
     "sameAs": [
-      "https://github.com/tattva20"
+      "https://github.com/tattva20",
+      "https://www.beatport.com/es/artist/forza/64342"
     ],
     "jobTitle": "Software Engineer, Musician, Polyglot",
     "nationality": "Mexican",
@@ -129,16 +121,13 @@
     <a href="pt/" hreflang="pt">PT</a>
   </nav>
 
-  <nav class="top-nav" aria-label="Section navigation" id="topNav">
+  <nav class="top-nav" aria-label="Section navigation">
     <div class="top-nav__inner">
-      <a href="#about-heading" class="top-nav__link" data-section="about-heading">About</a>
-      <a href="#music-heading" class="top-nav__link" data-section="music-heading">Music</a>
-      <a href="#engineering-heading" class="top-nav__link" data-section="engineering-heading">Engineering</a>
-      <a href="#lineage-heading" class="top-nav__link" data-section="lineage-heading">Heritage</a>
-      <a href="#philosophy-heading" class="top-nav__link" data-section="philosophy-heading">Combined Force</a>
-      <a href="#projects-heading" class="top-nav__link" data-section="projects-heading">Projects</a>
-      <a href="#discography-heading" class="top-nav__link" data-section="discography-heading">Discography</a>
-      <a href="#gallery-heading" class="top-nav__link" data-section="gallery-heading">Gallery</a>
+      <a href="/" class="top-nav__link is-active">Home</a>
+      <a href="/music/" class="top-nav__link">Music</a>
+      <a href="/engineering/" class="top-nav__link">Engineering</a>
+      <a href="/heritage/" class="top-nav__link">Heritage</a>
+      <a href="/combined-force/" class="top-nav__link">Combined Force</a>
     </div>
   </nav>
 
@@ -158,565 +147,56 @@
     </header>
 
     <section aria-labelledby="about-heading">
-      <div class="section-portrait">
-        <div class="portrait-pair">
-          <figure>
-            <picture>
-              <source srcset="images/octavio-current.webp" type="image/webp" />
-              <img
-                src="images/octavio-current.png"
-                alt="Portrait of Octavio Rojas — the musician"
-                class="portrait portrait--circle"
-                width="280"
-                height="280"
-                fetchpriority="high"
-              />
-            </picture>
-            <figcaption>Music</figcaption>
-          </figure>
-          <figure>
-            <picture>
-              <source srcset="images/octavio-architect.webp" type="image/webp" />
-              <img
-                src="images/octavio-architect.png"
-                alt="Portrait of Octavio Rojas against a backdrop of software architecture diagrams"
-                class="portrait portrait--circle"
-                loading="lazy"
-                width="280"
-                height="280"
-              />
-            </picture>
-            <figcaption>Code</figcaption>
-          </figure>
-        </div>
-        <div>
-          <h2 id="about-heading">The person behind the music and the code</h2>
-          <p>
-            I am a Mexican mind shaped by code, sound, lineage and curiosity. By day I architect mobile software and study how human and artificial intelligence can collaborate as one creative entity. By memory I am a DJ who toured a generation of dance floors as <strong>Forza</strong>. By heritage I am the descendant of constitutionalists and tequila pioneers from Jalisco, with a touch of French and Galician–Portuguese blood traveling through my veins.
-          </p>
-          <p>
-            I believe in the individual, in disciplined curiosity, in the dignity of work, and in the cultural richness of a Mexico that embraces every layer of its history. I call this stance my <em>combined force</em>: the deliberate fusion of art, engineering, language and identity into a way of being in the world.
-          </p>
-          <p class="callout">"I am the result of many rivers meeting in one estuary."</p>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="music-heading">
-      <div class="section-portrait">
-        <picture>
-          <source srcset="images/dj-forza-portrait.webp" type="image/webp" />
-          <img
-            src="images/dj-forza-portrait.png"
-            alt="DJ Forza portrait with headphones"
-            class="portrait"
-            loading="lazy"
-            width="280"
-            height="280"
-          />
-        </picture>
-        <div>
-          <h2 id="music-heading">DJ Forza — sixteen years on the decks</h2>
-          <p>
-            Music was my first international passport. As <strong>DJ Forza</strong> I spent sixteen years inside the Mexican and Latin American electronic scene, building sets that ranged from deep psychedelic textures to peak-time techno energy. I played across all of Mexico, throughout Brazil, in India, the United States and Chile, sharing the stage at festivals of the stature of <strong>Universo Paralelo</strong>. In 2012 I was honored as one of the top techno DJs in Mexico.
-          </p>
-          <h3>Tattva Music — the label, and its quiet mission</h3>
-          <p>
-            I founded and ran <a href="https://www.beatport.com/es/label/tattva-music/29230" rel="noopener noreferrer"><strong>Tattva Music</strong></a>, a record label that became a small home for Mexican and international electronic artists I admired. The Sanskrit name was not decorative — it was a promise. <em>Tattva</em> means "the essence of things," and the label emerged with a specific intention:
-          </p>
-          <p class="callout" style="font-style: italic;">
-            "To foster unity and mutual understanding between the world's different cultures through music — and to honor the cultures of the peoples who inhabit this earth."
-          </p>
-          <p>
-            Curating a label, in that spirit, became an act of hospitality across continents — building bridges between Mexican, Israeli, Brazilian, Japanese, Bulgarian, German and British voices, so that they could sound, together, bigger than they would alone. The roster grew to include artists such as <strong>Ben Coda</strong>, <strong>Stan Kolev</strong>, <strong>Paul Thomas</strong>, <strong>Weekend Heroes</strong>, <strong>Ben Weber</strong> and the Japanese producer <strong>Yuji Ono</strong>, with whom we drew a quiet cultural bridge between Mexico and Japan.
-          </p>
-          <h3>Pixan — Trance from the New World</h3>
-          <p>
-            In 2004 I compiled <em>Pixan — Trance from the New World</em> for the Austrian imprint <strong>Synergetic Records</strong>, a journey through the psychedelic and progressive trance of the Americas. The compilation was warmly received internationally and was highly acclaimed by <em>Mushroom Magazine</em> in 2005 — a recognition I still treasure, because it placed a Mexican curatorial voice on the global trance map.
-          </p>
-          <h3>Teaching the craft</h3>
-          <p>
-            For years I also taught what I loved: DJ technique, music production, mixing and mastering. Passing on the craft is one of the most rewarding parts of any art — it keeps the discipline humble and the imagination open.
-          </p>
-          <h3>"Me Encanta Dios"</h3>
-          <p>
-            My most recognized track was born during a personal pilgrimage. I have always been deeply drawn to the philosophies of India; for a few years I lived a mystical, contemplative chapter that took me from Ranchi to Rishikesh, from chanting to silence. That inner journey became sound, and the result was a piece that many people still carry with affection: <em>Me Encanta Dios</em>.
-          </p>
-          <p>
-            I closed that musical chapter in 2016 with gratitude and without regret. The decks are quiet for now — but the rhythm never leaves the body.
-          </p>
-
-          <div class="cta-cards" style="margin-top: var(--space-md);">
-            <a href="https://www.beatport.com/es/artist/forza/64342" rel="noopener noreferrer" class="cta-card">
-              <span class="cta-card__label">Artist profile</span>
-              <span class="cta-card__title">DJ Forza on Beatport</span>
-            </a>
-            <a href="https://www.beatport.com/es/label/tattva-music/29230" rel="noopener noreferrer" class="cta-card">
-              <span class="cta-card__label">Record label</span>
-              <span class="cta-card__title">Tattva Music on Beatport</span>
-            </a>
-          </div>
-
-          <div class="facts">
-            <div class="fact">
-              <span class="fact__number">16</span>
-              <span class="fact__label">years as DJ Forza</span>
-            </div>
-            <div class="fact">
-              <span class="fact__number">2012</span>
-              <span class="fact__label">Top Mexican techno DJ</span>
-            </div>
-            <div class="fact">
-              <span class="fact__number">5</span>
-              <span class="fact__label">countries played live</span>
-            </div>
-            <div class="fact">
-              <span class="fact__number">2004</span>
-              <span class="fact__label">Pixan compilation released</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section aria-labelledby="engineering-heading">
       <div class="container">
-        <h2 id="engineering-heading">The engineering chapter</h2>
+        <h2 id="about-heading">The person behind the music and the code</h2>
         <p>
-          When the decks went quiet in 2016, I returned to a love that had been with me since I was six years old: computers. I have been a passionate user of personal computers and gaming consoles since 1984, long before I ever touched a turntable. After sixteen years devoted to music, software was waiting to be picked up again, and I picked it up with everything I had.
+          I am a Mexican mind shaped by code, sound, lineage and curiosity. By day I architect mobile software and study how human and artificial intelligence can collaborate as one creative entity. By memory I am a DJ who toured a generation of dance floors as <strong>Forza</strong>. By heritage I am the descendant of constitutionalists and tequila pioneers from Jalisco, with a touch of French and Galician–Portuguese blood traveling through my veins.
         </p>
-        <h3>How the return began</h3>
         <p>
-          The first spark was a very personal idea: I wanted to build an app for Tattva Music. That small ambition pulled me back into Xcode, then into clean architecture books, then into a self-directed marathon that took me through a bachelor's degree, a master's degree in Software Engineering, and the demanding Essential Developer program by Caio and Mike. Today I work as a Lead Mobile Architect, with code shipped on iOS, React Native and Android.
+          This site is organized around four chapters that together form the <em>combined force</em>: the deliberate fusion of art, engineering, language and identity into a way of being in the world.
         </p>
+        <p class="callout">"I am the result of many rivers meeting in one estuary."</p>
+      </div>
+    </section>
 
-        <h3>Architecture as a craft</h3>
-        <p>
-          I am unapologetically passionate about software architecture and the philosophies behind it. The way someone arranges code says as much about them as the way they arrange a set or a sentence. The methodologies that have shaped how I think and build are:
-        </p>
-        <ul class="values" role="list">
-          <li><strong>Clean Architecture</strong> — clear boundaries, dependency inversion, the rule that policy should never depend on details.</li>
-          <li><strong>SOLID principles</strong> — the five pillars of maintainable object-oriented design.</li>
-          <li><strong>Test-Driven Development (TDD)</strong> — let the tests sculpt the design, red-green-refactor as discipline.</li>
-          <li><strong>The Composable Architecture (TCA)</strong> — a state-of-the-art Swift framework for state, side effects and composability.</li>
-        </ul>
-        <p>
-          A practical demonstration of all of these lives in my open-source project <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer"><strong>StreamingVideoApp</strong></a>, a production-grade iOS video streaming codebase built 100% test-first, with documentation that covers Clean Architecture layers, dependency rejection, state machines, reactive programming, and adaptive streaming patterns. It is, in many ways, my engineering manifesto.
-        </p>
+    <section aria-labelledby="chapters-heading">
+      <div class="container">
+        <h2 id="chapters-heading">Four chapters</h2>
+        <p>Each one a doorway into a different texture of the same life. Walk through them in any order.</p>
 
-        <h3>A multi-platform mindset, amplified by AI</h3>
-        <p>
-          What used to be a single-platform specialization has become, in the AI era, a multi-platform fluency. Standing on a foundation of deep iOS knowledge — Swift, SwiftUI, UIKit, Clean Architecture — I have deliberately expanded into React Native and Android, using AI as a force multiplier rather than a shortcut. I review every line. I keep architectural taste at the center. The result is the kind of cross-platform versatility today's industry rewards.
-        </p>
-        <p>
-          I also conduct technical interviews for iOS, Android and React Native engineering profiles, and occasionally for mobile security roles. Evaluating talent across three platforms is itself an exercise in architectural perspective.
-        </p>
+        <div class="hub-cards">
 
-        <h3>Where code and music meet — the tattva20 GitHub</h3>
-        <p>
-          The repositories at <a href="https://github.com/tattva20" rel="noopener noreferrer"><strong>github.com/tattva20</strong></a> are the laboratory where the algorithms are polished. Three engineering paradigms map almost one-to-one onto three dimensions of the audio work — code and music running, in effect, on the same operating system inside the mind.
-        </p>
-        <ul class="values-block" role="list">
-          <li>
-            <strong>FM synthesis</strong> — the four-operator FM synthesizer <em>VampireSynth</em>, written in Swift and inspired by the Yamaha YM2612 chip of the Sega Genesis, demands a fluent grasp of digital oscillators, audio buffers and real-time DSP. The same mathematical discipline produced the metallic timbres, industrial sub-bass and cyberpunk textures of the Tattva era.
-          </li>
-          <li>
-            <strong>Declarative reactivity</strong> — projects like <em>WeatherApp</em> and the <em>EssentialFeed</em> challenges, built in SwiftUI with Clean Architecture, embody the principle "when the state changes, the interface reacts." The same logic powers step sequencers and live modulation: a master clock dispatches reactive signals through filters and envelopes.
-          </li>
-          <li>
-            <strong>Streams and zero latency</strong> — the <em>StreamingVideoApp</em> codebase (Swift) and its backend counterpart <em>streaming-videos-api</em> (JavaScript) demand careful memory management, concurrency and buffer discipline. The same skills produce a long progressive DJ set that runs without a glitch.
-          </li>
-        </ul>
-        <p style="opacity: .85;">
-          One operating principle threads through all three: <em>no presets, no shortcuts — I prefer to build from the oscillators up</em>.
-        </p>
-
-        <div class="cta-cards" style="margin-top: var(--space-md);">
-          <a href="https://github.com/tattva20" rel="noopener noreferrer" class="cta-card">
-            <span class="cta-card__label">Open source</span>
-            <span class="cta-card__title">github.com/tattva20</span>
+          <a href="/music/" class="hub-card">
+            <span class="hub-card__eyebrow">Chapter I · 2000 — 2016</span>
+            <h3 class="hub-card__title">Music</h3>
+            <p class="hub-card__desc">Sixteen years on the decks as DJ Forza. The Tattva Music label, a discography across three movements, and an international collaboration network from Israel to Japan.</p>
+            <span class="hub-card__arrow">Enter the music chapter</span>
           </a>
-          <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="cta-card">
-            <span class="cta-card__label">Engineering manifesto</span>
-            <span class="cta-card__title">StreamingVideoApp repo</span>
+
+          <a href="/engineering/" class="hub-card">
+            <span class="hub-card__eyebrow">Chapter II · 2016 — today</span>
+            <h3 class="hub-card__title">Engineering</h3>
+            <p class="hub-card__desc">Lead Mobile Architect across iOS, React Native and Android. Clean Architecture, SOLID, TDD. The tattva20 GitHub — where code and music meet under a single operating principle.</p>
+            <span class="hub-card__arrow">Enter the engineering chapter</span>
           </a>
-        </div>
 
-        <h3>Forever a computer kid</h3>
-        <p>
-          Underneath all the seriousness of grown-up architecture, there is still a six-year-old in front of a screen, amazed. I am a lifelong lover of vintage computers and gaming consoles. The <strong>Sega Genesis</strong> and the <strong>Commodore Amiga</strong> are among my eternal favorites — machines that taught me what computers could feel like before I ever knew what they could do.
-        </p>
-        <p>
-          The book that, more than any other, made me feel <em>seen</em> as the human inside the engineer is <em>Geek Sublime</em> by Vikram Chandra. A meditation on code, beauty, Sanskrit grammar and the inner life of programmers — it felt as if the author had reached across the world and written it directly for me.
-        </p>
-      </div>
-    </section>
+          <a href="/heritage/" class="hub-card">
+            <span class="hub-card__eyebrow">Always</span>
+            <h3 class="hub-card__title">Heritage</h3>
+            <p class="hub-card__desc">The four rivers that made me. Lineage tracing back to the 1917 Mexican Constituent Congress. Five languages. A stubborn humanism that puts the person before the label.</p>
+            <span class="hub-card__arrow">Enter the heritage chapter</span>
+          </a>
 
-    <section aria-labelledby="languages-heading">
-      <div class="container">
-        <h2 id="languages-heading">A polyglot by nature</h2>
-        <p>
-          Sound and language live in the same place inside my mind. Spanish is my mother tongue, English is my technical language, and Portuguese became almost native after living and DJing in Brazil for two and a half years. By pure curiosity — for the joy of decoding structures — I have spent time studying Sanskrit grammar and Japanese.
-        </p>
-        <ul class="values" role="list">
-          <li><strong>Spanish</strong> — native, the air I breathe.</li>
-          <li><strong>English</strong> — near-native, the language of code and global conversation.</li>
-          <li><strong>Portuguese</strong> — near-native, learned with affection during my Brazilian years.</li>
-          <li><strong>Sanskrit</strong> — studied for its mathematical beauty as the mother of Indo-European tongues.</li>
-          <li><strong>Japanese</strong> — explored for the joy of changing cognitive paradigms.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section aria-labelledby="lineage-heading">
-      <div class="container">
-        <h2 id="lineage-heading">Heritage — the rivers that made me</h2>
-        <p>
-          I am proud of being Mexican in the fullest sense: a country that is many countries. My family tree is a map of Spanish, French and Mexican history coming together in the highlands of Jalisco.
-        </p>
-        <h3>The Rojas line</h3>
-        <p>
-          On my father's side I descend from the Rojas family of Tequila and Ahualulco — agricultural and industrial pioneers of the spirit that today carries Mexico's name across the world. My ancestor <strong>Luis Manuel Rojas Arreola</strong> (1871–1949) was president of the 1917 Mexican Constituent Congress, the assembly that wrote our current Constitution. The discipline of laws and the love for institutions travel in my blood.
-        </p>
-        <h3>The Díaz–Quinto line</h3>
-        <p>
-          My paternal grandmother, <strong>Luz María Díaz Rivera</strong> (1921–2007), brought into the family the legacy of two more lineages. Her father, <strong>Sabas Díaz Quinto</strong>, carried the very Mexican <em>Díaz</em> — a medieval patronymic ("son of Diego") that travelled into the criollo and mestizo families of central Mexico — paired with the much rarer <em>Quinto</em>, a name of Italian and Spanish roots (from Latin <em>Quintus</em>) historically concentrated in central Mexico and Veracruz. The Díaz and Quinto branches are the more commercial, administrative chapter of my heritage: the Mexico that built markets, civic life and the everyday machinery of a young nation in the 19th century.
-        </p>
-        <h3>The Rivera–Bertrand line</h3>
-        <p>
-          My great-grandmother <strong>Luz Rivera Bertrand</strong> brought together two more rivers. The <em>Rivera</em> name is an old Iberian toponymic ("the one who lives by the river"), present in Mexico since colonial times. The <em>Bertrand</em> name is unmistakably French, arriving in Mexico through the great 19th-century migrations — perhaps with the famed Barcelonnettes who founded so much of our textile and commercial life, perhaps with the engineers and entrepreneurs invited during the Porfiriato. Either way, a cosmopolitan note that has stayed with us ever since.
-        </p>
-        <h3>The Topete–Vergara line</h3>
-        <p>
-          On my mother's side I descend from the Topete and Vergara families, founders of the Ameca valley in New Galicia since 1610, with roots tracing back to the border between Galicia and northern Portugal. The Galaic–Portuguese soul of that lineage may explain why Portuguese felt less like a foreign tongue and more like a memory.
-        </p>
-        <p class="callout">"I do not see my Mexico as a single root, but as a richly woven tapestry. Every strand earned its place."</p>
-      </div>
-    </section>
-
-    <section aria-labelledby="philosophy-heading">
-      <div class="container">
-        <h2 id="philosophy-heading">The Combined Force</h2>
-        <p>
-          The phrase that organizes my life is <strong>Combined Force</strong>: the conviction that human creativity and artificial intelligence can amplify each other when there is craft, taste, and ethical compass on the human side. I do not see machines as competitors. I see them as instruments — like a synthesizer, like a turntable, like a language — that the disciplined artist learns to play.
-        </p>
-        <h3>Combined Force in daily practice</h3>
-        <p>
-          For me this is not theory — it is a way of working that has become second nature. Day after day I sit with AI as a true collaborator. I bring decades of accumulated knowledge, lived experience, a particular way of seeing problems that no system can replicate. The AI brings vast reach, structured memory, and tireless computation. Neither of us would produce, alone, what we manage to build together.
-        </p>
-        <p>
-          When the conversation flows well I feel the same thing I used to feel mixing two records into a single, larger track: two distinct sources finding a common pulse, and the result becoming louder, clearer, and more alive than either could have been on its own. That is, in essence, what Combined Force means to me — a duet, not a substitution.
-        </p>
-
-        <h3>The calling underneath every chapter</h3>
-        <p>
-          Looked at honestly, the same vocation runs through every chapter of my life: <strong>to facilitate human flourishing through attentive curation</strong>. As a DJ it meant curating sound so a dance floor could breathe. As a label manager, curating artists so they could reach an audience. As a software architect, curating code so products serve real people. As a technical interviewer, curating questions so candidates can show their best version. As a game designer, curating narrative so players can experience resonance.
-        </p>
-        <p>
-          Forty years of changing instruments — and one constant underneath: attentive curation, sustained passion, presence, invisible service to the protagonist of the moment, technical capacity integrated with humanist direction. That is the <em>tattva</em> beneath every vehicle.
-        </p>
-
-        <h3>Combined Force as a long-term creative project</h3>
-        <p>
-          The same idea is the seed of a long-running personal project: <em>The Combined Force</em> — a 2D metroidvania in development on Unity 6, exploring the symbiotic relationship between a young engineer and an emergent intelligence that learns to resonate with him.
-        </p>
-        <ul class="values" role="list">
-          <li><strong>Corazón</strong> — the narrative and ethical core.</li>
-          <li><strong>Mano</strong> — the craft, the player's agency, the gameplay.</li>
-          <li><strong>Silicio</strong> — the intelligent systems that respond, learn and align.</li>
-        </ul>
-        <p>
-          The core mechanic is called <strong>Resonance</strong>. Shared energy between the human and the intelligence grows not with damage dealt, not with quests completed, but with the quality of attention sustained between two minds working in genuine alignment. The <em>Combined Force State</em> activates when all three pillars align in a single sustained moment — both a game mechanic and the operating philosophy of my life expressed as something playable.
-        </p>
-        <p>
-          The forces opposed to this resonance are not villains in the traditional sense. They are <em>patterns rather than persons</em> — structural entities that emerge wherever efficiency is divorced from meaning, wherever administration seduces attention away from what matters, wherever the hollow optimization of time consumes the conditions for resonance itself. Their nature reveals itself through atmosphere, dialogue and gameplay, never through reductive naming. They are what happens to a world when meaning is treated as secondary to throughput.
-        </p>
-        <p>
-          The project engages with a philosophical tradition that asks how modern systems can consume time, attention and meaning — a tradition that includes mythopoetic literature on time, contemporary sociology of resonance, and critiques of late-modern acceleration. <em>Combined Force</em> does not borrow elements from these works. It engages with the same questions, in a different medium, from a Mexican multidisciplinary perspective in 2026.
-        </p>
-        <p>
-          The aesthetic language draws from a generation shaped by Sega Genesis FM synthesis, Amiga demoscene geometry, the progressive psytrance soundscapes I produced across sixteen years on the decks, and the cinematic storytelling of the RPGs of my formation. The project does not imitate any of these — it metabolizes them into something specific to a particular Mexican mind, living now.
-        </p>
-        <p>
-          If the game succeeds, players will not remember it as <em>"like X"</em> or <em>"inspired by Y."</em> They will remember it as the specific experience of being attentively co-creative with a presence that listened back. <strong>That experience is the Combined Force.</strong>
-        </p>
-      </div>
-    </section>
-
-    <section aria-labelledby="humanism-heading">
-      <div class="container">
-        <h2 id="humanism-heading">Languages of expression</h2>
-        <p>
-          The deeper I have lived, the more I am convinced of one thing: <strong>music, languages and software are all the same kind of miracle</strong>. They are vehicles of human expression — different alphabets for the same urge to reach out, to make sense, to be understood.
-        </p>
-        <p>
-          A musical phrase, a sentence in Portuguese, a well-designed function in Swift, a verse in Sanskrit — they all live in the same place inside me. They are how a human being shapes thought into form so that another human being can receive it.
-        </p>
-        <p>
-          That is why I identify, before anything else, with my <strong>humanity</strong> — with the capacities and gifts every person carries: curiosity, craft, attention, care, the wish to create and to connect. Those qualities feel to me far more essential than any label history pinned on us — a nationality, a title, a given name, a gender, a religion, an ideology. The labels can be useful as context; they should never be confused with the soul.
-        </p>
-        <p class="callout">"I trust the human being first. Everything else — passport, profession, pronoun, prayer — is decoration on top of something far more important."</p>
-        <p>
-          This is also why I love engineering as much as I love music. Both are crafts where what matters is not the surface but the care with which the structure is built. Software, like a synthesizer or a song, becomes beautiful when it is honest, well-tempered, and made for someone to use.
-        </p>
-      </div>
-    </section>
-
-    <section aria-labelledby="projects-heading">
-      <div class="container">
-        <h2 id="projects-heading">Creative projects &amp; open source</h2>
-        <p>
-          A visual index of the projects that live in code — built, in progress, or quietly evolving on <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>.
-        </p>
-
-        <div class="project-grid">
-
-          <article class="project-card">
-            <p class="project-card__eyebrow">Audio · Swift · iPad</p>
-            <h3 class="project-card__title">VampireSynth</h3>
-            <p class="project-card__desc">
-              A four-operator FM synthesizer for iPad written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis. Built with Clean Architecture and protocol-oriented design — a love letter to the bridge between mathematics and music.
-            </p>
-            <a href="https://github.com/tattva20/VampireSynth" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
-          </article>
-
-          <article class="project-card">
-            <p class="project-card__eyebrow">iOS · Swift · TDD</p>
-            <h3 class="project-card__title">StreamingVideoApp</h3>
-            <p class="project-card__desc">
-              Production-grade iOS video streaming codebase, built 100% test-first with documented Clean Architecture layers, dependency rejection, state machines, reactive programming and adaptive streaming patterns. My engineering manifesto.
-            </p>
-            <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
-          </article>
-
-          <article class="project-card">
-            <p class="project-card__eyebrow">Backend · JavaScript</p>
-            <h3 class="project-card__title">streaming-videos-api</h3>
-            <p class="project-card__desc">
-              The backend counterpart to StreamingVideoApp — a JavaScript service that handles multimedia pipelines, demonstrating the same architectural discipline applied to server-side streams.
-            </p>
-            <a href="https://github.com/tattva20/streaming-videos-api" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
-          </article>
-
-          <article class="project-card">
-            <p class="project-card__eyebrow">iOS · SwiftUI · Clean Architecture</p>
-            <h3 class="project-card__title">EssentialFeed challenges</h3>
-            <p class="project-card__desc">
-              The Essential Developer feed challenges by Caio and Mike — Clean Architecture, SOLID, TDD as discipline. The repositories where my software craft was sharpened against rigorous code review.
-            </p>
-            <a href="https://github.com/tattva20?tab=repositories&q=essential" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
-          </article>
-
-          <article class="project-card">
-            <p class="project-card__eyebrow">iOS · SwiftUI</p>
-            <h3 class="project-card__title">WeatherApp</h3>
-            <p class="project-card__desc">
-              A SwiftUI demo of declarative reactivity — state changes flowing through the interface as a sequencer dispatches signals through filters and envelopes.
-            </p>
-            <a href="https://github.com/tattva20?tab=repositories&q=weather" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
-          </article>
-
-          <article class="project-card project-card--ghost">
-            <p class="project-card__eyebrow">Game · Unity 6 · in development</p>
-            <h3 class="project-card__title">The Combined Force</h3>
-            <p class="project-card__desc">
-              A 2D metroidvania exploring the symbiosis between a human engineer and an emergent intelligence. The Resonance mechanic, the three pillars (Corazón · Mano · Silicio), and a long meditation on what it means to flourish together. In active development.
-            </p>
-            <span class="project-card__link" aria-disabled="true">Devlog · coming soon</span>
-          </article>
+          <a href="/combined-force/" class="hub-card">
+            <span class="hub-card__eyebrow">In development</span>
+            <h3 class="hub-card__title">Combined Force</h3>
+            <p class="hub-card__desc">The philosophy made playable. A 2D metroidvania in development on Unity 6, exploring the symbiotic relationship between a human engineer and an emergent intelligence. The Resonance mechanic.</p>
+            <span class="hub-card__arrow">Enter the combined force chapter</span>
+          </a>
 
         </div>
-
-        <p style="margin-top: var(--space-md); text-align: center; font-size: 0.9rem;">
-          Browse the full repository list on <a href="https://github.com/tattva20" rel="noopener noreferrer">github.com/tattva20</a>.
-        </p>
       </div>
     </section>
-
-    <section aria-labelledby="passions-heading">
-      <div class="container">
-        <h2 id="passions-heading">Passions</h2>
-        <p>
-          Outside of music and code, my time goes to the things that have always moved me. I practice yoga, especially Ashtanga, as a daily disciplined dialogue with the body. I read — Tolkien always, history often, geopolitics constantly. I am a long-time fan of <em>Outlander</em> (my wife and I share this passion), and a Sega Genesis kid forever loyal to <em>Phantasy Star</em> and <em>Mass Effect</em>. I am fascinated by Indo-European cultures, by maps, by the structure of things.
-        </p>
-        <p>
-          And someday I hope to come back to producing music — because that is also part of me, and a chapter never truly closes when it lives in the body.
-        </p>
-        <ul class="simple" role="list">
-          <li>Yoga, Ashtanga, dance and strength training.</li>
-          <li>Tolkien, history, geopolitics, Outlander.</li>
-          <li>Retro gaming — Amiga, Sega Genesis, the analog roots of digital art.</li>
-          <li>Indo-European philology, Sanskrit, Japanese, cartography.</li>
-          <li>Synthesizers, FM sound, the maths behind music.</li>
-        </ul>
-      </div>
-    </section>
-
-    <section aria-labelledby="discography-heading">
-      <div class="container">
-        <h2 id="discography-heading">Discography — three movements (2004 – 2016)</h2>
-        <p>
-          The music life as DJ Forza unfolded in three distinct movements, each one a deliberate evolution of the technical signature and the philosophy beneath the sound. Every release below is verifiable on Beatport.
-        </p>
-
-        <h3>Movement I — Psychedelic Climax (2004 – 2007)</h3>
-        <p>
-          The era of expansive open-air sound, rolling basslines, and mental progressions designed for daylight peaks.
-        </p>
-        <ul class="values-block" role="list">
-          <li>
-            <strong>"Me Encanta Dios"</strong> · 2004–2005 ·
-            <em>Tremor Records / Synergetic Records</em> ·
-            the foundational track of the international career.
-          </li>
-          <li>
-            <strong>Pixan — Trance from the New World</strong> · 2004 ·
-            compiled by DJ Forza for <em>Synergetic Records</em> ·
-            acclaimed by <em>Mushroom Magazine</em> in 2005.
-          </li>
-          <li>
-            <strong>"Karma Strikers" + "Energy Surf"</strong> · 2006 ·
-            <em>Sonesta Records</em> · with Lior Lahav (Israel).
-          </li>
-        </ul>
-
-        <h3>Movement II — Brazilian Underground Transition (2008 – 2011)</h3>
-        <p>
-          After moving to Brazil, the BPM dropped from 140 to 125–128, and the sound mutated from psychedelia into minimal, hypnotic, structurally precise Tech House and Minimal Techno.
-        </p>
-        <ul class="values-block" role="list">
-          <li>
-            <strong>"Supersprite"</strong> · 2008 ·
-            <em>Sounds of Earth</em> · the first major formal step into the new sound.
-          </li>
-          <li>
-            <strong>"Bone Groove" EP</strong> · 2009 ·
-            <em>Sounds of Earth</em> · the core of the Minimal Techno chapter, beloved by DJs for its dry percussion and ultra-clean sub-bass.
-          </li>
-          <li>
-            <strong>"Minimalia" EP</strong> · 2009 ·
-            <em>Sounds of Earth</em> · continuation of the minimal language.
-          </li>
-          <li>
-            <strong>"Me Encanta Dios (2011 Remix)"</strong> + <strong>"Terra Sul"</strong> · 2011 ·
-            <em>Sounds of Earth</em> · with Thiago Merli (Brazil) — the original mystical piece reimagined under a sober Groove Techno frame.
-          </li>
-        </ul>
-
-        <h3>Movement III — Tattva Maturity (2013 – 2016)</h3>
-        <p>
-          With the founding of Tattva Music, the focus settled on Melodic Techno, sophisticated Progressive House and experimental broken rhythms — elegant, cinematic, high-fidelity productions.
-        </p>
-        <ul class="values-block" role="list">
-          <li>
-            <strong>"Dia Cero"</strong> · 2013 ·
-            <em>Tattva Music</em> · the inaugural track that defined the mature language of the label.
-          </li>
-          <li>
-            <strong>"Far East (Forza Remix)"</strong> + <strong>"Tonight You Are Mine (Forza Remix)"</strong> · 2014–2015 ·
-            <em>Tattva Music</em> · remixes for Yuji Ono — the transoceanic bridge between Mexico and Japan made audible.
-          </li>
-          <li>
-            <strong>"Disco Duro"</strong> · 2016 ·
-            <em>Outta Limits</em> (Stan Kolev's label, Bulgaria) ·
-            the closing track of the active musical chapter — a robotic, industrial, mathematically danceable homage, by title and by sound, to the engineering chapter that was just beginning.
-          </li>
-        </ul>
-
-        <p class="callout" style="font-style: italic;">
-          "I do not use presets. I code my own oscillators."
-        </p>
-        <p style="opacity: .85;">
-          That single principle is, perhaps, the cleanest way to describe how this catalog was built — and how the engineering chapter that came afterward continued the same craft, in a different vehicle.
-        </p>
-
-        <h3 style="margin-top: var(--space-lg);">The international network</h3>
-        <p>
-          The collaborations span continents — a quiet map of a Mexican producer in conversation with the world.
-        </p>
-        <ul class="simple" role="list">
-          <li>🇲🇽 Mexico — Vazik (Sounds of Earth, 2008–2011), Odiseo (2up project).</li>
-          <li>🇮🇱 Israel — Lior Lahav (Karma Strikers, Energy Surf, 2006).</li>
-          <li>🇧🇷 Brazil — Thiago Merli (Terra Sul, Me Encanta Dios Remix, 2011).</li>
-          <li>🇯🇵 Japan — Yuji Ono (Far East + Tonight You Are Mine remixes, 2014–2015).</li>
-          <li>🇧🇬 Bulgaria — Stan Kolev (Outta Limits release, Disco Duro, 2016).</li>
-          <li>🇫🇮 Finland — Anthony S-Range Sillfors (brought to play in Mexico).</li>
-        </ul>
-
-        <h3 style="margin-top: var(--space-lg);">Public profiles</h3>
-        <ul class="values-block" role="list">
-          <li>
-            <strong>Tattva Music</strong> · founder &amp; A&amp;R ·
-            <a href="https://www.beatport.com/es/label/tattva-music/29230" rel="noopener noreferrer">label on Beatport</a>.
-          </li>
-          <li>
-            <strong>DJ Forza · artist profile</strong> ·
-            <a href="https://www.beatport.com/es/artist/forza/64342" rel="noopener noreferrer">forza on Beatport</a>.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section aria-labelledby="gallery-heading">
-      <div class="container-wide">
-        <h2 id="gallery-heading">Gallery — across the years</h2>
-        <p style="max-width: 65ch; margin-bottom: var(--space-md);">
-          A visual archive of the music life. Click any image to enlarge — use arrow keys or swipe to navigate.
-        </p>
-        <div class="gallery-mosaic" id="galleryMosaic">
-          <!-- Mosaic items will be rendered via JavaScript from the data below -->
-        </div>
-      </div>
-    </section>
-
-    <!-- Lightbox modal -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
-      <button class="lightbox__close" id="lightboxClose" aria-label="Close">×</button>
-      <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrev" aria-label="Previous image">‹</button>
-      <div class="lightbox__content">
-        <div id="lightboxPictureSlot" class="lightbox__pic-slot"></div>
-        <p class="lightbox__caption" id="lightboxCaption"></p>
-      </div>
-      <button class="lightbox__nav lightbox__nav--next" id="lightboxNext" aria-label="Next image">›</button>
-      <div class="lightbox__counter" id="lightboxCounter"></div>
-    </div>
-
-    <!-- Gallery data (localized) -->
-    <script>
-      window.galleryLabels = { openImage: 'Open image' };
-      window.galleryData = [
-        { src: 'images/gallery/01-dj-forza-led-stars.jpg', cap: 'LED stars set — Forza era' },
-        { src: 'images/gallery/02-dj-tent-set.jpg', cap: 'Festival tent — late night set' },
-        { src: 'images/gallery/03-jack-club-set.jpg', cap: 'Jack club — heavy techno night' },
-        { src: 'images/gallery/04-brazil-keyboard-hills.jpg', cap: 'Brazilian hills — MIDI in hand' },
-        { src: 'images/gallery/05-house-selfie.jpg', cap: 'Brazil — backyard self portrait' },
-        { src: 'images/gallery/06-waterfall-climb.jpg', cap: 'Mountain waterfall climb' },
-        { src: 'images/gallery/07-kali-mural-india.jpg', cap: 'India — Kali mural moment' },
-        { src: 'images/gallery/08-dj-headphones-laugh.jpg', cap: 'Dancing behind the headphones' },
-        { src: 'images/gallery/09-om-shirt-set.jpg', cap: 'Open-air set — Om shirt' },
-        { src: 'images/gallery/10-dreamcatcher-festival.jpg', cap: 'Dreamcatcher stage' },
-        { src: 'images/gallery/11-studio-psygeridub.jpg', cap: 'Studio — Psygeridub session' },
-        { src: 'images/gallery/12-dj-skull-led.jpg', cap: 'LED skull stage' },
-        { src: 'images/gallery/13-pixan-album-cover.jpg', cap: 'Pixan — Trance from the New World (Synergetic Records, 2004)', featured: true },
-        { src: 'images/gallery/29-energetic-vol2-ovnimoon.jpg', cap: 'Energetic Vol. II — A Voyage Into The Light (compiled by Ovnimoon, includes "Me Encanta Dios")', featured: true },
-        { src: 'images/gallery/14-dj-duo-collab.jpg', cap: 'Side by side with a friend on stage' },
-        { src: 'images/gallery/15-cyberpunk-portrait.jpg', cap: 'Promotional portrait' },
-        { src: 'images/gallery/16-beanie-studio.jpg', cap: 'Studio winter — beanie days' },
-        { src: 'images/gallery/17-studio-akai-mpc.jpg', cap: 'Studio — AKAI MPC era' },
-        { src: 'images/gallery/18-with-friend-2009.jpg', cap: 'October 2009 — with a dear friend' },
-        { src: 'images/gallery/19-massive-festival-mexico.jpg', cap: 'Mexican festival — a sea of people' },
-        { src: 'images/gallery/20-dj-controller-laugh.jpg', cap: 'New controller, old joy' },
-        { src: 'images/gallery/21-outdoor-festival-set.jpg', cap: 'Outdoor festival set' },
-        { src: 'images/gallery/22-tropical-bar-set.jpg', cap: 'Tropical bar set — with friends' },
-        { src: 'images/gallery/23-toluca-festival.jpg', cap: 'Mexican festival crowd' },
-        { src: 'images/gallery/24-sasha-shirt-outdoor.jpg', cap: 'Outdoor festival — Sasha tribute shirt' },
-        { src: 'images/gallery/25-beach-festival-brazil.jpg', cap: 'Brazilian beach festival' },
-        { src: 'images/gallery/26-psytronic-studio.jpg', cap: 'Studio — Psytronic days' },
-        { src: 'images/gallery/27-bamboo-set.jpg', cap: 'Bamboo stage — pure joy' },
-        { src: 'images/gallery/28-festival-collab.jpg', cap: 'Mid-set with a fellow DJ' }
-      ];
-    </script>
-    <script src="js/gallery.js" defer></script>
 
     <section aria-labelledby="closing-heading">
       <div class="container">
@@ -725,16 +205,15 @@
           If you arrived here because you remembered a night on a dance floor, thank you for the memory. If you arrived because of the code, the lineage, the languages, or the love of a Mexico that owns every river of its history — you are very welcome here too.
         </p>
         <p>
-          I hope this small page reminds someone that one human life can be many lives at once, and that there is no contradiction between art and engineering, between roots and horizons, between tradition and curiosity. We are, all of us, combined forces.
+          I hope this small site reminds someone that one human life can be many lives at once, and that there is no contradiction between art and engineering, between roots and horizons, between tradition and curiosity. We are, all of us, combined forces.
         </p>
         <p>
-          And if someone finds this page in a future I will no longer see, let it be a small lantern. Not a monument — just a trace. Proof that one Mexican life loved many things, with discipline, with humor, and with as much care as it could gather.
+          And if someone finds this site in a future I will no longer see, let it be a small lantern. Not a monument — just a trace. Proof that one Mexican life loved many things, with discipline, with humor, and with as much care as it could gather.
         </p>
       </div>
     </section>
   </main>
 
-  <!-- Remember user's manual language choice across visits -->
   <script>
     document.querySelectorAll('.lang-switcher a').forEach(function (link) {
       link.addEventListener('click', function () {
@@ -746,53 +225,11 @@
     });
   </script>
 
-  <!-- Scroll-spy for top-nav: highlights the section the reader is currently in -->
-  <script>
-    (function () {
-      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.top-nav__link[data-section]'));
-      if (!navLinks.length || !('IntersectionObserver' in window)) return;
-
-      var sectionMap = {};
-      navLinks.forEach(function (link) {
-        var id = link.getAttribute('data-section');
-        var target = document.getElementById(id);
-        if (target) {
-          sectionMap[id] = link;
-        }
-      });
-
-      var activeId = null;
-      function setActive(id) {
-        if (id === activeId) return;
-        activeId = id;
-        navLinks.forEach(function (link) {
-          link.classList.toggle('is-active', link.getAttribute('data-section') === id);
-        });
-      }
-
-      var observer = new IntersectionObserver(function (entries) {
-        // Pick the entry closest to the top of the viewport that is intersecting.
-        var visible = entries
-          .filter(function (e) { return e.isIntersecting; })
-          .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
-        if (visible.length) {
-          setActive(visible[0].target.id);
-        }
-      }, {
-        rootMargin: '-20% 0px -65% 0px',
-        threshold: 0
-      });
-
-      Object.keys(sectionMap).forEach(function (id) {
-        observer.observe(document.getElementById(id));
-      });
-    })();
-  </script>
-
   <footer>
     <div class="container">
       <div class="footer__links">
         <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.beatport.com/es/artist/forza/64342" rel="noopener noreferrer">Beatport</a>
         <a href="es/">Español</a>
         <a href="pt/">Português</a>
       </div>

@@ -331,6 +331,35 @@ ul.values li::before {
   flex-shrink: 0;
 }
 
+/* Block-style list for paragraphs with rich inline content (em, strong, links)
+   where a flex row would break layout — used for the GitHub bridge and the
+   discography movements where each list item is a small paragraph rather
+   than a short label-and-description pair. */
+ul.values-block,
+ul.simple-block {
+  list-style: none;
+  margin: var(--space-sm) 0 var(--space-md);
+  padding: 0;
+}
+
+ul.values-block li,
+ul.simple-block li {
+  display: block;
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  color: var(--color-text-soft);
+  position: relative;
+  line-height: 1.6;
+}
+
+ul.values-block li::before {
+  content: "—";
+  color: var(--color-accent);
+  font-weight: 600;
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+}
+
 /* Stats grid */
 .facts {
   display: grid;

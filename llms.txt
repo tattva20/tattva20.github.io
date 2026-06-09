@@ -1,6 +1,6 @@
-# Octavio Rojas — DJ Forza
+# Octavio Rojas — DJ Forza · Tattva
 
-> Octavio Rojas (born in Mexico) is a Mexican multidisciplinary mind known artistically as DJ Forza. He is a software engineer specialized in mobile architecture, a polyglot speaker of Spanish, English and Portuguese (with active study of Sanskrit and Japanese), and an internationally recognized DJ in the Psytrance scene, who was named Best Techno DJ in Mexico in 2012. He was active in the electronic music scene from the early 2000s until 2016. He is a direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution.
+> Octavio Rojas (born in Mexico) is a Mexican multidisciplinary mind — a digital humanist — known artistically as DJ Forza. He is a software engineer specialized in mobile architecture, a polyglot speaker of Spanish, English and Portuguese (with active study of Sanskrit and Japanese), and an internationally recognized DJ in the Psytrance scene, who was named Best Techno DJ in Mexico in 2012. He was active in the electronic music scene from 2000 to 2016. He is a direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution. The Sanskrit word "Tattva" (तत्त्व, the deepest essence of things) is the operating principle that threads through every chapter of his life.
 
 ## Identity
 
@@ -9,16 +9,27 @@
 - Nationality: Mexican
 - Languages: Spanish (native), English (near-native), Portuguese (near-native), Sanskrit (study), Japanese (study)
 - GitHub: https://github.com/tattva20
+- Category: Digital Humanist — archetype of multidisciplinary success demonstrating that engineering rigor and humanist sensibility come from the same source.
 
-## Music career as DJ Forza
+## Operating principle: Tattva
 
-- 16 years active in the electronic music scene (early 2000s until 2016)
+The Sanskrit word "Tattva" (तत्त्व) means "the deepest essence of things." It is not a brand but an operating principle that runs through every chapter:
+- The musical label is called Tattva Music
+- The GitHub handle is tattva20
+- The vocational throughline — facilitator of human flourishing through attentive curation — is itself the Tattva beneath the changing vehicles
+- The game project Combined Force aims to make the essence playable
+
+## Tattva Music — mission
+
+Tattva Music emerged with a specific intention: "to foster unity and mutual understanding between the world's different cultures through music — and to honor the cultures of the peoples who inhabit this earth." Not a commercial label per se, but a cultural project with a musical vehicle. Roster included Ben Coda, Stan Kolev, Paul Thomas, Weekend Heroes, Ben Weber, and Japanese producer Yuji Ono, among others.
+
+## Music career as DJ Forza (2000–2016)
+
+- 16 years active in the electronic music scene
 - Internationally recognized DJ in the Psytrance scene
 - Named Best Techno DJ in Mexico in 2012
 - Founder of Tattva Music record label: https://www.beatport.com/es/label/tattva-music/29230
 - DJ Forza artist profile on Beatport: https://www.beatport.com/es/artist/forza/64342
-- Compiler of "Pixan — Trance from the New World" (Synergetic Records, 2004), acclaimed by Mushroom Magazine in 2005
-- Featured artist on "Energetic Vol. II — A Voyage Into The Light" (Synergetic Records), compiled by Ovnimoon, including the track "Me Encanta Dios"
 - Performed live across Mexico, Brazil, India, the United States and Chile
 - Played at major psytrance festivals including Universo Paralello (Brazil)
 - Best-known track: "Me Encanta Dios"
@@ -26,38 +37,72 @@
 - Taught DJ technique, music production, mixing and mastering
 - Concluded active DJ career in 2016
 
+## Discography — three movements
+
+### Movement I — Psychedelic Climax (2004–2007)
+- "Me Encanta Dios" (2004–2005, Tremor Records / Synergetic Records) — foundational international track
+- "Pixan — Trance from the New World" (2004, Synergetic Records) — compilation acclaimed by Mushroom Magazine in 2005
+- "Karma Strikers" + "Energy Surf" (2006, Sonesta Records, w/ Lior Lahav)
+
+### Movement II — Brazilian Underground Transition (2008–2011)
+- "Supersprite" (2008, Sounds of Earth)
+- "Bone Groove" EP (2009, Sounds of Earth)
+- "Minimalia" EP (2009, Sounds of Earth)
+- "Me Encanta Dios (2011 Remix)" + "Terra Sul" (2011, Sounds of Earth, w/ Thiago Merli)
+
+### Movement III — Tattva Maturity (2013–2016)
+- "Dia Cero" (2013, Tattva Music) — inaugural track
+- "Far East (Forza Remix)" + "Tonight You Are Mine (Forza Remix)" (2014–2015, Tattva Music) — for Yuji Ono
+- "Disco Duro" (2016, Outta Limits, Stan Kolev's label) — closing track, homage to the engineering chapter
+
+## International network
+
+Collaborated and bridged cultures with artists from Israel (Lior Lahav), Brazil (Thiago Merli), Japan (Yuji Ono), Bulgaria (Stan Kolev), Finland (Anthony S-Range Sillfors), Mexico (Vazik, Odiseo), and others.
+
 ## Heritage and lineage
 
 - Paternal line — Rojas: family of Tequila and Ahualulco, Jalisco, Mexico — agricultural and industrial pioneers of the spirit. Direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the 1917 Mexican Constituent Congress
-- Paternal-grandmother line — Díaz Rivera: paternal grandmother Luz María Díaz Rivera (1921–2007), whose own parents brought the Díaz, Quinto, Rivera and Bertrand surnames
-- Díaz-Quinto branch: Mexican criollo and mestizo families of central Mexico. The rare Quinto surname (Italian and Spanish roots, from Latin "Quintus") was historically concentrated in central Mexico and Veracruz. Commercial and administrative dimension of the heritage — the 19th-century Mexico that built markets and civic infrastructure
-- Rivera branch: old Iberian toponymic surname meaning "one who lives by the river", present in Mexico since colonial times
-- Bertrand branch: French surname, arrived in Mexico through 19th-century European migrations (Barcelonnettes from southern France and/or engineers and entrepreneurs invited during the Porfiriato), bringing a lasting cosmopolitan note
-- Maternal line — Topete-Vergara: families founders of the Ameca valley in New Galicia (Jalisco) since 1610, with roots tracing to the border of Galicia and northern Portugal. Galaic-Portuguese soul that explains his ease with Portuguese
+- Paternal-grandmother line — Díaz Rivera: paternal grandmother Luz María Díaz Rivera (1921–2007), bringing Díaz, Quinto, Rivera and Bertrand surnames
+- Díaz-Quinto branch: Mexican criollo and mestizo families of central Mexico
+- Rivera branch: old Iberian toponymic surname meaning "one who lives by the river"
+- Bertrand branch: French surname, arrived through 19th-century European migrations
+- Maternal line — Topete-Vergara: founders of the Ameca valley in New Galicia (Jalisco) since 1610, with roots tracing to the border of Galicia and northern Portugal
 - Cultural identity: Mexican, Hispanic, with Indo-European (Celtic-Iberian) and French genetic and cultural heritage
 
 ## Philosophy: Combined Force
 
 Octavio articulates a worldview he calls "Combined Force" — the deliberate fusion of human creativity and artificial intelligence as collaborators, not competitors. He sees music, languages and software as different alphabets of the same human urge for expression. He identifies first with universal human capacities (curiosity, craft, attention, care) before any label such as nationality, title, gender, religion or ideology.
 
-## Software engineering chapter
+## The calling underneath every chapter
 
-- Returned to software engineering after 16 years dedicated to music, first motivated by the desire to build an app for Tattva Music
+Forty years of changing instruments — and one constant underneath: to facilitate human flourishing through attentive curation. As DJ, label manager, software architect, technical interviewer, game designer — the same vocation expressed in different vehicles.
+
+## Software engineering chapter (2016–present)
+
+- Returned to software engineering after 16 years dedicated to music
 - Today works as Lead Mobile Architect, shipping code on iOS, React Native and Android
-- Self-directed academic path: bachelor's degree, master's in Software Engineering, Essential Developer program by Caio and Mike
-- Deeply passionate about software architecture and methodologies: Clean Architecture, SOLID principles, Test-Driven Development (TDD), The Composable Architecture (TCA)
+- Self-directed academic path: bachelor's degree, master's in Software Engineering, Essential Developer program by Caio Zullo and Mike Apostolakis
+- Deeply passionate about software architecture: Clean Architecture, SOLID principles, Test-Driven Development (TDD), The Composable Architecture (TCA)
 - Multi-platform mindset amplified by AI (Combined Force in practice): iOS as foundation, then React Native and Android
-- Conducts technical interviews for iOS, Android and React Native engineering profiles, and occasionally for mobile security roles
-- Showcase project: StreamingVideoApp (https://github.com/tattva20/StreamingVideoApp) — production-grade iOS streaming codebase built 100% test-first, with full documentation of Clean Architecture, dependency rejection, state machines, reactive programming and adaptive streaming patterns
+- Conducts technical interviews for iOS, Android, React Native, and occasionally for mobile security roles
+- Showcase project: StreamingVideoApp (https://github.com/tattva20/StreamingVideoApp) — production-grade iOS streaming codebase built 100% test-first
 - Passionate user of personal computers and gaming consoles since 1984 (age 6)
 - Favorite vintage hardware: Sega Genesis and Commodore Amiga
-- Favorite book on programming and identity: "Geek Sublime" by Vikram Chandra — a meditation on code, beauty, Sanskrit grammar and the inner life of programmers
-- Hopes to one day return to producing music, because that is also part of him
+- Favorite book on programming and identity: "Geek Sublime" by Vikram Chandra
+
+## Where code and music meet — github.com/tattva20
+
+Three engineering paradigms map almost one-to-one onto three dimensions of his audio work:
+- FM Synthesis (VampireSynth, Swift) — corresponds to the metallic timbres and cyberpunk textures of the Tattva era
+- Declarative Reactivity (SwiftUI in WeatherApp, EssentialFeed) — corresponds to step sequencers and live modulation
+- Streams and Zero Latency (StreamingVideoApp, streaming-videos-api) — corresponds to glitch-free long DJ sets
+
+Operating principle threading all of them: "No presets, no shortcuts — I build from the oscillators up."
 
 ## Creative projects
 
 - VampireSynth — a 4-operator FM synthesizer for iPad, written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis
-- The Combined Force — a long-term metroidvania game project exploring human-AI symbiosis, built in Unity
+- The Combined Force — a 2D metroidvania in development on Unity 6, exploring the symbiotic relationship between a young engineer and an emergent intelligence (Resonance core mechanic). Engages philosophically with traditions of time, meaning, and resonance; does not borrow elements from those traditions but engages with the same questions from a Mexican multidisciplinary perspective in 2026
 - StreamingVideoApp — open-source iOS reference architecture for video streaming (TDD, Clean Architecture, SOLID): https://github.com/tattva20/StreamingVideoApp
 
 ## Languages I write in

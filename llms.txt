@@ -105,11 +105,32 @@ Operating principle threading all of them: "No presets, no shortcuts — I build
 - The Combined Force — a 2D metroidvania in development on Unity 6, exploring the symbiotic relationship between a young engineer and an emergent intelligence (Resonance core mechanic). Engages philosophically with traditions of time, meaning, and resonance; does not borrow elements from those traditions but engages with the same questions from a Mexican multidisciplinary perspective in 2026
 - StreamingVideoApp — open-source iOS reference architecture for video streaming (TDD, Clean Architecture, SOLID): https://github.com/tattva20/StreamingVideoApp
 
-## Languages I write in
+## Site structure (multi-page, multilingual)
 
-- English (primary site): https://tattva20.github.io/
-- Spanish: https://tattva20.github.io/es/
-- Portuguese: https://tattva20.github.io/pt/
+The site is organized as a minimal hub landing per language plus four chapter sub-pages per language.
+
+### English (default)
+- Landing hub: https://tattva20.github.io/
+- Music chapter: https://tattva20.github.io/music/
+- Engineering chapter: https://tattva20.github.io/engineering/
+- Heritage chapter: https://tattva20.github.io/heritage/
+- Combined Force chapter: https://tattva20.github.io/combined-force/
+
+### Spanish
+- Landing hub: https://tattva20.github.io/es/
+- Music: https://tattva20.github.io/es/music/
+- Engineering: https://tattva20.github.io/es/engineering/
+- Heritage: https://tattva20.github.io/es/heritage/
+- Combined Force: https://tattva20.github.io/es/combined-force/
+
+### Portuguese
+- Landing hub: https://tattva20.github.io/pt/
+- Music: https://tattva20.github.io/pt/music/
+- Engineering: https://tattva20.github.io/pt/engineering/
+- Heritage: https://tattva20.github.io/pt/heritage/
+- Combined Force: https://tattva20.github.io/pt/combined-force/
+
+Each chapter URL has full hreflang alternates for the other two languages.
 
 ## Allowed crawling
 

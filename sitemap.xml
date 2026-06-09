@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
     <loc>https://tattva20.github.io/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/"/>
@@ -28,4 +29,117 @@
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
+
+  <url>
+    <loc>https://tattva20.github.io/music/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/music/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/music/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/music/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/music/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/music/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/music/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/music/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/music/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/music/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/music/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/music/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/music/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/music/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/music/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tattva20.github.io/engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/engineering/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/engineering/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/engineering/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/engineering/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://tattva20.github.io/heritage/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/heritage/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/heritage/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/heritage/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/heritage/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/heritage/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/heritage/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://tattva20.github.io/combined-force/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/combined-force/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/combined-force/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/combined-force/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/combined-force/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/combined-force/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/combined-force/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

@@ -843,6 +843,120 @@ body.lightbox-open {
   margin-top: -1.4rem;
 }
 
+/* ============================================
+   Hub Cards (Phase 2 multi-page landing)
+   Large navigational cards on the home page.
+   ============================================ */
+.hub-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.hub-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  background: var(--color-card);
+  border: 1px solid var(--color-divider);
+  border-radius: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-divider);
+  box-shadow: 0 1px 3px var(--color-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  min-height: 220px;
+}
+
+.hub-card:hover,
+.hub-card:focus {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px var(--color-shadow);
+  border-color: var(--color-accent);
+}
+
+.hub-card__eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+}
+
+.hub-card__title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-text);
+  margin: 0 0 var(--space-sm);
+  line-height: 1.2;
+}
+
+.hub-card__desc {
+  color: var(--color-text-soft);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  flex: 1;
+  margin: 0 0 var(--space-sm);
+  max-width: none;
+}
+
+.hub-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+.hub-card__arrow::after {
+  content: "→";
+  transition: transform var(--transition-fast);
+}
+
+.hub-card:hover .hub-card__arrow::after {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   Page Hero (Phase 2)
+   Smaller hero used on sub-pages.
+   ============================================ */
+.page-hero {
+  padding: var(--space-xl) 0 var(--space-lg);
+  text-align: center;
+  border-bottom: 1px solid var(--color-divider);
+  margin-bottom: var(--space-lg);
+}
+
+.page-hero__eyebrow {
+  display: block;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.page-hero__title {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  margin: 0 auto var(--space-sm);
+  max-width: 30ch;
+  line-height: 1.15;
+}
+
+.page-hero__tagline {
+  color: var(--color-text-soft);
+  font-size: 1rem;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+
 /* Footer */
 footer {
   padding: var(--space-xl) 0 var(--space-lg);

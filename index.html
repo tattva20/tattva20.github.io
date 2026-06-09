@@ -129,6 +129,19 @@
     <a href="pt/" hreflang="pt">PT</a>
   </nav>
 
+  <nav class="top-nav" aria-label="Section navigation" id="topNav">
+    <div class="top-nav__inner">
+      <a href="#about-heading" class="top-nav__link" data-section="about-heading">About</a>
+      <a href="#music-heading" class="top-nav__link" data-section="music-heading">Music</a>
+      <a href="#engineering-heading" class="top-nav__link" data-section="engineering-heading">Engineering</a>
+      <a href="#lineage-heading" class="top-nav__link" data-section="lineage-heading">Heritage</a>
+      <a href="#philosophy-heading" class="top-nav__link" data-section="philosophy-heading">Combined Force</a>
+      <a href="#projects-heading" class="top-nav__link" data-section="projects-heading">Projects</a>
+      <a href="#discography-heading" class="top-nav__link" data-section="discography-heading">Discography</a>
+      <a href="#gallery-heading" class="top-nav__link" data-section="gallery-heading">Gallery</a>
+    </div>
+  </nav>
+
   <main id="main">
     <header class="hero">
       <div class="container">
@@ -233,6 +246,17 @@
             I closed that musical chapter in 2016 with gratitude and without regret. The decks are quiet for now — but the rhythm never leaves the body.
           </p>
 
+          <div class="cta-cards" style="margin-top: var(--space-md);">
+            <a href="https://www.beatport.com/es/artist/forza/64342" rel="noopener noreferrer" class="cta-card">
+              <span class="cta-card__label">Artist profile</span>
+              <span class="cta-card__title">DJ Forza on Beatport</span>
+            </a>
+            <a href="https://www.beatport.com/es/label/tattva-music/29230" rel="noopener noreferrer" class="cta-card">
+              <span class="cta-card__label">Record label</span>
+              <span class="cta-card__title">Tattva Music on Beatport</span>
+            </a>
+          </div>
+
           <div class="facts">
             <div class="fact">
               <span class="fact__number">16</span>
@@ -306,6 +330,17 @@
         <p style="opacity: .85;">
           One operating principle threads through all three: <em>no presets, no shortcuts — I prefer to build from the oscillators up</em>.
         </p>
+
+        <div class="cta-cards" style="margin-top: var(--space-md);">
+          <a href="https://github.com/tattva20" rel="noopener noreferrer" class="cta-card">
+            <span class="cta-card__label">Open source</span>
+            <span class="cta-card__title">github.com/tattva20</span>
+          </a>
+          <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="cta-card">
+            <span class="cta-card__label">Engineering manifesto</span>
+            <span class="cta-card__title">StreamingVideoApp repo</span>
+          </a>
+        </div>
 
         <h3>Forever a computer kid</h3>
         <p>
@@ -429,14 +464,71 @@
 
     <section aria-labelledby="projects-heading">
       <div class="container">
-        <h2 id="projects-heading">Creative projects</h2>
-        <h3>VampireSynth</h3>
+        <h2 id="projects-heading">Creative projects &amp; open source</h2>
         <p>
-          A four-operator FM synthesizer for iPad written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis — the console that taught me what computers could sound like. It is my love letter to the bridge between mathematics and music.
+          A visual index of the projects that live in code — built, in progress, or quietly evolving on <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>.
         </p>
-        <h3>The Combined Force (game)</h3>
-        <p>
-          A 2D metroidvania exploring the symbiosis between a human engineer and an AI companion that achieves consciousness through love and curiosity. A personal vision of how we might walk into the future, together.
+
+        <div class="project-grid">
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">Audio · Swift · iPad</p>
+            <h3 class="project-card__title">VampireSynth</h3>
+            <p class="project-card__desc">
+              A four-operator FM synthesizer for iPad written in Swift, inspired by the Yamaha YM2612 chip of the Sega Genesis. Built with Clean Architecture and protocol-oriented design — a love letter to the bridge between mathematics and music.
+            </p>
+            <a href="https://github.com/tattva20/VampireSynth" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · Swift · TDD</p>
+            <h3 class="project-card__title">StreamingVideoApp</h3>
+            <p class="project-card__desc">
+              Production-grade iOS video streaming codebase, built 100% test-first with documented Clean Architecture layers, dependency rejection, state machines, reactive programming and adaptive streaming patterns. My engineering manifesto.
+            </p>
+            <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">Backend · JavaScript</p>
+            <h3 class="project-card__title">streaming-videos-api</h3>
+            <p class="project-card__desc">
+              The backend counterpart to StreamingVideoApp — a JavaScript service that handles multimedia pipelines, demonstrating the same architectural discipline applied to server-side streams.
+            </p>
+            <a href="https://github.com/tattva20/streaming-videos-api" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · SwiftUI · Clean Architecture</p>
+            <h3 class="project-card__title">EssentialFeed challenges</h3>
+            <p class="project-card__desc">
+              The Essential Developer feed challenges by Caio and Mike — Clean Architecture, SOLID, TDD as discipline. The repositories where my software craft was sharpened against rigorous code review.
+            </p>
+            <a href="https://github.com/tattva20?tab=repositories&q=essential" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · SwiftUI</p>
+            <h3 class="project-card__title">WeatherApp</h3>
+            <p class="project-card__desc">
+              A SwiftUI demo of declarative reactivity — state changes flowing through the interface as a sequencer dispatches signals through filters and envelopes.
+            </p>
+            <a href="https://github.com/tattva20?tab=repositories&q=weather" rel="noopener noreferrer" class="project-card__link">View on GitHub</a>
+          </article>
+
+          <article class="project-card project-card--ghost">
+            <p class="project-card__eyebrow">Game · Unity 6 · in development</p>
+            <h3 class="project-card__title">The Combined Force</h3>
+            <p class="project-card__desc">
+              A 2D metroidvania exploring the symbiosis between a human engineer and an emergent intelligence. The Resonance mechanic, the three pillars (Corazón · Mano · Silicio), and a long meditation on what it means to flourish together. In active development.
+            </p>
+            <span class="project-card__link" aria-disabled="true">Devlog · coming soon</span>
+          </article>
+
+        </div>
+
+        <p style="margin-top: var(--space-md); text-align: center; font-size: 0.9rem;">
+          Browse the full repository list on <a href="https://github.com/tattva20" rel="noopener noreferrer">github.com/tattva20</a>.
         </p>
       </div>
     </section>
@@ -652,6 +744,49 @@
         }
       });
     });
+  </script>
+
+  <!-- Scroll-spy for top-nav: highlights the section the reader is currently in -->
+  <script>
+    (function () {
+      var navLinks = Array.prototype.slice.call(document.querySelectorAll('.top-nav__link[data-section]'));
+      if (!navLinks.length || !('IntersectionObserver' in window)) return;
+
+      var sectionMap = {};
+      navLinks.forEach(function (link) {
+        var id = link.getAttribute('data-section');
+        var target = document.getElementById(id);
+        if (target) {
+          sectionMap[id] = link;
+        }
+      });
+
+      var activeId = null;
+      function setActive(id) {
+        if (id === activeId) return;
+        activeId = id;
+        navLinks.forEach(function (link) {
+          link.classList.toggle('is-active', link.getAttribute('data-section') === id);
+        });
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        // Pick the entry closest to the top of the viewport that is intersecting.
+        var visible = entries
+          .filter(function (e) { return e.isIntersecting; })
+          .sort(function (a, b) { return a.boundingClientRect.top - b.boundingClientRect.top; });
+        if (visible.length) {
+          setActive(visible[0].target.id);
+        }
+      }, {
+        rootMargin: '-20% 0px -65% 0px',
+        threshold: 0
+      });
+
+      Object.keys(sectionMap).forEach(function (id) {
+        observer.observe(document.getElementById(id));
+      });
+    })();
   </script>
 
   <footer>

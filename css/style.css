@@ -168,6 +168,12 @@ a:focus-visible {
   color: var(--color-bg);
 }
 
+@media (max-width: 768px) {
+  .lang-switcher {
+    top: 3.25rem;
+  }
+}
+
 /* Layout containers */
 .container {
   max-width: var(--max-content);

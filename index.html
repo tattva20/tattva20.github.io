@@ -8,6 +8,7 @@
   <script>
     (function () {
       if (window.location.pathname !== '/' && window.location.pathname !== '/index.html') return;
+      if (/bot|crawler|spider|googlebot|bingbot|yandex|baiduspider|duckduckbot|slurp|facebookexternalhit|twitterbot|linkedinbot/i.test(navigator.userAgent)) return;
       try {
         var saved = localStorage.getItem('preferredLang');
         if (saved === 'en') return;

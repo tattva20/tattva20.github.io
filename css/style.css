@@ -551,9 +551,15 @@ ul.values-block li::before {
 
 .lightbox__pic-slot picture,
 .portrait-pair picture,
-.mosaic-item picture,
-.section-portrait > picture {
+.mosaic-item picture {
   display: contents;
+}
+
+.section-portrait > picture {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
 }
 
 .lightbox__caption {

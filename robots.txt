@@ -29,4 +29,5 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
+Sitemap: https://tattva20.github.io/sitemap-2026.xml
 Sitemap: https://tattva20.github.io/sitemap.xml

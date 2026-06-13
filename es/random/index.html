@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Random — Octavio Rojas · Tattva | Canon personal y curiosidades</title>
+  <meta name="description" content="Un espacio libre para lo que no entra en una sola categoría. Canon visual, tributos, piezas generadas con IA, curiosidades y gestos de aprecio cultural que viven fuera de las secciones de música, ingeniería y herencia." />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://tattva20.github.io/es/random/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/random/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/random/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/random/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/random/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Random — Octavio Rojas" />
+  <meta property="og:description" content="Canon personal, tributos visuales, piezas generadas con IA, curiosidades." />
+  <meta property="og:url" content="https://tattva20.github.io/es/random/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/random/01-musha-self-portrait.png" />
+  <meta property="og:locale" content="es_MX" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Random — Octavio Rojas" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/random/01-musha-self-portrait.png" />
+
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <nav class="lang-switcher" aria-label="Selector de idioma">
+    <a href="../../random/" hreflang="en">EN</a>
+    <a href="../random/" aria-current="true" hreflang="es">ES</a>
+    <a href="../../pt/random/" hreflang="pt">PT</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="Navegación de secciones">
+    <div class="top-nav__inner">
+      <a href="/es/" class="top-nav__link">Inicio</a>
+      <a href="/es/music/" class="top-nav__link">Música</a>
+      <a href="/es/engineering/" class="top-nav__link">Ingeniería</a>
+      <a href="/es/heritage/" class="top-nav__link">Linaje</a>
+      <a href="/es/combined-force/" class="top-nav__link">Fuerza Combinada</a>
+      <a href="/es/random/" class="top-nav__link is-active">Random</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">Random</span>
+        <h1 class="page-hero__title">Canon personal y curiosidades</h1>
+        <p class="page-hero__tagline">Un espacio libre para lo que no cabe en una sola categoría — tributos visuales, piezas generadas con IA, gestos de aprecio cultural hacia las obras que me formaron.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="canon-intro-heading">
+      <div class="container">
+        <h2 id="canon-intro-heading">Sobre este espacio</h2>
+        <p>
+          No todo artefacto en un canon personal pertenece a un solo capítulo. Algunas piezas son tributos a obras que amo, otras son autorretratos generados con IA, otras son simplemente los pequeños gestos visuales que emergen de una vida de curiosidad. Esta sección los reúne sin forzarlos a la música, la ingeniería o la herencia.
+        </p>
+        <p>
+          Lo que vive aquí es la dimensión que se resiste a la categorización — y eso es exactamente lo que vale mostrar.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="visual-canon-heading">
+      <div class="container">
+        <h2 id="visual-canon-heading">Canon visual</h2>
+        <article class="canon-item">
+          <figure>
+            <picture>
+              <source srcset="../../images/random/01-musha-self-portrait.webp" type="image/webp" />
+              <img src="../../images/random/01-musha-self-portrait.png" alt="Autorretrato como piloto de M.U.S.H.A. — tributo en estilo acuarela al cult classic de Compile de 1990 para Sega Genesis" loading="lazy" />
+            </picture>
+            <figcaption>
+              <strong>M.U.S.H.A. — Metallic Uniframe Super Hybrid Armor</strong><br />
+              Autorretrato como piloto — tributo al cult classic de Compile de 1990 para Sega Genesis. Uno de los shoot 'em ups más subvalorados de su era, con un soundtrack de Toshiaki Sakoda que empujó al Yamaha YM2612 hasta sus límites. Nunca lo jugué completo en mi juventud — me lo apropié culturalmente a través de su música, su narrativa y su tema final <em>"For the Love Of..."</em>. Algunas obras merecen vivir en tu canon aunque el control nunca haya llegado del todo a tus manos.
+            </figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { /* ignore */ }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../random/">English</a>
+        <a href="../../pt/random/">Português</a>
+        <a href="../">← Inicio</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. Construido con cuidado, en México.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -157,4 +157,35 @@
     <priority>0.7</priority>
   </url>
 
+  <url>
+    <loc>https://tattva20.github.io/random/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/random/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/random/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/random/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/random/"/>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/random/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/random/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/random/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/random/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/random/"/>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/random/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/random/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/random/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/random/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/random/"/>
+    <lastmod>2026-06-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
 </urlset>

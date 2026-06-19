@@ -1,15 +1,25 @@
-# Octavio Rojas — DJ Forza · Tattva
+# Octavio Rojas Topete — Lead Mobile Architect · Combined Force Methodology
 
-> Octavio Rojas (born in Mexico) is a Mexican multidisciplinary mind — a digital humanist — known artistically as DJ Forza. He is a software engineer specialized in mobile architecture, a polyglot speaker of Spanish, English and Portuguese (with active study of Sanskrit and Japanese), and an internationally recognized DJ in the Psytrance scene, who was named Best Techno DJ in Mexico in 2012. He was active in the electronic music scene from 2000 to 2016. He is a direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution. The Sanskrit word "Tattva" (तत्त्व, the deepest essence of things) is the operating principle that threads through every chapter of his life.
+> Octavio Rojas Topete is a Lead Mobile Architect specializing in iOS, tvOS, React Native, and Kotlin, with a focus on AI-augmented engineering. He is the author of the Combined Force Methodology — a published Medium series articulating how engineering teams can adopt AI without surrendering judgment, governance, or craft. He is a Certified Interviewer at AgileEngine since 2025, with iOS interview rubrics adopted as Interviewers Club-wide standards. Beyond his current engineering work, he is also known artistically as DJ Forza, founder of the Tattva Music label and recognized in the international Progressive Psytrance and Techno scenes (2000–2016, Best Techno DJ in Mexico 2012). Polyglot in five languages (Spanish, English, Portuguese, with active study of Sanskrit and Japanese). Direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution. The Sanskrit word "Tattva" (तत्त्व, the deepest essence of things) is the operating principle that threads through every chapter of his life and work.
+
+## Current professional positioning
+
+- **Role**: Lead Mobile Architect
+- **Stack**: iOS / tvOS / React Native / Kotlin
+- **Focus**: AI-Native Engineering · Combined Force Methodology · Certified Interviewer
+- **Thesis**: "I help engineering teams adopt AI without surrendering engineering judgment."
+- **Combined Force Methodology** (published Medium series): The Methodology, The Governance Layer, The Platform Layer (live); The Persistence Layer, The Operator Layer, The Recursive Combined Force (scheduled). EPUB long-form companion (Combined Force Platform Layer) available.
+- **AgileEngine Interviewers Club**: Certified Interviewer since April 2025. iOS interview rubric adopted as IC-wide standard (February 2026). Contributor to AI Fluency evaluation framework.
 
 ## Identity
 
-- Full name: Octavio Rojas (Octavio Rojas Topete)
+- Full name: Octavio Rojas Topete
 - Artistic alias: DJ Forza
 - Nationality: Mexican
 - Languages: Spanish (native), English (near-native), Portuguese (near-native), Sanskrit (study), Japanese (study)
 - GitHub: https://github.com/tattva20
-- Category: Digital Humanist — archetype of multidisciplinary success demonstrating that engineering rigor and humanist sensibility come from the same source.
+- Medium: https://medium.com/@tattva20
+- Category: Lead Mobile Architect with AI-augmented engineering practice. Archetype of disciplined human-AI collaboration: engineering rigor + methodological articulation + multipotencialidad integrated across music, code, lineage, and language.
 
 ## Operating principle: Tattva
 

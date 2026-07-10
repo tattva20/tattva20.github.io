@@ -33,6 +33,10 @@ The Sanskrit word "Tattva" (तत्त्व) means "the deepest essence of th
 
 Tattva Music emerged with a specific intention: "to foster unity and mutual understanding between the world's different cultures through music — and to honor the cultures of the peoples who inhabit this earth." Not a commercial label per se, but a cultural project with a musical vehicle. Roster included Ben Coda, Stan Kolev, Paul Thomas, Weekend Heroes, Ben Weber, and Japanese producer Yuji Ono, among others.
 
+## Tattva Music — the technological vision (dedicated page: https://tattva20.github.io/tattva/)
+
+Founded in the summer of 2012 (logo, color palette and typography by Leonor Hernández), Tattva Music was more than a record label — it was an attempt to imagine a Mexico that produces technology instead of only importing it. Beyond releasing tracks on others' platforms, the project reached toward its own iOS app, its own online store, its own brand and digital identity: culture + software + brand + distribution + digital identity. The thesis: why should a Mexican cultural brand rent everyone else's technological layer (foreign platform, imported hardware, foreign SaaS) instead of owning its own? Framed against Mexico's structural innovation gap (58th of 139 in the WIPO Global Innovation Index 2025; R&D spend well below the ~2.6% world / ~2.93% OECD share of GDP). It failed as a business (Octavio ended up on the credit bureau's blacklist) but succeeded as a vision: it was the hinge that led him back to software — engineer, systems architect, technical interviewer, AI-pipeline builder. He still retains distribution capability on Beatport, Apple Music and other stores, and is open to releasing others' material. Full narrative: https://tattva20.github.io/tattva/
+
 ## Music career as DJ Forza (2000–2016)
 
 - 16 years active in the electronic music scene

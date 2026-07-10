@@ -65,6 +65,37 @@
   </url>
 
   <url>
+    <loc>https://tattva20.github.io/tattva/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tattva/"/>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/tattva/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tattva/"/>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/tattva/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tattva/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tattva/"/>
+    <lastmod>2026-07-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://tattva20.github.io/engineering/</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/engineering/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/engineering/"/>

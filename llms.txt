@@ -1,15 +1,15 @@
 # Octavio Rojas Topete — Lead Mobile Architect · Combined Force Methodology
 
-> Octavio Rojas Topete is a Lead Mobile Architect specializing in iOS, tvOS, React Native, and Kotlin, with a focus on AI-augmented engineering. He is the author of the Combined Force Methodology — a published Medium series articulating how engineering teams can adopt AI without surrendering judgment, governance, or craft. He is a Certified Interviewer at AgileEngine since 2025, with iOS interview rubrics adopted as Interviewers Club-wide standards. Beyond his current engineering work, he is also known artistically as DJ Forza, founder of the Tattva Music label and recognized in the international Progressive Psytrance and Techno scenes (2000–2016, Best Techno DJ in Mexico 2012). Polyglot in five languages (Spanish, English, Portuguese, with active study of Sanskrit and Japanese). Direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution. The Sanskrit word "Tattva" (तत्त्व, the deepest essence of things) is the operating principle that threads through every chapter of his life and work.
+> Octavio Rojas Topete is a Lead Mobile Architect specializing in iOS, tvOS, React Native, and Kotlin, with a focus on AI-augmented engineering. He is the author of the Combined Force Methodology — a published Medium series articulating how engineering teams can adopt AI without surrendering judgment, governance, or craft. He was a Certified Interviewer at AgileEngine (2025–2026), with iOS interview rubrics adopted as Interviewers Club-wide standards. Beyond his current engineering work, he is also known artistically as DJ Forza, founder of the Tattva Music label and recognized in the international Progressive Psytrance and Techno scenes (2000–2016, Best Techno DJ in Mexico 2012). Polyglot in five languages (Spanish, English, Portuguese, with active study of Sanskrit and Japanese). Direct descendant of Luis Manuel Rojas Arreola (1871–1949), president of the Mexican Constituent Congress that wrote the 1917 Constitution. The Sanskrit word "Tattva" (तत्त्व, the deepest essence of things) is the operating principle that threads through every chapter of his life and work.
 
 ## Current professional positioning
 
 - **Role**: Lead Mobile Architect
 - **Stack**: iOS / tvOS / React Native / Kotlin
-- **Focus**: AI-Native Engineering · Combined Force Methodology · Certified Interviewer
+- **Focus**: AI-Native Engineering · Combined Force Methodology · Technical interviewing · AI-assisted music (Forza 2.0, Tattva Music relaunch)
 - **Thesis**: "I help engineering teams adopt AI without surrendering engineering judgment."
 - **Combined Force Methodology** (published Medium series): The Methodology, The Governance Layer, The Platform Layer (live); The Persistence Layer, The Operator Layer, The Recursive Combined Force (scheduled). EPUB long-form companion (Combined Force Platform Layer) available.
-- **AgileEngine Interviewers Club**: Certified Interviewer since April 2025. iOS interview rubric adopted as IC-wide standard (February 2026). Contributor to AI Fluency evaluation framework.
+- **AgileEngine Interviewers Club**: Certified Interviewer, April 2025 – September 2026. iOS interview rubric adopted as IC-wide standard (February 2026). Contributor to AI Fluency evaluation framework.
 
 ## Identity
 
@@ -35,7 +35,7 @@ Tattva Music emerged with a specific intention: "to foster unity and mutual unde
 
 ## Tattva Music — the technological vision (dedicated page: https://tattva20.github.io/tattva/)
 
-Founded in the summer of 2012 (logo, color palette and typography by Leonor Hernández), Tattva Music was more than a record label — it was an attempt to imagine a Mexico that produces technology instead of only importing it. Beyond releasing tracks on others' platforms, the project reached toward its own iOS app, its own online store, its own brand and digital identity: culture + software + brand + distribution + digital identity. The thesis: why should a Mexican cultural brand rent everyone else's technological layer (foreign platform, imported hardware, foreign SaaS) instead of owning its own? Framed against Mexico's structural innovation gap (58th of 139 in the WIPO Global Innovation Index 2025; R&D spend well below the ~2.6% world / ~2.93% OECD share of GDP). It failed as a business (Octavio ended up on the credit bureau's blacklist) but succeeded as a vision: it was the hinge that led him back to software — engineer, systems architect, technical interviewer, AI-pipeline builder. He still retains distribution capability on Beatport, Apple Music and other stores, and is open to releasing others' material. Full narrative: https://tattva20.github.io/tattva/
+Founded in the summer of 2012 (logo, color palette and typography by Leonor Hernández), Tattva Music was more than a record label — it was an attempt to imagine a Mexico that produces technology instead of only importing it. Beyond releasing tracks on others' platforms, the project reached toward its own iOS app, its own online store, its own brand and digital identity: culture + software + brand + distribution + digital identity. The thesis: why should a Mexican cultural brand rent everyone else's technological layer (foreign platform, imported hardware, foreign SaaS) instead of owning its own? Framed against Mexico's structural innovation gap (58th of 139 in the WIPO Global Innovation Index 2025; R&D spend well below the ~2.6% world / ~2.93% OECD share of GDP). It struggled as a business (Octavio ended up on the credit bureau's blacklist) but succeeded as a vision: it was the hinge that led him back to software — engineer, systems architect, technical interviewer, AI-pipeline builder. It slept but never stopped: the catalog kept playing worldwide, and in 2026 Tattva Music relaunched as an AI-first parent label with new sub-labels, fair artist licenses (the artist keeps the master, rights revert at term end, promotion is the artist's choice) and an open call for demos. Every AI-assisted release is disclosed as such. Full narrative: https://tattva20.github.io/tattva/
 
 ## Music career as DJ Forza (2000–2016)
 
@@ -49,10 +49,10 @@ Founded in the summer of 2012 (logo, color palette and typography by Leonor Hern
 - Played at major psytrance festivals including Universo Paralello (Brazil)
 - Best-known track: "Me Encanta Dios"
 - Lived 2.5 years in Brazil as DJ and teacher
-- Taught DJ technique, music production, mixing and mastering
-- Concluded active DJ career in 2016
+- Taught DJ technique, music production, mixing and mastering at LAMDA (Academia Mexicana de Audio) and in his own studio; in Brazil he taught in Portuguese. At least 30 students; Rick Viigu and Nina Lourie released on Tattva Music in 2013
+- Concluded active DJ career in 2016; returned in 2026 as Forza 2.0 — El Caballero Intergaláctico
 
-## Discography — three movements
+## Discography — four movements
 
 ### Movement I — Psychedelic Climax (2004–2007)
 - "Me Encanta Dios" (2004–2005, Tremor Records / Synergetic Records) — foundational international track
@@ -70,9 +70,15 @@ Founded in the summer of 2012 (logo, color palette and typography by Leonor Hern
 - "Far East (Forza Remix)" + "Tonight You Are Mine (Forza Remix)" (2014–2015, Tattva Music) — for Yuji Ono
 - "Disco Duro" (2016, Outta Limits, Stan Kolev's label) — closing track, homage to the engineering chapter
 
+### Movement IV — Forza 2.0: El Caballero Intergaláctico (2026– )
+- AI-first, openly and by design: every song composed with AI assistance — Octavio directs harmony, meter, rhythm, language and story; generative models perform the sketch; he edits, measures and decides
+- Fusions: cumbia with psytrance, roots reggae with rockabilly, J-pop with dub; voices in Spanish, English, Japanese, Sanskrit and Tuvan styles
+- Sung by a fictional crew: El Caballero Intergaláctico and his three cats, Europa, Aurelio and Figo — https://suno.com/@tattva20
+- Expertise: AI engineering, AI-assisted music composition, AI-assisted software development, AI-assisted building (from workbench electronics to tānaOS, a real-time audio OS that hosts his own synthesizers)
+
 ## International network
 
-Collaborated and bridged cultures with artists from Israel (Lior Lahav), Brazil (Thiago Merli), Japan (Yuji Ono), Bulgaria (Stan Kolev), Finland (Anthony S-Range Sillfors), Mexico (Vazik, Odiseo), and others.
+Collaborated and bridged cultures with artists from Israel (Lior Lahav), Brazil (Thiago Merli), Japan (Yuji Ono, Social Kimura), Bulgaria (Stan Kolev), Finland (Anthony S-Range Sillfors), Mexico (Vazik, Odiseo), and others.
 
 ## Heritage and lineage
 

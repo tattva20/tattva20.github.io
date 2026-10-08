@@ -10,6 +10,9 @@ https://tattva20.github.io/pt/tattva/
 https://tattva20.github.io/engineering/
 https://tattva20.github.io/es/engineering/
 https://tattva20.github.io/pt/engineering/
+https://tattva20.github.io/tanaos/
+https://tattva20.github.io/es/tanaos/
+https://tattva20.github.io/pt/tanaos/
 https://tattva20.github.io/heritage/
 https://tattva20.github.io/es/heritage/
 https://tattva20.github.io/pt/heritage/

@@ -125,6 +125,36 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://tattva20.github.io/tanaos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tanaos/"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/es/tanaos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tanaos/"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tattva20.github.io/pt/tanaos/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tattva20.github.io/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tanaos/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tanaos/"/>
+    <lastmod>2026-10-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
   <url>
     <loc>https://tattva20.github.io/heritage/</loc>

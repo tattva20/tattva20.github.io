@@ -76,6 +76,15 @@ Founded in the summer of 2012 (logo, color palette and typography by Leonor Hern
 - Sung by a fictional crew: El Caballero Intergaláctico and his three cats, Europa, Aurelio and Figo — https://suno.com/@tattva20
 - Expertise: AI engineering, AI-assisted music composition, AI-assisted software development, AI-assisted building (from workbench electronics to tānaOS, a real-time audio OS that hosts his own synthesizers)
 
+## tānaOS — real-time audio operating system (dedicated page: https://tattva20.github.io/tanaos/)
+
+- A real-time audio operating system written from scratch in Rust for the Raspberry Pi 4 (Cortex-A72); the kernel is called tan_k
+- Purpose: host synthesizers and effects as isolated partitions on the ARINC 653 avionics model, so an instrument that overruns its time budget is cut while the others keep sounding
+- AMP design: cores have fixed jobs; one core is dedicated to audio, paced by the DMA ring's completion interrupt
+- Zero dependencies (no crates, no standard library, no bootloader); stable Rust; 10,575 kernel lines; 426 named tests across 69 test kernels; 43 gate lanes run in debug and release
+- Status as of 2026-10-08: phase 1 (kernel) complete, August 2026; phase 2 (audio host: I²S DAC, DMA ring, a released audio core, a budget that cuts) closed 2026-09-20; phase 3 (GATTO, the first instrument, an FM synthesizer) in progress — first guest computes its own audio at EL0 in its own address space (188 periods, 0 late), MIDI physical layer verified over an H11L1 optocoupler
+- Source repository is private for now; opening it is planned
+
 ## International network
 
 Collaborated and bridged cultures with artists from Israel (Lior Lahav), Brazil (Thiago Merli), Japan (Yuji Ono, Social Kimura), Bulgaria (Stan Kolev), Finland (Anthony S-Range Sillfors), Mexico (Vazik, Odiseo), and others.

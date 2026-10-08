@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tānaOS — um sistema operacional de áudio em tempo real para o Raspberry Pi 4 · Octavio Rojas</title>
+  <meta name="description" content="tānaOS é um sistema operacional de áudio em tempo real escrito do zero em Rust para o Raspberry Pi 4. Hospeda sintetizadores e efeitos em partições isoladas, no estilo da aviônica: o que se atrasa é cortado em vez de derrubar a música. Estado, medições e rota, em outubro de 2026." />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tattva20.github.io/pt/tanaos/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/tanaos/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tanaos/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tanaos/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tanaos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="tānaOS — um sistema operacional de áudio em tempo real" />
+  <meta property="og:description" content="Escrito do zero em Rust para o Raspberry Pi 4. Cada instrumento roda em uma partição isolada; o que se atrasa é cortado e os outros continuam soando." />
+  <meta property="og:url" content="https://tattva20.github.io/pt/tanaos/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="tānaOS — um sistema operacional de áudio em tempo real" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <nav class="lang-switcher" aria-label="Seletor de idioma">
+    <a href="../../tanaos/" hreflang="en">EN</a>
+    <a href="../../es/tanaos/" hreflang="es">ES</a>
+    <a href="../tanaos/" aria-current="true" hreflang="pt">PT</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="Navegação por seções">
+    <div class="top-nav__inner">
+      <a href="/pt/" class="top-nav__link">Início</a>
+      <a href="/pt/music/" class="top-nav__link">Música</a>
+      <a href="/pt/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/pt/engineering/" class="top-nav__link">Engenharia</a>
+      <a href="/pt/tanaos/" class="top-nav__link is-active">tānaOS</a>
+      <a href="/pt/heritage/" class="top-nav__link">Linhagem</a>
+      <a href="/pt/combined-force/" class="top-nav__link">Força Combinada</a>
+      <a href="/pt/random/" class="top-nav__link">Random</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">Sistema operacional de áudio em tempo real · Rust · Raspberry Pi 4</span>
+        <h1 class="page-hero__title">tānaOS</h1>
+        <p class="page-hero__tagline">Um sistema operacional escrito a partir da primeira instrução, cujo trabalho é hospedar instrumentos. Cada sintetizador e cada efeito roda na sua própria partição, então o que se atrasa é cortado na sua fatia de tempo em vez de derrubar a música junto.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="status-heading">
+      <div class="container">
+        <h2 id="status-heading">Onde está hoje</h2>
+        <p class="status-banner">
+          <strong>Estado em 8 de outubro de 2026.</strong> A fase 1 (o kernel) e a fase 2 (o anfitrião de áudio) estão completas e verificadas em hardware real. A fase 3 (<em>GATTO</em>, o primeiro instrumento) está em andamento: o primeiro hóspede já calcula o próprio áudio numa partição isolada e sem privilégios, e o MIDI já atravessa um optoacoplador real até a placa. Por enquanto o código é privado.
+        </p>
+
+        <ul class="facts-grid" role="list">
+          <li><span class="facts-grid__value">10.575</span><span class="facts-grid__label">linhas de Rust no kernel (6.694 de código)</span></li>
+          <li><span class="facts-grid__value">0</span><span class="facts-grid__label">dependências: sem crates, sem biblioteca padrão, sem bootloader</span></li>
+          <li><span class="facts-grid__value">426</span><span class="facts-grid__label">testes nomeados em 69 kernels de teste</span></li>
+          <li><span class="facts-grid__value">43</span><span class="facts-grid__label">trilhas de verificação, cada uma em debug e em release</span></li>
+          <li><span class="facts-grid__value">531</span><span class="facts-grid__label">commits desde 11 de agosto de 2026</span></li>
+          <li><span class="facts-grid__value">0 atrasos</span><span class="facts-grid__label">em 188 períodos de áudio na placa, com o hóspede isolado</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-heading">
+      <div class="container">
+        <h2 id="what-heading">O que é, e por que existe</h2>
+        <p>
+          Todo programa de música num computador hospeda seus plugins do mesmo jeito: todos num só processo, dividindo um só prazo. Quando um plugin demora demais, tudo falha junto. Não é um defeito daquele plugin; é a forma do anfitrião.
+        </p>
+        <p>
+          O tānaOS adota outra forma, emprestada da aviônica. O padrão <strong>ARINC 653</strong> divide o computador de um avião em partições para que uma função com defeito não deixe sem recursos as que mantêm o avião no ar: cada partição tem sua própria memória e sua própria fatia de tempo garantida, e a que passa da sua fatia é cortada. Aqui as partições são instrumentos. Um sintetizador que estoura o orçamento é cortado; os outros continuam soando.
+        </p>
+        <p>
+          Roda num <strong>Raspberry Pi 4</strong>: quatro núcleos Cortex-A72 a 1,5 GHz. O projeto é <strong>AMP, não SMP</strong>: em vez de um escalonador que distribui trabalho entre núcleos, cada núcleo tem uma tarefa conhecida. O áudio a 48 kHz é conhecido antes de a máquina ligar, então um núcleo dedicado a ele mantém o cache quente e nunca precisa ser dividido.
+        </p>
+        <p>
+          O nome vem do sânscrito √<em>tan</em>, "estender". <em>Tāna</em> é a frase melódica estendida que elabora um raga sobre sua moldura fixa. O kernel se chama <strong>tan_k</strong>: a mesma raiz mais K de kernel. O kernel é a urdidura; o sistema é o que se tece sobre ela.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="road-heading">
+      <div class="container">
+        <h2 id="road-heading">A rota, fase por fase</h2>
+        <p>
+          O projeto é dividido em fases, cada uma com sua carta escrita e sua própria linha de chegada. Uma fase só se fecha quando cada afirmação da sua lista foi demonstrada na placa ou registrada como um limite nomeado.
+        </p>
+
+        <h3>Fase 1 · o kernel, tan_k <span class="badge badge--done">completa · agosto de 2026</span></h3>
+        <p>
+          Um kernel pequeno que inicia direto no metal, cumpre suas próprias promessas e relata suas próprias falhas. Oito passos, cada um com um orçamento de linhas definido antes de ser escrito.
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>Passo</th><th>O que trouxe</th><th>Pronto</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>Inicialização, console serial e vetores de exceção: uma máquina que fala e relata as próprias falhas.</td><td>11–14 ago</td></tr>
+              <tr><td>Pi 4</td><td>Primeira inicialização em silício real. O firmware entrega o controle em EL2; o kernel desce sozinho para EL1.</td><td>19 ago</td></tr>
+              <tr><td>1</td><td>Salvamento completo de contexto, para que se possa voltar de uma falha e não apenas relatá-la.</td><td>19 ago</td></tr>
+              <tr><td>2</td><td>Uma pilha dedicada a exceções, para que uma falha sobreviva a um ponteiro de pilha corrompido.</td><td>19 ago</td></tr>
+              <tr><td>3</td><td>Controlador de interrupções (GIC-400) e temporizador: o primeiro evento que ninguém pediu.</td><td>19 ago</td></tr>
+              <tr><td>4</td><td>MMU e tabelas de páginas, com uma página de guarda abaixo de cada pilha do kernel.</td><td>19 ago</td></tr>
+              <tr><td>5</td><td>Alocador de quadros e heap. A memória é lida do device tree: os 2 GiB inteiros, não os 948 MiB que o firmware informa.</td><td>20–21 ago</td></tr>
+              <tr><td>6</td><td>Escalonador preemptivo. Três tarefas no temporizador do próprio Pi, fatias 9, 8, 8.</td><td>20 ago</td></tr>
+              <tr><td>7</td><td>Modo usuário (EL0) e chamadas de sistema: a fronteira de privilégio e a única porta para atravessá-la.</td><td>21 ago</td></tr>
+              <tr><td>8</td><td>Um shell. Uma pessoa pode digitar nele pela mesma linha serial em que o kernel relata.</td><td>21 ago</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Fase 2 · o anfitrião, tānaOS <span class="badge badge--done">fechada · 20 de setembro de 2026</span></h3>
+        <p>
+          A fase 2 transformou um kernel num anfitrião de áudio. Sua linha de chegada foi escrita como teste: <em>a fase termina quando um sintetizador poderia ser escrito sobre ela, exista um ou não.</em> Cada capacidade foi provada primeiro num kernel próprio e depois integrada ao que é entregue.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Sai som.</strong> I²S para um DAC PCM5102A, alimentado por DMA através de um anel de dois blocos: 32 quadros estéreo a 48 kHz, um período novo a cada 666,7 µs.</li>
+          <li><strong>Um núcleo para o áudio.</strong> O kernel entregue libera um segundo núcleo e passa a ele os períodos direto da interrupção de fim de bloco do DMA.</li>
+          <li><strong>Um orçamento que corta.</strong> Cada período é medido contra um teto declarado; a partição que passa dele é cortada, não esperada.</li>
+          <li><strong>Um console que parou de roubar tempo do áudio.</strong> Imprimir bloqueava; um anel de transmissão de 2 KiB levou os limites de período perdidos de dez para zero.</li>
+          <li><strong>Ouvido e medido.</strong> Em 17 de setembro uma pessoa ouviu 750 Hz à esquerda e 1500 Hz à direita saindo do kernel entregue, disparados do seu próprio shell.</li>
+        </ul>
+
+        <h3>Fase 3 · o primeiro instrumento, GATTO <span class="badge badge--active">em andamento</span></h3>
+        <p>
+          <strong>GATTO</strong> —<em>Generative Audio Tone &amp; Timbre Operator</em>— é o primeiro hóspede que o tānaOS precisa carregar. A fase 2 construiu o anfitrião; a fase 3 constrói um hóspede e, ao fazer isso, descobre onde o anfitrião errou. É para isso que se constrói um.
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>Passo</th><th>O que traz</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td>3.0</td><td>O anel do console com um único dono, para que nenhum outro núcleo possa corrompê-lo.</td><td><span class="badge badge--done">pronto · 20 set</span></td></tr>
+              <tr><td>3.1a</td><td>Uma segunda porta serial (UART4) nos 31.250 baud do MIDI. Nenhum emulador a modela, então só é testada na placa.</td><td><span class="badge badge--done">pronto · 21 set</span></td></tr>
+              <tr><td>3.1b</td><td>MIDI chegando por essa porta. A camada física está montada e verificada: conectores DIN-5, um cabo MIDI e um optoacoplador H11L1, com um controle negativo que prova que os bytes atravessam pela luz, não por um fio esquecido.</td><td><span class="badge badge--active">fiação verificada · 3–4 out</span></td></tr>
+              <tr><td>3.2</td><td>Uma partição que <em>calcula</em> seu próprio período de áudio: o primeiro hóspede.</td><td><span class="badge badge--done">pronto · 21 set</span></td></tr>
+              <tr><td>3.2b</td><td>Esse hóspede movido para o modo usuário, em seu próprio espaço de endereços, esperando cada período por uma chamada de sistema.</td><td><span class="badge badge--done">pronto · 23 set</span></td></tr>
+              <tr><td>3.3</td><td>Um segundo estágio alimentado pelo primeiro: o passo que permite demonstrar o isolamento entre dois instrumentos, e não só afirmá-lo.</td><td><span class="badge badge--next">próximo</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <strong>A primeira voz é um sintetizador FM</strong>, decidido em 17 de setembro, e não por nostalgia. A 1,5 GHz um núcleo tem 31.250 ciclos por amostra de áudio; uma partição recebe metade, 15.625. Uma voz FM de quatro operadores com envelopes custa na ordem de sessenta. São centenas de vozes por núcleo antes mesmo de tocar a unidade vetorial. A computação não é a restrição; a arquitetura e o controle são, e é exatamente isso que um primeiro hóspede deve exercitar. Além disso, todo o estado de uma voz FM cabe em dezenas de bytes e vive no cache L1, enquanto uma voz baseada em amostras leria megabytes de memória lenta a cada nota.
+        </p>
+        <p>
+          <strong>A fase 3 termina quando três estágios rodarem em três núcleos e um deles puder ficar sem tempo sem derrubar os outros.</strong> Essa é a afirmação sobre a qual todo o projeto se apoia, e são precisos pelo menos dois hóspedes para demonstrá-la.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="measured-heading">
+      <div class="container">
+        <h2 id="measured-heading">Medido, não suposto</h2>
+        <p>
+          Cada número desta página vem de uma execução na placa, guardada como transcrição no repositório. Alguns mudaram o projeto.
+        </p>
+        <p><strong>O kernel entregue soa limpo</strong> (5 de outubro). Seu áudio foi capturado eletricamente por uma interface de áudio e julgado contra o piso de ruído da mesma cadeia sem sinal. Não é um kernel de teste tocando uma tabela: é o kernel entregue, com seis tarefas dividindo a máquina e o hóspede sob seu orçamento.</p>
+        <pre class="measurement">canal 0  750.0 Hz   pureza 100.0%   harmônico mais próximo  -45.7 dB
+canal 1  1500.0 Hz  pureza 100.0%   188 períodos de 1.000.006 ciclos</pre>
+        <ul class="values-block" role="list">
+          <li><strong>O hóspede em EL0.</strong> Tirar o hóspede do nível de privilégio do kernel elevou seu pior período de 0,23% para 0,34% do orçamento. O isolamento custa cerca de um décimo de ponto percentual de um período, e em troca o hóspede não pode tocar em nada que não lhe foi dado.</li>
+          <li><strong>Uma espera precisa ser um laço.</strong> Esperar um período com uma única verificação perdeu 5 períodos em quatro execuções, porque qualquer operação atômica em qualquer núcleo pode acordar um núcleo adormecido. Reescrita como laço: 0 atrasos, e o custo caiu de cerca de 860 chamadas de sistema por período para uma.</li>
+          <li><strong>O emulador mente com gentileza.</strong> O QEMU começa com a memória zerada; o Pi não, e depois de um reinício a quente guarda o que a inicialização anterior deixou. O kernel envenena a memória antes de limpá-la, para que uma limpeza quebrada apareça em vez de se esconder.</li>
+          <li><strong>O firmware informa menos memória.</strong> O mailbox diz 948 MiB numa placa de 2 GiB. O kernel lê o device tree: o alocador foi de 242.495 quadros livres para 504.630.</li>
+          <li><strong>O que o emulador não vê, a placa decide.</strong> Nenhum emulador modela as UARTs livres do Pi, o cache de dados nem as falhas de alinhamento de pilha. Isso é testado na bancada, com um analisador lógico quando um loopback não consegue distinguir.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-heading">
+      <div class="container">
+        <h2 id="how-heading">Como é construído</h2>
+        <ul class="values" role="list">
+          <li><strong>Rust estável, nada por baixo.</strong> Sem sistema operacional, sem biblioteca padrão, sem crates, sem bootloader. O firmware carrega a imagem e salta para o seu primeiro byte.</li>
+          <li><strong>Cada teste é um kernel.</strong> Cada arquivo de teste vira um kernel independente e inicia no seu próprio emulador, o que permite que um teste passe derrubando a máquina de propósito.</li>
+          <li><strong>Duas entregas de controle, dois níveis de otimização.</strong> A verificação inicia cada teste como se o controle chegasse em EL1 e em EL2, em debug e em release: um erro de registradores apareceu uma vez em debug e se escondeu em -O2.</li>
+          <li><strong>Números honestos graças a scripts.</strong> As contagens de linhas, de memória e de testes da documentação são medidas a cada execução; a verificação falha se o texto e a medição divergirem.</li>
+          <li><strong>Um orçamento de tamanho.</strong> O kernel tem um teto de 15.000 linhas, e seu estado mutável precisa caber numa página impressa.</li>
+          <li><strong>Construído com assistência de IA, sob julgamento humano.</strong> Eu projeto, decido e assino cada passo; a IA amplia o que uma só pessoa consegue raciocinar e revisar. O método está documentado na série <a href="/pt/combined-force/">Força Combinada</a>.</li>
+        </ul>
+
+        <h3>Na bancada</h3>
+        <p>
+          Raspberry Pi 4 (2 GiB) · DAC I²S PCM5102A · console USB-serial a 115.200 baud · entrada e saída MIDI por DIN-5 com um optoacoplador H11L1 · um analisador lógico · uma interface de áudio para capturar o que sai do DAC.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <div class="container">
+        <h2 id="next-heading">O que vem a seguir</h2>
+        <ul class="values" role="list">
+          <li><strong>Notas de um teclado de verdade chegando ao hóspede</strong> pela porta MIDI, convertidas em parâmetros da voz FM.</li>
+          <li><strong>Um segundo estágio alimentado pelo primeiro</strong>, e com ele a primeira demonstração de que um instrumento pode ficar sem tempo enquanto outro continua tocando.</li>
+          <li><strong>Decidir a forma do GATTO</strong>, uma cadeia de estágios ou vozes independentes, por escrito e antes de construí-la.</li>
+          <li><strong>Abrir o código.</strong> O tānaOS quer ser tecnologia mexicana para o mundo: uma alternativa aberta num campo de plataformas DSP fechadas.</li>
+        </ul>
+        <p class="callout">
+          Ainda não é um produto: é um sistema que funciona, medido no seu próprio hardware, recebendo seu primeiro instrumento.
+        </p>
+
+        <div class="cta-cards">
+          <a href="/pt/engineering/" class="cta-card">
+            <span class="cta-card__label">Contexto</span>
+            <span class="cta-card__title">O capítulo da engenharia</span>
+          </a>
+          <a href="/pt/tattva/" class="cta-card">
+            <span class="cta-card__label">O selo para o qual soa</span>
+            <span class="cta-card__title">Tattva</span>
+          </a>
+          <a href="/pt/combined-force/" class="cta-card">
+            <span class="cta-card__label">O método</span>
+            <span class="cta-card__title">Força Combinada</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../tanaos/">English</a>
+        <a href="../../es/tanaos/">Español</a>
+        <a href="../">← Início</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. Feito com carinho, no México.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1010,6 +1010,127 @@ footer .footer__links {
   top: 1rem;
 }
 
+.status-banner {
+  border: 1px solid var(--color-accent);
+  border-radius: 10px;
+  padding: var(--space-sm) var(--space-md);
+  margin: var(--space-md) 0;
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+}
+
+.status-banner strong {
+  color: var(--color-accent);
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+  list-style: none;
+  padding: 0;
+}
+
+.facts-grid li {
+  background: var(--color-card);
+  border: 1px solid var(--color-divider);
+  border-radius: 10px;
+  padding: 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.facts-grid__value {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--color-accent);
+  line-height: 1.1;
+}
+
+.facts-grid__label {
+  font-size: 0.85rem;
+  color: var(--color-text-soft);
+}
+
+.table-scroll {
+  overflow-x: auto;
+  margin: var(--space-md) 0;
+}
+
+.status-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.status-table th,
+.status-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-divider);
+  color: var(--color-text-soft);
+}
+
+.status-table th {
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.status-table td:first-child {
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.badge--done {
+  background: var(--color-accent);
+  color: var(--color-bg);
+}
+
+.badge--active {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+}
+
+.badge--next {
+  border: 1px dashed var(--color-text-muted);
+  color: var(--color-text-muted);
+}
+
+.project-card--featured {
+  border-color: var(--color-accent);
+  grid-column: 1 / -1;
+}
+
+pre.measurement {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+  padding: var(--space-sm);
+  overflow-x: auto;
+  color: var(--color-text);
+  margin: var(--space-sm) 0 var(--space-md);
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

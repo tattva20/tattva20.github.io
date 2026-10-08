@@ -14,6 +14,7 @@
         if (saved === 'en') return;
         if (saved === 'es') { window.location.replace('/es/'); return; }
         if (saved === 'pt') { window.location.replace('/pt/'); return; }
+        if (saved === 'ja') { window.location.replace('/ja/'); return; }
       } catch (e) { /* localStorage blocked, continue */ }
 
       var langs = navigator.languages || [navigator.language || navigator.userLanguage || 'en'];
@@ -23,6 +24,8 @@
         window.location.replace('/pt/');
       } else if (preferred.indexOf('es') === 0) {
         window.location.replace('/es/');
+      } else if (preferred.indexOf('ja') === 0) {
+        window.location.replace('/ja/');
       }
     })();
   </script>
@@ -37,6 +40,7 @@
   <link rel="alternate" hreflang="en" href="https://tattva20.github.io/" />
   <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/" />
   <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/" />
   <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/" />
 
   <meta property="og:type" content="profile" />
@@ -47,6 +51,7 @@
   <meta property="og:locale" content="en_US" />
   <meta property="og:locale:alternate" content="es_MX" />
   <meta property="og:locale:alternate" content="pt_BR" />
+  <meta property="og:locale:alternate" content="ja_JP" />
 
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Octavio Rojas Topete — Lead Mobile Architect · Combined Force Methodology" />
@@ -123,6 +128,7 @@
     <a href="/" aria-current="true" hreflang="en">EN</a>
     <a href="es/" hreflang="es">ES</a>
     <a href="pt/" hreflang="pt">PT</a>
+    <a href="/ja/" hreflang="ja">JA</a>
   </nav>
 
   <nav class="top-nav" aria-label="Section navigation">
@@ -186,7 +192,7 @@
     <section aria-labelledby="chapters-heading">
       <div class="container">
         <h2 id="chapters-heading">Where to go from here</h2>
-        <p>Four chapters, in order of how I currently operate. Walk through them however you prefer.</p>
+        <p>Five chapters, in order of how I currently operate. Walk through them however you prefer.</p>
 
         <div class="hub-cards">
 

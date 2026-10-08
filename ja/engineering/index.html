@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>エンジニアリング — Octavio Rojas · Tattva | モバイル・アーキテクト、オープンソース</title>
+  <meta name="description" content="エンジニアリングの章。iOS、React Native、Android のリード・モバイル・アーキテクト。Clean Architecture、TDD、SOLID。github.com/tattva20 のオープンソース・プロジェクト。コードと音楽が、ひとつの行動原理のもとで出会う場所。" />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://tattva20.github.io/ja/engineering/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/engineering/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/engineering/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/engineering/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/engineering/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/engineering/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="エンジニアリング — Octavio Rojas" />
+  <meta property="og:description" content="iOS、React Native、Android のリード・モバイル・アーキテクト。github.com/tattva20 のオープンソース。" />
+  <meta property="og:url" content="https://tattva20.github.io/ja/engineering/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="ja_JP" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="エンジニアリング — Octavio Rojas" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">本文へスキップ</a>
+
+  <nav class="lang-switcher" aria-label="言語の選択">
+    <a href="../../engineering/" hreflang="en">EN</a>
+    <a href="../../es/engineering/" hreflang="es">ES</a>
+    <a href="../../pt/engineering/" hreflang="pt">PT</a>
+    <a href="../engineering/" aria-current="true" hreflang="ja">JA</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="セクション">
+    <div class="top-nav__inner">
+      <a href="/ja/" class="top-nav__link">ホーム</a>
+      <a href="/ja/music/" class="top-nav__link">音楽</a>
+      <a href="/ja/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/ja/engineering/" class="top-nav__link is-active">エンジニアリング</a>
+      <a href="/ja/tanaos/" class="top-nav__link">tānaOS</a>
+      <a href="/ja/heritage/" class="top-nav__link">系譜</a>
+      <a href="/ja/combined-force/" class="top-nav__link">Combined Force</a>
+      <a href="/ja/random/" class="top-nav__link">ランダム</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">エンジニアリング</span>
+        <h1 class="page-hero__title">エンジニアリングの章</h1>
+        <p class="page-hero__tagline">技芸としてのソフトウェア・アーキテクチャ。子どものころのメガドライブに載っていたヤマハ YM2612 チップから、今日出荷している本番環境の iOS システムまで。行動原理はひとつ、オシレーターから積み上げること。</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="engineering-heading">
+      <div class="container">
+        <h2 id="engineering-heading">ソフトウェアへの帰還</h2>
+        <p>
+          2016 年にターンテーブルが静かになったとき、私は六歳のころからそばにあった愛へと戻りました。コンピューターです。ターンテーブルに触れるずっと前、1984 年から、パソコンとゲーム機の熱心なユーザーでした。十六年を音楽に捧げたあと、ソフトウェアは再び手に取られるのを待っていました。そして私は、持てるすべてでそれを手に取りました。
+        </p>
+        <h3>帰還の始まり</h3>
+        <p>
+          最初のきっかけは、とても個人的な思いつきでした。Tattva Music のアプリをつくりたかったのです。その小さな野心が私を Xcode に連れ戻し、次に Clean Architecture の本へ、そして独学のマラソンへと導きました。学士号、ソフトウェア工学の修士号、そして Caio と Mike による厳しい Essential Developer プログラム。今はリード・モバイル・アーキテクトとして、iOS、React Native、Android でコードを出荷しています。
+        </p>
+
+        <h3>技芸としてのアーキテクチャ</h3>
+        <p>
+          私はソフトウェア・アーキテクチャと、その背後にある思想に、遠慮なく情熱を注いでいます。コードをどう配置するかは、セットや文章をどう組み立てるかと同じくらい、その人について多くを語ります。私の考え方とつくり方を形づくってきた方法論は次のとおりです。
+        </p>
+        <ul class="values" role="list">
+          <li><strong>Clean Architecture</strong> — 明確な境界、依存性の逆転、方針は決して詳細に依存してはならないという原則。</li>
+          <li><strong>SOLID 原則</strong> — 保守しやすいオブジェクト指向設計の五つの柱。</li>
+          <li><strong>テスト駆動開発（TDD）</strong> — テストに設計を彫らせる。レッド・グリーン・リファクタリングを規律として。</li>
+          <li><strong>The Composable Architecture（TCA）</strong> — 状態、副作用、合成のための最先端の Swift フレームワーク。</li>
+        </ul>
+        <p>
+          これらすべての実践的なデモンストレーションが、オープンソース・プロジェクト <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer"><strong>StreamingVideoApp</strong></a> です。100% テストファーストで書かれた本番品質の iOS 動画ストリーミングのコードベースで、Clean Architecture の層、依存性の拒否、ステートマシン、リアクティブ・プログラミング、アダプティブ・ストリーミングのパターンを文書化しています。いろいろな意味で、私のエンジニアリングのマニフェストです。
+        </p>
+        <p>
+          好みではなくデータで判断したいときは、書いて確かめます。たとえば <a href="https://medium.com/@tattva20/swift-vs-java-performance-head-to-head-on-computational-benchmarks-e7be716f832e" rel="noopener noreferrer"><strong>Swift 対 Java：計算ベンチマークによる性能の直接比較</strong></a>（英語）。そして、エンジニアリングの判断を手放さずに AI と働く方法は、連載 <a href="https://medium.com/@tattva20/combined-force-start-here-8377b2be0da4" rel="noopener noreferrer">Combined Force</a> にまとめています。
+        </p>
+
+        <h3>AI に増幅された、マルチプラットフォームの思考</h3>
+        <p>
+          かつてはひとつのプラットフォームの専門性だったものが、AI の時代にはマルチプラットフォームの流暢さになりました。Swift、SwiftUI、UIKit、Clean Architecture という iOS の深い知識を土台に、私は意図的に React Native と Android へと領域を広げてきました。AI は近道ではなく、力を何倍にもする道具として使っています。すべての行を自分でレビューします。アーキテクチャの美意識を常に中心に置きます。その結果が、今の業界が評価するクロスプラットフォームの多才さです。
+        </p>
+        <p>
+          iOS、Android、React Native のエンジニア職の技術面接も担当し、ときにはモバイル・セキュリティ職の面接も行います。三つのプラットフォームにわたって人材を評価すること自体が、アーキテクチャの視点を鍛える訓練になっています。
+        </p>
+
+        <h3>コードと音楽が出会う場所 — tattva20 の GitHub</h3>
+        <p>
+          <a href="https://github.com/tattva20" rel="noopener noreferrer"><strong>github.com/tattva20</strong></a> のリポジトリは、アルゴリズムを磨く実験室です。三つのエンジニアリングのパラダイムが、音の仕事の三つの次元にほぼ一対一で対応しています。コードと音楽が、頭の中の同じオペレーティング・システムの上で動いているようなものです。
+        </p>
+        <ul class="values-block" role="list">
+          <li>
+            <strong>FM 音源</strong> — メガドライブのヤマハ YM2612 チップに着想を得て Swift で書いた四オペレーター FM シンセサイザー <em>VampireSynth</em> は、デジタル・オシレーター、オーディオ・バッファ、リアルタイム DSP への確かな理解を求めます。同じ数学的な規律が、Tattva 時代の金属的な音色、インダストリアルなサブベース、サイバーパンクな質感を生み出しました。
+          </li>
+          <li>
+            <strong>宣言的なリアクティビティ</strong> — Clean Architecture と SwiftUI でつくった <em>WeatherApp</em> や <em>EssentialFeed</em> の課題は、「状態が変われば、インターフェースが反応する」という原理を体現しています。同じ論理がステップ・シーケンサーやライブのモジュレーションを動かします。マスター・クロックがフィルターやエンベロープを通してリアクティブな信号を送り出すのです。
+          </li>
+          <li>
+            <strong>ストリームとゼロ・レイテンシー</strong> — <em>StreamingVideoApp</em>（Swift）と、そのバックエンド <em>streaming-videos-api</em>（JavaScript）は、注意深いメモリ管理、並行処理、バッファの規律を求めます。同じ技術が、途切れなく続く長いプログレッシブな DJ セットを生み出します。
+          </li>
+        </ul>
+        <p style="opacity: .85;">
+          三つすべてを貫く行動原理はひとつです。<em>プリセットも近道もなし。オシレーターから積み上げるほうが好きなのです。</em>
+        </p>
+
+        <div class="cta-cards" style="margin-top: var(--space-md);">
+          <a href="https://github.com/tattva20" rel="noopener noreferrer" class="cta-card">
+            <span class="cta-card__label">オープンソース</span>
+            <span class="cta-card__title">github.com/tattva20</span>
+          </a>
+          <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="cta-card">
+            <span class="cta-card__label">エンジニアリングのマニフェスト</span>
+            <span class="cta-card__title">StreamingVideoApp のリポジトリ</span>
+          </a>
+        </div>
+
+        <h3>いつまでもコンピューター少年</h3>
+        <p>
+          大人のアーキテクチャの真面目さの下には、今も画面の前で目を見張る六歳の子どもがいます。私はヴィンテージのコンピューターとゲーム機を生涯愛し続けています。<strong>メガドライブ</strong>と <strong>Commodore Amiga</strong> は永遠のお気に入りです。コンピューターに何ができるかを知る前に、コンピューターがどう感じられるものかを教えてくれた機械たちです。
+        </p>
+        <p>
+          ほかのどの本よりも、エンジニアの中の人間として「見てもらえた」と感じさせてくれたのは、Vikram Chandra の <em>Geek Sublime</em> です。コード、美、サンスクリット文法、プログラマーの内面をめぐる思索の書で、まるで著者が世界の向こうから手を伸ばし、私のために書いてくれたかのように感じました。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="projects-heading">
+      <div class="container">
+        <h2 id="projects-heading">創作プロジェクトとオープンソース</h2>
+        <p>
+          コードの中に生きるプロジェクトの一覧です。完成したもの、進行中のもの、<a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a> で静かに進化を続けているもの。
+        </p>
+
+        <div class="project-grid">
+
+          <article class="project-card project-card--featured">
+            <p class="project-card__eyebrow">オペレーティング・システム · Rust · Raspberry Pi 4 · 開発中</p>
+            <h3 class="project-card__title">tānaOS</h3>
+            <p class="project-card__desc">
+              依存関係ゼロで Rust によりゼロから書いたリアルタイム・オーディオ OS。ARINC 653 のモデルにならい、シンセサイザーとエフェクトを分離されたパーティションでホストします。カーネルとオーディオ・ホストは完成し、実機で検証済み。最初の楽器である FM シンセサイザーを、いま開発しています。
+            </p>
+            <a href="/ja/tanaos/" class="project-card__link">現状と測定結果のすべて</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">オーディオ · Swift · iPad</p>
+            <h3 class="project-card__title">VampireSynth</h3>
+            <p class="project-card__desc">
+              メガドライブのヤマハ YM2612 チップに着想を得て、Swift で書いた iPad 用の四オペレーター FM シンセサイザー。Clean Architecture とプロトコル指向設計でつくりました。数学と音楽をつなぐ橋への、ラブレターです。
+            </p>
+            <a href="https://github.com/tattva20/VampireSynth" rel="noopener noreferrer" class="project-card__link">GitHub で見る</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · Swift · TDD</p>
+            <h3 class="project-card__title">StreamingVideoApp</h3>
+            <p class="project-card__desc">
+              100% テストファーストで書いた本番品質の iOS 動画ストリーミングのコードベース。Clean Architecture の層、依存性の拒否、ステートマシン、リアクティブ・プログラミング、アダプティブ・ストリーミングのパターンを文書化しています。私のエンジニアリングのマニフェストです。
+            </p>
+            <a href="https://github.com/tattva20/StreamingVideoApp" rel="noopener noreferrer" class="project-card__link">GitHub で見る</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">バックエンド · JavaScript</p>
+            <h3 class="project-card__title">streaming-videos-api</h3>
+            <p class="project-card__desc">
+              StreamingVideoApp のバックエンド。マルチメディアのパイプラインを扱う JavaScript のサービスで、同じアーキテクチャの規律をサーバー側のストリームに適用しています。
+            </p>
+            <a href="https://github.com/tattva20/streaming-videos-api" rel="noopener noreferrer" class="project-card__link">GitHub で見る</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · SwiftUI · Clean Architecture</p>
+            <h3 class="project-card__title">EssentialFeed の課題</h3>
+            <p class="project-card__desc">
+              Caio と Mike による Essential Developer のフィード課題。Clean Architecture、SOLID、規律としての TDD。厳しいコードレビューを通して、ソフトウェアの技を研いだリポジトリです。
+            </p>
+            <a href="https://github.com/tattva20?tab=repositories&q=essential" rel="noopener noreferrer" class="project-card__link">GitHub で見る</a>
+          </article>
+
+          <article class="project-card">
+            <p class="project-card__eyebrow">iOS · SwiftUI</p>
+            <h3 class="project-card__title">WeatherApp</h3>
+            <p class="project-card__desc">
+              宣言的なリアクティビティの SwiftUI デモ。シーケンサーがフィルターやエンベロープへ信号を送るように、状態の変化がインターフェースを流れていきます。
+            </p>
+            <a href="https://github.com/tattva20?tab=repositories&q=weather" rel="noopener noreferrer" class="project-card__link">GitHub で見る</a>
+          </article>
+
+          <article class="project-card project-card--ghost">
+            <p class="project-card__eyebrow">ゲーム · Unity 6 · 開発中</p>
+            <h3 class="project-card__title">The Combined Force</h3>
+            <p class="project-card__desc">
+              人間のエンジニアと、生まれつつある知性との共生を探る 2D メトロイドヴァニア。詳しくは <a href="/ja/combined-force/">Combined Force のページ</a>へ。
+            </p>
+            <a href="/ja/combined-force/" class="project-card__link">続きを読む</a>
+          </article>
+
+        </div>
+
+        <p style="margin-top: var(--space-md); text-align: center; font-size: 0.9rem;">
+          リポジトリの一覧は <a href="https://github.com/tattva20" rel="noopener noreferrer">github.com/tattva20</a> でご覧いただけます。
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../engineering/">English</a>
+        <a href="../../es/engineering/">Español</a>
+        <a href="../../pt/engineering/">Português</a>
+        <a href="../">← ホーム</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. メキシコで、心を込めてつくりました。</p>
+    </div>
+  </footer>
+</body>
+</html>

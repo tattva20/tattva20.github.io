@@ -1099,6 +1099,21 @@ footer .footer__links {
   white-space: nowrap;
 }
 
+.status-table th,
+.status-table td {
+  overflow-wrap: normal;
+}
+
+.status-table th {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .badge {
+    white-space: normal;
+  }
+}
+
 .badge--done {
   background: var(--color-accent);
   color: var(--color-bg);
@@ -1129,6 +1144,27 @@ pre.measurement {
   overflow-x: auto;
   color: var(--color-text);
   margin: var(--space-sm) 0 var(--space-md);
+}
+
+html[lang="ja"] {
+  --font-body: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", Meiryo, sans-serif;
+  --font-display: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif;
+}
+
+html[lang="ja"] body {
+  line-break: strict;
+  overflow-wrap: anywhere;
+}
+
+html[lang="ja"] em,
+html[lang="ja"] .callout,
+html[lang="ja"] blockquote,
+html[lang="ja"] .hero__alias,
+html[lang="ja"] .hero__tagline,
+html[lang="ja"] .portrait-pair figcaption,
+html[lang="ja"] .gallery figcaption,
+html[lang="ja"] .lightbox__caption {
+  font-style: normal;
 }
 
 /* Reduced motion */

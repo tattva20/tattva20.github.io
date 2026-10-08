@@ -19,6 +19,7 @@
 - Languages: Spanish (native), English (near-native), Portuguese (near-native), Sanskrit (study), Japanese (study)
 - GitHub: https://github.com/tattva20
 - Medium: https://medium.com/@tattva20
+- Site languages: English (/), Spanish (/es/), Portuguese (/pt/), Japanese (/ja/)
 - Category: Lead Mobile Architect with AI-augmented engineering practice. Archetype of disciplined human-AI collaboration: engineering rigor + methodological articulation + multipotencialidad integrated across music, code, lineage, and language.
 
 ## Operating principle: Tattva

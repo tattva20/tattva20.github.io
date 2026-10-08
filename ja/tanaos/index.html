@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>tānaOS — Raspberry Pi 4 のためのリアルタイム・オーディオ OS · Octavio Rojas</title>
+  <meta name="description" content="tānaOS は、Raspberry Pi 4 のために Rust でゼロから書いたリアルタイム・オーディオ・オペレーティング・システムです。シンセサイザーとエフェクトをアビオニクスのように分離されたパーティションでホストし、遅れたものは音楽を止める代わりに切り離されます。2026 年 10 月時点の現状、測定結果、ロードマップ。" />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tattva20.github.io/ja/tanaos/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/tanaos/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/tanaos/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/tanaos/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/tanaos/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/tanaos/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="tānaOS — リアルタイム・オーディオ OS" />
+  <meta property="og:description" content="Raspberry Pi 4 のために Rust でゼロから書きました。楽器はそれぞれ分離されたパーティションで動き、遅れたものは切り離され、残りは鳴り続けます。" />
+  <meta property="og:url" content="https://tattva20.github.io/ja/tanaos/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="tānaOS — リアルタイム・オーディオ OS" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">本文へスキップ</a>
+
+  <nav class="lang-switcher" aria-label="言語の選択">
+    <a href="../../tanaos/" hreflang="en">EN</a>
+    <a href="../../es/tanaos/" hreflang="es">ES</a>
+    <a href="../../pt/tanaos/" hreflang="pt">PT</a>
+    <a href="../tanaos/" aria-current="true" hreflang="ja">JA</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="セクション">
+    <div class="top-nav__inner">
+      <a href="/ja/" class="top-nav__link">ホーム</a>
+      <a href="/ja/music/" class="top-nav__link">音楽</a>
+      <a href="/ja/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/ja/engineering/" class="top-nav__link">エンジニアリング</a>
+      <a href="/ja/tanaos/" class="top-nav__link is-active">tānaOS</a>
+      <a href="/ja/heritage/" class="top-nav__link">系譜</a>
+      <a href="/ja/combined-force/" class="top-nav__link">Combined Force</a>
+      <a href="/ja/random/" class="top-nav__link">ランダム</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">リアルタイム・オーディオ OS · Rust · Raspberry Pi 4</span>
+        <h1 class="page-hero__title">tānaOS</h1>
+        <p class="page-hero__tagline">最初の命令から書き起こしたオペレーティング・システム。その仕事は楽器をホストすることです。シンセサイザーとエフェクトはそれぞれ自分のパーティションで動くので、遅れたものは割り当てられた時間で切り離され、音楽を道連れにすることはありません。</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="status-heading">
+      <div class="container">
+        <h2 id="status-heading">現在の状況</h2>
+        <p class="status-banner">
+          <strong>2026 年 10 月 8 日時点。</strong>フェーズ 1（カーネル）とフェーズ 2（オーディオ・ホスト）は完成し、実機で検証済みです。フェーズ 3（最初の楽器、<em>GATTO</em>）は進行中です。最初のゲストはすでに、分離された非特権パーティションの中で自分のオーディオを計算しており、MIDI は本物のフォトカプラを通ってボードに届いています。ソースコードは今のところ非公開です。
+        </p>
+
+        <ul class="facts-grid" role="list">
+          <li><span class="facts-grid__value">10,575</span><span class="facts-grid__label">行のカーネルの Rust（うちコード 6,694 行）</span></li>
+          <li><span class="facts-grid__value">0</span><span class="facts-grid__label">個の依存関係 — クレートも標準ライブラリもブートローダーもなし</span></li>
+          <li><span class="facts-grid__value">426</span><span class="facts-grid__label">個の名前付きテスト、69 のテスト用カーネルに分散</span></li>
+          <li><span class="facts-grid__value">43</span><span class="facts-grid__label">本の検証レーン、すべて debug と release の両方で実行</span></li>
+          <li><span class="facts-grid__value">531</span><span class="facts-grid__label">コミット（2026 年 8 月 11 日から）</span></li>
+          <li><span class="facts-grid__value">遅延 0</span><span class="facts-grid__label">実機の 188 オーディオ周期中、ゲストを分離した状態で</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="what-heading">
+      <div class="container">
+        <h2 id="what-heading">これは何か、なぜ存在するのか</h2>
+        <p>
+          コンピューターの音楽ソフトは、どれも同じやり方でプラグインをホストしています。すべてをひとつのプロセスに入れ、ひとつの締め切りを共有させるのです。ひとつのプラグインが時間をかけすぎると、全体がいっしょに乱れます。それは特定のプラグインの不具合ではありません。ホストの形そのものです。
+        </p>
+        <p>
+          tānaOS は、アビオニクスから借りた別の形をとります。<strong>ARINC 653</strong> 規格は航空機のコンピューターをパーティションに分け、故障した機能が飛行を支える機能の資源を奪えないようにします。各パーティションは自分のメモリと、保証された時間の割り当てを持ち、割り当てを超えたパーティションは切り離されます。ここでは、パーティションが楽器です。予算を超えたシンセサイザーは切り離され、残りは鳴り続けます。
+        </p>
+        <p>
+          動くのは <strong>Raspberry Pi 4</strong>、1.5 GHz の Cortex-A72 コアが四つです。設計は <strong>SMP ではなく AMP</strong> です。ひとつのスケジューラーが仕事をコアに振り分けるのではなく、各コアが決まった仕事を持ちます。48 kHz のオーディオは機械が起動する前からわかっているので、オーディオ専用のコアはキャッシュを温かく保ち、共有される必要がありません。
+        </p>
+        <p>
+          名前はサンスクリット語の √<em>tan</em>、「伸ばす」に由来します。<em>Tāna</em> は、ラーガを固定された枠の上で展開していく、伸びやかな旋律の走句です。カーネルの名は <strong>tan_k</strong>。同じ語根に、カーネルの K を加えたものです。カーネルは縦糸であり、システムはその上に織られるものです。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="road-heading">
+      <div class="container">
+        <h2 id="road-heading">フェーズごとの道のり</h2>
+        <p>
+          プロジェクトはフェーズに分かれ、それぞれに書かれた憲章と独自のゴールがあります。フェーズが閉じるのは、リストのすべての主張が実機で示されるか、名前のついた制約として記録されたときだけです。
+        </p>
+
+        <h3>フェーズ 1 · カーネル、tan_k <span class="badge badge--done">完了 · 2026 年 8 月</span></h3>
+        <p>
+          ベアメタルで起動し、自らの約束を守り、自らの障害を報告する小さなカーネル。八つのステップがあり、それぞれ書く前に行数の予算を決めました。
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>ステップ</th><th>得られたもの</th><th>完了</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>起動、シリアル・コンソール、例外ベクタ。話すことができ、自らの障害を報告できる機械。</td><td>8 月 11–14 日</td></tr>
+              <tr><td>Pi 4</td><td>実際のシリコンでの初起動。ファームウェアは EL2 で制御を渡し、カーネルは自ら EL1 に降ります。</td><td>8 月 19 日</td></tr>
+              <tr><td>1</td><td>コンテキストの完全な保存。障害を報告するだけでなく、そこから復帰できるように。</td><td>8 月 19 日</td></tr>
+              <tr><td>2</td><td>例外専用のスタック。スタック・ポインタが壊れても障害を生き延びられるように。</td><td>8 月 19 日</td></tr>
+              <tr><td>3</td><td>割り込みコントローラー（GIC-400）と汎用タイマー。誰も頼んでいない、最初の出来事。</td><td>8 月 19 日</td></tr>
+              <tr><td>4</td><td>MMU とページテーブル。カーネルの各スタックの下にガード・ページを配置。</td><td>8 月 19 日</td></tr>
+              <tr><td>5</td><td>フレーム・アロケーターとヒープ。メモリはデバイスツリーから読みます。ファームウェアが報告する 948 MiB ではなく、2 GiB のすべてです。</td><td>8 月 20–21 日</td></tr>
+              <tr><td>6</td><td>プリエンプティブ・スケジューラー。Pi 自身のタイマーで三つのタスク、タイムスライスは 9、8、8。</td><td>8 月 20 日</td></tr>
+              <tr><td>7</td><td>ユーザー・モード（EL0）とシステムコール。特権の境界と、そこを通る唯一の扉。</td><td>8 月 21 日</td></tr>
+              <tr><td>8</td><td>シェル。カーネルが報告するのと同じシリアル回線で、人が文字を打ち込めます。</td><td>8 月 21 日</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>フェーズ 2 · ホスト、tānaOS <span class="badge badge--done">完了 · 2026 年 9 月 20 日</span></h3>
+        <p>
+          フェーズ 2 はカーネルをオーディオ・ホストに変えました。そのゴールはテストとして書かれています。<em>このフェーズは、実際に書かれているかどうかにかかわらず、その上にシンセサイザーを書けるようになったときに終わる。</em>各機能はまず専用のカーネルで証明し、その後で出荷するカーネルに組み込みました。
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>音が出る。</strong>PCM5102A DAC への I²S。二つのブロックからなるリングを通して DMA が供給します。48 kHz で 32 ステレオ・フレーム、666.7 µs ごとに新しい周期。</li>
+          <li><strong>オーディオのためのコア。</strong>出荷するカーネルは二つ目のコアを解放し、DMA リングの完了割り込みから直接、周期を手渡します。</li>
+          <li><strong>切り離す予算。</strong>各周期は宣言された上限に照らして測られます。上限を超えたパーティションは待たれず、切り離されます。</li>
+          <li><strong>オーディオを飢えさせなくなったコンソール。</strong>以前は表示が処理を止めていましたが、2 KiB の送信リングによって、失われた周期の境界は十から零になりました。</li>
+          <li><strong>耳で聴き、測定した。</strong>9 月 17 日、出荷するカーネルが自身のシェルから鳴らした左 750 Hz と右 1500 Hz を、人の耳で確かめました。</li>
+        </ul>
+
+        <h3>フェーズ 3 · 最初の楽器、GATTO <span class="badge badge--active">進行中</span></h3>
+        <p>
+          <strong>GATTO</strong>（<em>Generative Audio Tone &amp; Timbre Operator</em>）は、tānaOS が運ぶよう求められる最初のゲストです。フェーズ 2 はホストを築きました。フェーズ 3 はゲストを築き、その過程でホストのどこが間違っていたかを見つけます。ゲストを築く意味はそこにあります。
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>ステップ</th><th>得られるもの</th><th>状態</th></tr></thead>
+            <tbody>
+              <tr><td>3.0</td><td>コンソールのリングに唯一の所有者を与え、他のコアが壊せないようにする。</td><td><span class="badge badge--done">完了 · 9 月 20 日</span></td></tr>
+              <tr><td>3.1a</td><td>MIDI の 31,250 ボーで動く二つ目のシリアル・ポート（UART4）。どのエミュレーターもこれを再現しないため、テストは実機でのみ行います。</td><td><span class="badge badge--done">完了 · 9 月 21 日</span></td></tr>
+              <tr><td>3.1b</td><td>そのポートに MIDI が届くこと。物理層は組み上がり、検証済みです。DIN-5 端子、MIDI ケーブル、H11L1 フォトカプラ。そしてネガティブ・コントロールによって、バイトが置き忘れた配線ではなく光を通って渡ったことを証明しています。</td><td><span class="badge badge--active">配線検証済み · 10 月 3–4 日</span></td></tr>
+              <tr><td>3.2</td><td>自分のオーディオ周期を<em>計算する</em>パーティション。最初のゲスト。</td><td><span class="badge badge--done">完了 · 9 月 21 日</span></td></tr>
+              <tr><td>3.2b</td><td>そのゲストをユーザー・モードへ移し、独自のアドレス空間の中で、システムコールで各周期を待つようにする。</td><td><span class="badge badge--done">完了 · 9 月 23 日</span></td></tr>
+              <tr><td>3.3</td><td>一つ目に供給される二つ目のステージ。二つの楽器のあいだの分離を、主張するだけでなく示せるようにするステップ。</td><td><span class="badge badge--next">次</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          <strong>最初の声は FM シンセサイザーです。</strong>9 月 17 日に決めました。郷愁からではありません。1.5 GHz では、ひとつのコアはオーディオの 1 サンプルあたり 31,250 サイクルを持ち、パーティションにはその半分、15,625 が与えられます。エンベロープ付きの四オペレーター FM ボイスのコストは、およそ六十。ベクトル演算ユニットに触れる前から、コアあたり数百のボイスが入ります。制約は計算量ではなく、アーキテクチャと制御です。それこそが最初のゲストが試すべきものです。さらに FM ボイスの状態はすべて数十バイトに収まり L1 キャッシュに住みますが、サンプル再生のボイスなら、ノートのたびに遅いメモリからメガバイト単位で読み込むことになります。
+        </p>
+        <p>
+          <strong>フェーズ 3 が終わるのは、三つのステージが三つのコアで動き、そのうちひとつから時間を奪っても残りが止まらないときです。</strong>それが設計全体の拠って立つ主張であり、示すには少なくとも二つのゲストが必要です。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="measured-heading">
+      <div class="container">
+        <h2 id="measured-heading">推測ではなく、測定</h2>
+        <p>
+          このページの数字はすべて実機での実行から得たもので、リポジトリに記録として残っています。そのいくつかは設計を変えました。
+        </p>
+        <p><strong>出荷するカーネルの音はクリーンです</strong>（10 月 5 日）。そのオーディオをオーディオ・インターフェースで電気的に取り込み、何も測っていないときの同じ経路のノイズフロアと比べて判定しました。テーブルを再生するテスト用カーネルではありません。六つのタスクが機械を共有し、ゲストが予算のもとで動く、出荷するカーネルそのものです。</p>
+        <pre class="measurement">チャンネル 0  750.0 Hz   純度 100.0%   最も近い倍音  -45.7 dB
+チャンネル 1  1500.0 Hz  純度 100.0%   1,000,006 サイクルの周期 × 188</pre>
+        <ul class="values-block" role="list">
+          <li><strong>EL0 のゲスト。</strong>ゲストをカーネルの特権レベルから外すと、最悪の周期は予算の 0.23% から 0.34% に上がりました。分離の代償は周期の約 0.1 ポイント。その代わりに、与えられたもの以外には触れられないゲストが手に入りました。</li>
+          <li><strong>待機はループでなければならない。</strong>一回の確認だけで周期を待つと、四回の実行で 5 周期を取りこぼしました。どのコアのどんなアトミック操作でも、眠っているコアを起こしうるからです。ループに書き直すと遅延は 0、コストも一周期あたり約 860 回のシステムコールから 1 回に下がりました。</li>
+          <li><strong>エミュレーターは優しい嘘をつく。</strong>QEMU はメモリをゼロで始めますが、Pi は違い、ウォーム・リブートの後には前回の起動の中身が残ります。カーネルはメモリを消去する前に毒値で埋めるので、壊れた消去は隠れずに姿を現します。</li>
+          <li><strong>ファームウェアはメモリを少なく報告する。</strong>メールボックスは 2 GiB のボードで 948 MiB と答えます。カーネルはデバイスツリーを読み、空きフレームは 242,495 から 504,630 になりました。</li>
+          <li><strong>エミュレーターに見えないものは、実機が決める。</strong>Pi の空き UART、データ・キャッシュ、スタックのアライメント違反を再現するエミュレーターはありません。それらは作業台でテストし、ループバックで見分けられないときはロジック・アナライザーを使います。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="how-heading">
+      <div class="container">
+        <h2 id="how-heading">つくり方</h2>
+        <ul class="values" role="list">
+          <li><strong>安定版の Rust、その下には何もなし。</strong>オペレーティング・システムも、標準ライブラリも、クレートも、ブートローダーもありません。ファームウェアがイメージを読み込み、その最初のバイトへ跳びます。</li>
+          <li><strong>テストはすべてカーネル。</strong>各テスト・ファイルは独立したカーネルとしてコンパイルされ、それぞれのエミュレーターで起動します。だからこそ、テストはわざと機械をクラッシュさせることで合格できます。</li>
+          <li><strong>二つの引き渡し、二つの最適化レベル。</strong>検証は各テストを EL1 と EL2 の両方で制御を受けたものとして起動し、debug と release で実行します。あるレジスタのバグは、debug では現れ、-O2 では隠れていました。</li>
+          <li><strong>数字はスクリプトが正直に保つ。</strong>ドキュメントにある行数、メモリ使用量、テスト数は実行のたびに測定され、文章と測定が食い違えば検証が失敗します。</li>
+          <li><strong>大きさの予算。</strong>カーネルの上限は 15,000 行、変更可能な状態は印刷した一ページに収まらなければなりません。</li>
+          <li><strong>AI の支援を受け、人間の判断のもとでつくる。</strong>設計し、決め、各ステップに署名するのは私です。AI は、ひとりの人間が考え抜き、レビューできる範囲を広げます。その方法は連載 <a href="/ja/combined-force/">Combined Force</a> にまとめています。</li>
+        </ul>
+
+        <h3>作業台の上</h3>
+        <p>
+          Raspberry Pi 4（2 GiB）· PCM5102A I²S DAC · 115,200 ボーの USB シリアル・コンソール · H11L1 フォトカプラ付きの DIN-5 による MIDI 入出力 · ロジック・アナライザー · DAC から出る音を取り込むオーディオ・インターフェース。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="next-heading">
+      <div class="container">
+        <h2 id="next-heading">次に来るもの</h2>
+        <ul class="values" role="list">
+          <li><strong>本物の鍵盤からのノートをゲストに届ける</strong>。MIDI ポートを通し、FM ボイスのパラメーターへと変換します。</li>
+          <li><strong>一つ目に供給される二つ目のステージ</strong>。そして、ある楽器から時間を奪っても別の楽器が鳴り続けることの、最初の実証。</li>
+          <li><strong>GATTO の形を決める</strong>。ステージの連鎖か、独立したボイスか。つくる前に、文章で。</li>
+          <li><strong>ソースを公開する。</strong>tānaOS は世界のためのメキシコのテクノロジーを目指しています。閉じた DSP プラットフォームの世界における、開かれた選択肢です。</li>
+        </ul>
+        <p class="callout">
+          まだ製品ではありません。自らのハードウェアで測定され、最初の楽器を迎えようとしている、動くシステムです。
+        </p>
+
+        <div class="cta-cards">
+          <a href="/ja/engineering/" class="cta-card">
+            <span class="cta-card__label">背景</span>
+            <span class="cta-card__title">エンジニアリングの章</span>
+          </a>
+          <a href="/ja/tattva/" class="cta-card">
+            <span class="cta-card__label">このシステムが鳴らすレーベル</span>
+            <span class="cta-card__title">Tattva</span>
+          </a>
+          <a href="/ja/combined-force/" class="cta-card">
+            <span class="cta-card__label">方法</span>
+            <span class="cta-card__title">Combined Force</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../tanaos/">English</a>
+        <a href="../../es/tanaos/">Español</a>
+        <a href="../../pt/tanaos/">Português</a>
+        <a href="../">← ホーム</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. メキシコで、心を込めてつくりました。</p>
+    </div>
+  </footer>
+</body>
+</html>

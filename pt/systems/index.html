@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sistemas — Octavio Rojas · Tattva | Engenharia de baixo nível, Rust, bare metal</title>
+  <meta name="description" content="O capítulo de sistemas: como uma vaga que pedia C ou Rust levou um arquiteto mobile de volta à primeira instrução depois de ligar a máquina. Um kernel em Rust direto no metal, um Raspberry Pi 4, um ferro de solda na temperatura errada e o que o silício ensinou que o emulador não podia." />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tattva20.github.io/pt/systems/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/systems/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/systems/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/systems/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/systems/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/systems/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Sistemas — uma camada abaixo · Octavio Rojas" />
+  <meta property="og:description" content="Um kernel em Rust direto no metal, um Raspberry Pi 4 e uma bancada: o que descer uma camada ensinou a um arquiteto mobile." />
+  <meta property="og:url" content="https://tattva20.github.io/pt/systems/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Sistemas — uma camada abaixo · Octavio Rojas" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Pular para o conteúdo principal</a>
+
+  <nav class="lang-switcher" aria-label="Seletor de idioma">
+    <a href="../../systems/" hreflang="en">EN</a>
+    <a href="../../es/systems/" hreflang="es">ES</a>
+    <a href="../systems/" aria-current="true" hreflang="pt">PT</a>
+    <a href="/ja/systems/" hreflang="ja" lang="ja">日本語</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="Navegação por seções">
+    <div class="top-nav__inner">
+      <a href="/pt/" class="top-nav__link">Início</a>
+      <a href="/pt/music/" class="top-nav__link">Música</a>
+      <a href="/pt/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/pt/engineering/" class="top-nav__link">Engenharia</a>
+      <a href="/pt/systems/" class="top-nav__link is-active">Sistemas</a>
+      <a href="/pt/tanaos/" class="top-nav__link">tānaOS</a>
+      <a href="/pt/heritage/" class="top-nav__link">Linhagem</a>
+      <a href="/pt/combined-force/" class="top-nav__link">Força Combinada</a>
+      <a href="/pt/random/" class="top-nav__link">Random</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">Sistemas · engenharia de baixo nível · 2026 —</span>
+        <h1 class="page-hero__title">Uma camada abaixo</h1>
+        <p class="page-hero__tagline">Durante dez anos construí apps em cima de sistemas operacionais. Em agosto de 2026 desci até a primeira instrução que um processador executa ao ligar, e encontrei no fundo da pilha as mesmas coisas que eu tinha amado no topo.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="origin-heading">
+      <div class="container">
+        <h2 id="origin-heading">Como começou: uma linha numa vaga de emprego</h2>
+        <p>
+          No verão de 2026 um dos meus contratos com uma empresa líder dos Estados Unidos estava chegando ao fim, e eu estava lendo o mercado. Uma vaga me fez parar: um cargo Staff num laboratório de IA, exatamente o tipo de trabalho para o qual fui feito. Direção de arquitetura, agentes em produção, decidir o que se constrói e o que não. E então esta linha:
+        </p>
+        <p class="callout">
+          "Você desce uma ou duas camadas abaixo da abstração por instinto. Já trabalhou com pelo menos uma linguagem de sistemas como C, C++, Rust ou Zig, e ela ainda orienta como você constrói por cima."
+        </p>
+        <p>
+          Eu tinha o instinto. Não tinha a linguagem. Nos anos noventa fui um apaixonado por Linux; compilava kernels pelo prazer de ver uma máquina subir com a minha própria configuração. Mas minha vida profissional tinha sido Swift, Kotlin e TypeScript, sempre algumas camadas acima do metal.
+        </p>
+        <p>
+          Então fiquei curioso com Rust. E quanto mais eu lia, mais forte batia meu coração nostálgico. Ler sobre uma linguagem não ia bastar. Decidi aprendê-la como aprendi a ser DJ: fazendo a coisa mais difícil e real que eu tivesse pela frente. <strong>Eu ia escrever um kernel.</strong>
+        </p>
+        <p>
+          Que tipo de kernel? Um de áudio, claro. Um sistema operacional pequeno cujo único trabalho é o som: hospedar sintetizadores e processadores de efeitos, usando o Cortex-A72 do Raspberry Pi para fazer o que chips DSP dedicados fazem. Dezesseis anos de música e dez de software, finalmente rodando na mesma máquina.
+        </p>
+        <p>
+          O primeiro commit chegou em <strong>11 de agosto de 2026</strong>. Nas primeiras horas o kernel se chamava <em>tattva</em>; no fim daquele dia já tinha nome próprio, <strong>tan_k</strong>, e o sistema em volta dele se tornaria o <a href="/pt/tanaos/">tānaOS</a>.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="silicon-heading">
+      <div class="container">
+        <h2 id="silicon-heading">Do emulador ao silício</h2>
+        <p>
+          A primeira semana viveu dentro do QEMU, um emulador. Iniciar, imprimir por uma porta serial, capturar uma falha, relatá-la. Refiz do zero o arcabouço de testes, porque o normal precisa de um sistema operacional para rodar e ainda não havia nenhum. Cada teste virou um pequeno kernel próprio, iniciado e julgado, e alguns passam derrubando a máquina de propósito.
+        </p>
+        <p>
+          Em 14 de agosto escrevi o port para o Raspberry Pi 4 antes de ter o hardware, e no mesmo dia encomendei um Pi, um adaptador USB-serial e um cartão de memória. Em <strong>19 de agosto</strong> o kernel iniciou pela primeira vez em silício real. O firmware passou o controle, os seis marcadores de inicialização apareceram… e cada caractere saiu como lixo.
+        </p>
+        <p>
+          Não era lixo aleatório: era uma transformação fixa. Deslocar cada byte sete posições e inverter seus bits recuperava o texto, então passei a manhã fazendo criptoanálise no log de inicialização do meu próprio kernel. Tentei cinco valores de clock para a porta serial, uma varredura de mais de três mil transformações e três configurações do firmware. Tudo falhou. A causa nem estava no código: <strong>o fio preto de terra estava no pino 8, a linha de transmissão do Pi, em vez do pino 6.</strong> Encontrei olhando para a placa. O clock estava certo desde o primeiro commit daquela manhã.
+        </p>
+        <p>
+          A caçada revelou, no caminho, um bug real de software, e o emulador tinha escondido tudo: a porta serial do QEMU não tem clock e ignora seus divisores, então cada teste passava por cima de coisas que ele não simulava. Foi a primeira lição deste capítulo e se manteve desde então: <strong>um emulador não pode reprovar um teste sobre algo que ele não simula</strong>, e antes de suspeitar do código é preciso olhar os fios. Seis semanas depois cometi o mesmo erro, uma fileira de pinos ao lado. Dessa vez um histograma de larguras de pulso disse "ruído, não um baud rate errado" antes que alguém mexesse num divisor.
+        </p>
+        <p>
+          Aí funcionou. 35 commits em 19 de agosto, 56 no dia 20, 91 no dia 21. Dez dias depois do primeiro commit, os oito passos da carta do kernel estavam verificados na placa: troca de contexto, interrupções, memória virtual, um heap, um escalonador preemptivo, modo usuário, chamadas de sistema e um shell.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="bench-heading">
+      <div class="container">
+        <h2 id="bench-heading">A bancada: aprender primeiro com as ferramentas erradas</h2>
+        <p>
+          O software era só metade. Para fazer som, o Pi precisava de um DAC; para ligar um DAC, eu precisava soldar; para saber por que nada funcionava, eu precisava medir. Não comecei com bom equipamento. Comecei com um ferro de solda barato de 30 watts e aprendi o resto pelo caminho honesto.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Um botão, três sintomas.</strong> Durante dois dias minhas soldas saíam como bolinhas em vez de cones, os pinos escorregavam dentro da própria solda e no fim o estanho não grudava na ponta. Três problemas diagnosticados separadamente. Uma causa: o ferro estava a 200 °C, e a solda com chumbo funde a 183, então nunca molhava nada. A outra metade era uma ponta barata e mal revestida: o mesmo ferro de 30 watts com uma ponta recuperada fazia soldas finas. Nunca foi a técnica.</li>
+          <li><strong>Silêncio com tudo verde.</strong> O primeiro DAC chegou em 24 de agosto. O kernel enviava áudio, cada registrador respondia certo e as caixas de som ficaram em silêncio por três dias. Um fio estava no pino ao lado do certo, e um pino de mute no próprio módulo era mantido em nível baixo por um resistor. Em <strong>1º de setembro</strong> eu ouvi: 750 Hz no ouvido esquerdo, 1500 Hz no direito, uma oitava de distância, exatamente como o teste pedia.</li>
+          <li><strong>O volume segue o cabo.</strong> Duas placas pareciam soar mais alto que as outras. Não eram soldas ruins nem um pino de configuração: eram os dois fios que eu tinha soldado como tomada de áudio. Movendo os fios, o volume se movia junto.</li>
+          <li><strong>Sete estalos em catorze segundos.</strong> Cada um era uma duplicação exata do sinal, +6 dB sem distorção: a impressão digital de um quadro de áudio escorregando um bit. O culpado era um laço de terra pela alimentação USB das caixas de som. Outra fonte resolveu.</li>
+          <li><strong>Os pinos longos vão para onde se conectam.</strong> Um conector MIDI deixa sua placa em pé, e isso vira de cabeça para baixo cada hábito aprendido com placas deitadas. Soldei dois ao contrário antes de o terceiro ficar certo.</li>
+          <li><strong>Sete falhas, zero peças ruins.</strong> Colocar a entrada MIDI para funcionar levou quatro dias de outubro e sete falhas. Todas eram contatos: pinos que não prendiam na protoboard, um fio de terra uma coluna fora, um resistor mal reinserido depois de medido, e um jumper perfeito por fora e rompido dentro do isolamento. Medir uma peça prova a peça, nunca seus dois contatos.</li>
+        </ul>
+        <p>
+          O equipamento cresceu com o kernel. Cada vez que o código alcançava um hardware novo, a bancada precisava subir de nível para recebê-lo.
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>Primeiro uso</th><th>O que chegou à bancada</th><th>O que destravou</th></tr></thead>
+            <tbody>
+              <tr><td>19 ago</td><td>Raspberry Pi 4 · adaptador USB-serial</td><td>A primeira inicialização em silício real, e a primeira lição sobre emuladores.</td></tr>
+              <tr><td>24 ago</td><td>DACs I²S PCM5102A</td><td>Som, em 1º de setembro.</td></tr>
+              <tr><td>31 ago</td><td>Um ferro de solda barato de 30 watts e um kit inicial</td><td>A era de "primeiro as ferramentas erradas", e quase tudo o que sei sobre solda.</td></tr>
+              <tr><td>2 set</td><td>Um analisador lógico de 24 MHz</td><td>Ver o fio em vez de adivinhar. Calibrado contra o próprio clock de áudio do Pi com erro de 36 partes por milhão.</td></tr>
+              <tr><td>9–14 set</td><td>Um ferro de 90 watts com controle em malha fechada, uma estação de retrabalho, um microscópio</td><td>Soldas que aguentam, e reparos que não custam a placa.</td></tr>
+              <tr><td>23 set</td><td>Conectores DIN-5 · optoacopladores H11L1</td><td>O Pi mandando MIDI para si mesmo através de luz. 31.250 baud confirmados no analisador: 288 µs, exatamente nove tempos de bit.</td></tr>
+              <tr><td>5 out</td><td>Uma interface de áudio na saída do DAC</td><td>Julgar o som medindo: 100% de pureza espectral, 750,0 e 1500,0 Hz exatos.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="taught-heading">
+      <div class="container">
+        <h2 id="taught-heading">O que a máquina ensinou</h2>
+        <p>
+          Aqui embaixo a intuição das camadas de cima costuma errar, e o único jeito de saber é contar. Alguns números que mudaram como eu penso, nesta camada e acima dela:
+        </p>
+        <ul class="facts-grid" role="list">
+          <li><span class="facts-grid__value">9×</span><span class="facts-grid__label">Uma única falta de cache até a DRAM custa o mesmo que nove filtros de áudio. Computação é barata; memória é o orçamento.</span></li>
+          <li><span class="facts-grid__value">34.356</span><span class="facts-grid__label">palavras de dados que sobraram e que o Pi real guardava numa região que o emulador sempre mostrava zerada.</span></li>
+          <li><span class="facts-grid__value">948 MiB</span><span class="facts-grid__label">o que o firmware informa numa placa de 2 GiB. O device tree sabia mais.</span></li>
+          <li><span class="facts-grid__value">268 vs 493</span><span class="facts-grid__label">ciclos para chegar a outro núcleo, contra ciclos para chegar ao seu próprio kernel. O outro núcleo está mais perto.</span></li>
+        </ul>
+        <p>
+          Nada disso é exótico. É o que sustenta em silêncio todo sistema operacional e todo app. Saber disso muda como leio um perfil de desempenho num celular, como raciocino sobre os buffers de um player de vídeo e quanto confio num teste verde que rodou em outro lugar que não o alvo real.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="arinc-heading">
+      <div class="container">
+        <h2 id="arinc-heading">Por que a aviônica: escolher o ARINC 653</h2>
+        <p>
+          Todo programa de música hospeda seus plugins num único espaço compartilhado com um único prazo compartilhado. Quando um plugin demora demais, tudo falha junto. Eu queria a garantia oposta: o instrumento que se comporta mal é cortado e o resto da música continua tocando.
+        </p>
+        <p>
+          Quando procurei referências, a resposta não estava na pesquisa de sistemas operacionais. Estava nos aviões. O padrão <strong>ARINC 653</strong> divide o computador de um avião em partições para que uma função de baixa criticidade que falha não derrube uma de alta criticidade: cada partição tem sua própria memória e seu próprio tempo, e a partição que estoura é parada. Troque "controle de voo" por <em>o clock de áudio</em> e "um módulo de terceiros" por <em>um sintetizador que outra pessoa escreveu</em>, e é exatamente este projeto. Decidi em <strong>27 de agosto de 2026</strong>, lendo as fontes primárias e não resumos.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Canais fixos desde a configuração.</strong> No ARINC 653 as portas e os canais são definidos ao configurar o sistema e não podem mudar em tempo de execução. Um grafo de áudio é igual: qual estágio alimenta qual se sabe antes da primeira amostra, então o linker também pode saber.</li>
+          <li><strong>A entrega é uma porta de amostragem.</strong> Uma sampling port guarda só a mensagem mais nova e diz se ela ainda está fresca. É exatamente a pergunta que um núcleo de áudio faz a cada período: <em>o estágio anterior terminou este buffer a tempo?</em></li>
+          <li><strong>Nada espera.</strong> O perfil reduzido do padrão elimina as filas bloqueantes para manter simples a gestão de processos. Um núcleo dedicado ao áudio que nunca bloqueia não é um atalho; é o que esse perfil pede.</li>
+          <li><strong>Uma diferença honesta.</strong> O ARINC 653 divide o tempo de um único processador. O tānaOS divide os quatro núcleos do Pi: espaço em vez de tempo. A mesma garantia, outro mecanismo.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="poison-heading">
+      <div class="container">
+        <h2 id="poison-heading">Envenenar meu próprio kernel</h2>
+        <p>
+          Um teste que nunca falhou não provou nada. Por isso boa parte deste trabalho é quebrar o kernel de propósito para ver se os testes percebem.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Envenenar antes de limpar.</strong> O emulador entrega ao kernel uma memória já zerada, então o laço que limpa a memória na inicialização "funciona" mesmo se for apagado. O kernel primeiro enche essa memória de uns e só depois zera. Uma limpeza quebrada agora é um muro de <code>0xFF</code> em vez de uma aprovação silenciosa.</li>
+          <li><strong>Cada asserção, vista em vermelho.</strong> Antes de confiar num teste, o código que ele protege é mutado até o teste falhar. Uma trilha dedicada roda quarenta e nove dessas mutações a cada mudança, e com a verificação verde todas são pegas. Mais de cem commits registram a mutação que provou que seu teste podia falhar.</li>
+          <li><strong>O que as mutações encontraram.</strong> Dava para apagar as duas direções da fusão de blocos do heap e todos os testes continuavam verdes, porque verificavam o total de memória livre e não a sua forma. Apagar todas as instruções de manutenção de cache sobrevive à suíte inteira do emulador, porque o emulador não tem cache de dados. A primeira virou um teste melhor; a segunda, um limite nomeado que só a placa pode verificar. Minha favorita: um teste que só passava depois de um print, porque o otimizador tinha apagado justamente a alocação que ele testava.</li>
+          <li><strong>Atacado de propósito.</strong> O kernel passou por auditorias adversariais independentes; uma única rodada produziu 59 achados, todos corrigidos ou registrados como limites nomeados. E na placa, uma tarefa que meteu a mão na memória da vizinha foi eliminada pelo próprio processador, e a vizinha terminou intacta.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="gate-heading">
+      <div class="container">
+        <h2 id="gate-heading">Quarenta e três trilhas</h2>
+        <p>
+          Nada entra no kernel sem passar pela verificação, e a verificação são quarenta e três trilhas que rodam a cada mudança. Elas se agrupam em algumas famílias:
+        </p>
+        <ul class="values" role="list">
+          <li><strong>Duas máquinas, dois perfis.</strong> Cada kernel de teste inicia no emulador como se recebesse o controle em EL1 e em EL2, em debug e em release: um bug de registrador apareceu uma vez em debug e se escondeu em -O2.</li>
+          <li><strong>A imagem real.</strong> A imagem exata que o Pi inicia também é construída e executada num Pi emulado, e uma trilha à parte verifica o kernel entregue, não só os kernels de teste.</li>
+          <li><strong>Zero avisos, em todo lugar.</strong> Seis compilações, uma por configuração, e cada uma falha com um único aviso.</li>
+          <li><strong>Documentação que não pode mentir.</strong> As contagens de linhas, tamanhos de memória e número de testes nos documentos são medidos de novo; cada citação a um arquivo e linha precisa continuar resolvendo; o orçamento de linhas é cumprido.</li>
+          <li><strong>A arquitetura como teste.</strong> Ciclos entre módulos, direção das camadas, uma única fonte para cada fato, cada bloco <code>unsafe</code> com um contrato escrito.</li>
+          <li><strong>A verificação testa a si mesma.</strong> Uma trilha confere que a verificação realmente falha quando deve, e outra que um passo feito para estar vermelho continua vermelho.</li>
+          <li><strong>E a placa.</strong> O que nenhum emulador consegue modelar (as UARTs livres, o DAC, o MIDI, o tempo real) roda no Raspberry Pi da bancada, e suas transcrições são guardadas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="skill-heading">
+      <div class="container">
+        <h2 id="skill-heading">Um novo piso para o método: Provision</h2>
+        <p>
+          Projeto arquitetura com doze primitivas: fronteira, contrato, posse, fonte da verdade, invalidação, orçamento, costura, política vs mecanismo, composição, identidade, isolamento e tempo de vida. Cada decisão de projeto toma posição sobre elas, e cada bug quebra uma. Eu as mantenho como skills para o Claude, uma por stack: iOS, tvOS, Android, a web, o backend e a API do Claude.
+        </p>
+        <p>
+          Depois de uma reflexão profunda escrevi mais uma, para bare metal: as doze primitivas no dialeto dos registradores, dos níveis de exceção, das tabelas de páginas e dos dispositivos mapeados em memória. E ao escrevê-la descobri que as doze não bastavam. Todas pressupõem em silêncio uma plataforma que já as fornece. Numa máquina nua nenhuma existe até você construí-la: não há tempo de vida sem um alocador, não há isolamento sem um escalonador, não há fronteira sem um espaço de endereçamento.
+        </p>
+        <p class="callout">
+          Provision, a décima terceira primitiva: numa máquina nua você precisa fabricar o que qualquer outra stack dá como certo, e a ordem de provisão é a ordem de inicialização. Suba primeiro o que consegue relatar, e depois use isso para subir todo o resto.
+        </p>
+        <p>
+          Ela explica numa só frase a manhã mais cara do projeto: diagnosticar um console serial antes de poder confiar no próprio console, quando nenhuma hipótese podia ser refutada. Hoje faz parte de como trabalho com o Claude em qualquer sistema que começa do zero.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="above-heading">
+      <div class="container">
+        <h2 id="above-heading">Por que orienta como construo por cima</h2>
+        <p>
+          A vaga tinha razão na segunda metade da sua frase. Descer mudou como trabalho em cima:
+        </p>
+        <ul class="values" role="list">
+          <li><strong>Cada afirmação leva uma medição.</strong> Um número na documentação do kernel é medido de novo a cada execução, e a compilação falha quando o texto e a medição divergem. Agora quero o mesmo de qualquer sistema que eu projete.</li>
+          <li><strong>Que o estado ilegal seja impossível de construir.</strong> Dois dos piores bugs do kernel foram corrigidos tirando uma capacidade de um tipo, não acrescentando uma verificação: agora o compilador recusa o erro.</li>
+          <li><strong>Um orçamento para tudo.</strong> Cada passo teve um orçamento de linhas definido antes de ser escrito, e os excessos são registrados em vez de escondidos. A mesma disciplina vale para quadros num celular e tokens num agente.</li>
+          <li><strong>A IA como parceira, o julgamento é meu.</strong> O tānaOS é construído com assistência de IA sob o método que descrevo em <a href="/pt/combined-force/">Força Combinada</a>. Um kernel é o lugar mais implacável para pôr esse método à prova, e ele resistiu.</li>
+        </ul>
+        <p>
+          Dois meses depois de ler aquela linha, escrevo Rust direto no metal toda semana, leio datasheets por prazer e tenho um analisador lógico. O instinto sempre esteve ali. Agora ele tem uma linguagem.
+        </p>
+
+        <div class="cta-cards" style="margin-top: var(--space-md);">
+          <a href="/pt/tanaos/" class="cta-card">
+            <span class="cta-card__label">O projeto completo</span>
+            <span class="cta-card__title">tānaOS — estado e medições</span>
+          </a>
+          <a href="/pt/engineering/" class="cta-card">
+            <span class="cta-card__label">A camada de cima</span>
+            <span class="cta-card__title">O capítulo da engenharia</span>
+          </a>
+          <a href="/pt/combined-force/" class="cta-card">
+            <span class="cta-card__label">O método</span>
+            <span class="cta-card__title">Força Combinada</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../systems/">English</a>
+        <a href="../../es/systems/">Español</a>
+        <a href="/ja/systems/">日本語</a>
+        <a href="../">← Início</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. Feito com carinho, no México.</p>
+    </div>
+  </footer>
+</body>
+</html>

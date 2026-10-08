@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Systems — Octavio Rojas · Tattva | Low-level engineering, Rust, bare metal</title>
+  <meta name="description" content="The systems chapter: how a job description asking for C or Rust sent a mobile architect back to the first instruction after power-on. A bare-metal Rust kernel, a Raspberry Pi 4, a soldering iron at the wrong temperature, and what the silicon taught that the emulator could not." />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="canonical" href="https://tattva20.github.io/systems/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/systems/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/systems/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/systems/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/systems/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/systems/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Systems — a layer below · Octavio Rojas" />
+  <meta property="og:description" content="A bare-metal Rust kernel, a Raspberry Pi 4 and a workbench: what going a layer below the abstraction taught a mobile architect." />
+  <meta property="og:url" content="https://tattva20.github.io/systems/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="en_US" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Systems — a layer below · Octavio Rojas" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" type="image/png" href="../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <nav class="lang-switcher" aria-label="Language selector">
+    <a href="../systems/" aria-current="true" hreflang="en">EN</a>
+    <a href="../es/systems/" hreflang="es">ES</a>
+    <a href="../pt/systems/" hreflang="pt">PT</a>
+    <a href="/ja/systems/" hreflang="ja" lang="ja">日本語</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="Section navigation">
+    <div class="top-nav__inner">
+      <a href="/" class="top-nav__link">Home</a>
+      <a href="/music/" class="top-nav__link">Music</a>
+      <a href="/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/engineering/" class="top-nav__link">Engineering</a>
+      <a href="/systems/" class="top-nav__link is-active">Systems</a>
+      <a href="/tanaos/" class="top-nav__link">tānaOS</a>
+      <a href="/heritage/" class="top-nav__link">Heritage</a>
+      <a href="/combined-force/" class="top-nav__link">Combined Force</a>
+      <a href="/random/" class="top-nav__link">Random</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">Systems · low-level engineering · 2026 —</span>
+        <h1 class="page-hero__title">A layer below</h1>
+        <p class="page-hero__tagline">For ten years I built apps on top of operating systems. In August 2026 I went down to the first instruction a processor runs after power-on — and found, at the bottom of the stack, the same things I had loved at the top of it.</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="origin-heading">
+      <div class="container">
+        <h2 id="origin-heading">How it started: one line in a job description</h2>
+        <p>
+          In the summer of 2026 one of my contracts with a leading US company was coming to an end, and I was reading the market. One posting stopped me: a Staff role at an AI lab, the kind of job I was built for — architecture direction, agents in production, owning what gets built and what does not. And then this line:
+        </p>
+        <p class="callout">
+          "You go a layer or two below the abstraction by instinct. You have worked with at least one systems-level language like C, C++, Rust or Zig, and it still informs how you build above it."
+        </p>
+        <p>
+          I had the instinct. I did not have the language. I had spent the nineties as a Linux enthusiast, compiling kernels for the joy of watching a machine come up under my own configuration — but my professional life had been Swift, Kotlin and TypeScript, always a few layers above the metal.
+        </p>
+        <p>
+          So I got curious about Rust. And the more I read, the louder my nostalgic heart got. Reading about a language was not going to be enough. I decided to learn it the way I learned DJing: by doing the hardest real thing in front of me. <strong>I would write a kernel.</strong>
+        </p>
+        <p>
+          What kind of kernel? An audio one, of course. A small operating system whose whole job is sound — hosting synthesizers and effects processors, using the Raspberry Pi's Cortex-A72 to do what dedicated DSP chips do. Sixteen years of music and ten of software, finally running on the same machine.
+        </p>
+        <p>
+          The first commit landed on <strong>11 August 2026</strong>. For its first few hours the kernel was called <em>tattva</em>; by the end of that day it had its own name, <strong>tan_k</strong>, and the system around it would become <a href="/tanaos/">tānaOS</a>.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="silicon-heading">
+      <div class="container">
+        <h2 id="silicon-heading">From emulator to silicon</h2>
+        <p>
+          The first week lived inside QEMU, an emulator. Boot, print over a serial port, catch a fault, report it. I wrote a test harness from scratch, because the usual one needs an operating system to run on, and there wasn't one yet. Every test became a tiny kernel of its own, booted and judged — and some of them pass by crashing the machine on purpose.
+        </p>
+        <p>
+          On 14 August I wrote the Raspberry Pi 4 port before the hardware existed, and ordered a Pi, a USB-serial adapter and a memory card the same day. On <strong>19 August</strong> the kernel booted on real silicon for the first time. The firmware handed over control, all six boot markers printed — and every single character was garbage.
+        </p>
+        <p>
+          Not random garbage: a fixed transformation. Shifting each byte by seven and inverting its bits recovered the text, so I spent the morning doing cryptanalysis on my own kernel's boot log. I tried five different clock values for the serial port, a sweep of more than three thousand transforms, three firmware settings. Every one failed. The cause was not in the code at all: <strong>the black ground wire was on header pin 8 — the Pi's transmit line — instead of pin 6.</strong> I found it by looking at the board. The clock had been right since the first commit that morning.
+        </p>
+        <p>
+          The hunt did uncover a real software bug on the way, and the emulator had hidden all of it: QEMU's serial port has no clock and ignores its divisors, so every test passed over things it did not model. It was the first lesson of this chapter and it has held ever since: <strong>an emulator cannot fail a test about something it does not simulate</strong>, and before you suspect the code, look at the wires. Six weeks later I made the same mistake one header row off. This time a pulse-width histogram said "noise, not a wrong baud rate" before anyone touched a divisor.
+        </p>
+        <p>
+          Then it ran. 35 commits on 19 August, 56 on the 20th, 91 on the 21st. Within ten days of the first commit, all eight steps of the kernel's charter — context switching, interrupts, virtual memory, a heap, a preemptive scheduler, user mode, system calls and a shell — were verified on the board.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="bench-heading">
+      <div class="container">
+        <h2 id="bench-heading">The bench: learning with the wrong tools first</h2>
+        <p>
+          Software was only half of it. To make sound, the Pi needed a DAC; to wire a DAC, I needed to solder; to know why nothing worked, I needed to measure. I did not start with good equipment. I started with a cheap 30-watt iron and learned the rest the honest way.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>One dial, three symptoms.</strong> For two days my joints came out as balls instead of cones, header pins slid inside their own joints, and finally solder refused to stick to the tip. Three problems, diagnosed separately. One cause: the iron was at 200 °C, and leaded solder melts at 183, so it never wetted anything. The other half was a cheap, badly plated tip — the same cheap 30-watt iron with a revived tip made fine joints. It was never technique.</li>
+          <li><strong>Silence with everything green.</strong> The first DAC arrived on 24 August. The kernel streamed audio, every register read back correctly, and the speakers stayed silent for three days. One wire sat on the pin next to the right one, and a mute pin on the module itself was held low by a resistor. On <strong>1 September</strong> I heard it — 750 Hz in the left ear, 1500 Hz in the right, an octave apart, exactly as the test asked.</li>
+          <li><strong>The level follows the cable.</strong> Two boards seemed to sound louder than the others. Not bad joints, not a configuration pin: the two wires I had soldered on as an audio tap. Move the wires and the loudness moved with them.</li>
+          <li><strong>Seven pops in fourteen seconds.</strong> Each one an exact doubling of the signal, +6 dB with no distortion — the fingerprint of the audio frame slipping by one bit. The culprit was a ground loop through the speakers' USB power. A different power supply stopped it.</li>
+          <li><strong>Long pins toward the thing they plug into.</strong> A MIDI connector stands its board on edge, which turns every habit from flat boards upside down. I soldered two of them backwards before the third was right.</li>
+          <li><strong>Seven faults, zero bad parts.</strong> Bringing up MIDI input took four days in October and seven faults. Every one was a contact: pins not gripping a breadboard, a ground wire one column off, a resistor reinserted after being measured, and one jumper that was perfect on the outside and broken inside its insulation. Measuring a part proves the part, never its two contacts.</li>
+        </ul>
+        <p>
+          The equipment grew with the kernel. Each time the code reached a new piece of hardware, the bench had to rise to meet it.
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>First used</th><th>What joined the bench</th><th>What it unlocked</th></tr></thead>
+            <tbody>
+              <tr><td>Aug 19</td><td>Raspberry Pi 4 · USB-serial adapter</td><td>The first boot on real silicon, and the first lesson about emulators.</td></tr>
+              <tr><td>Aug 24</td><td>PCM5102A I²S DACs</td><td>Sound, on 1 September.</td></tr>
+              <tr><td>Aug 31</td><td>A cheap 30-watt iron and a starter kit</td><td>The "wrong tools first" era, and most of what I know about solder.</td></tr>
+              <tr><td>Sep 2</td><td>A 24 MHz logic analyzer</td><td>Seeing the wire instead of guessing. Calibrated against the Pi's own audio clock to within 36 parts per million.</td></tr>
+              <tr><td>Sep 9–14</td><td>A closed-loop 90-watt iron, a rework station, a microscope</td><td>Joints that hold, and repairs that do not cost the board.</td></tr>
+              <tr><td>Sep 23</td><td>DIN-5 jacks · H11L1 optocouplers</td><td>The Pi sending MIDI to itself through light. 31,250 baud confirmed on the analyzer: 288 µs, exactly nine bit-times.</td></tr>
+              <tr><td>Oct 5</td><td>An audio interface on the DAC's output</td><td>Judging the sound by measurement: 100% spectral purity, 750.0 and 1500.0 Hz exactly.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="taught-heading">
+      <div class="container">
+        <h2 id="taught-heading">What the machine taught</h2>
+        <p>
+          Down here, intuition from the upper layers is often wrong, and the only way to know is to count. A few numbers that changed how I think — at this layer and above it:
+        </p>
+        <ul class="facts-grid" role="list">
+          <li><span class="facts-grid__value">9×</span><span class="facts-grid__label">A single cache miss to DRAM costs as much as nine audio filters. Compute is cheap; memory is the budget.</span></li>
+          <li><span class="facts-grid__value">34,356</span><span class="facts-grid__label">words of leftover data the real Pi kept in a region the emulator always showed as zero.</span></li>
+          <li><span class="facts-grid__value">948 MiB</span><span class="facts-grid__label">what the firmware reports on a 2 GiB board. The device tree knew better.</span></li>
+          <li><span class="facts-grid__value">268 vs 493</span><span class="facts-grid__label">cycles to reach another core, against cycles to reach your own kernel. The other core is closer.</span></li>
+        </ul>
+        <p>
+          None of these are exotic. They are what every operating system and every app quietly stands on. Knowing them changes how I read a performance profile on a phone, how I reason about a video player's buffers, and how much I trust a green test that ran somewhere other than the real target.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="arinc-heading">
+      <div class="container">
+        <h2 id="arinc-heading">Why avionics: choosing ARINC 653</h2>
+        <p>
+          Every music program hosts plugins in one shared space with one shared deadline. When one plugin runs long, everything glitches together. I wanted the opposite guarantee: an instrument that misbehaves gets cut, and the rest of the music keeps playing.
+        </p>
+        <p>
+          When I went looking for prior art, the answer was not in operating-system research. It was in aircraft. The <strong>ARINC 653</strong> standard partitions an avionics computer so that a failing low-criticality function cannot take down a high-criticality one — each partition gets its own memory and its own time, and a partition that overruns is stopped. Replace "flight control" with <em>the audio clock</em> and "a third-party module" with <em>a synthesizer someone else wrote</em>, and it is exactly this design. I settled on it on <strong>27 August 2026</strong>, reading the primary sources rather than summaries.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Channels fixed at configuration.</strong> In ARINC 653, ports and channels are defined when the system is configured and cannot change at run time. An audio graph is the same: which stage feeds which is known before the first sample, so the linker can know it too.</li>
+          <li><strong>The handoff is a sampling port.</strong> A sampling port keeps only the newest message and says whether it is still fresh. That is precisely the question an audio core asks every period: <em>did the stage before me finish this buffer in time?</em></li>
+          <li><strong>Nothing waits.</strong> The standard's reduced profile removes blocking queues to keep process management simple. A core dedicated to audio that never blocks is not a shortcut; it is what that profile asks for.</li>
+          <li><strong>One honest difference.</strong> ARINC 653 divides time on one processor. tānaOS divides the four cores of the Pi — space instead of time. Same guarantee, different mechanism.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="poison-heading">
+      <div class="container">
+        <h2 id="poison-heading">Poisoning my own kernel</h2>
+        <p>
+          A test that has never failed has not proven anything. So a large part of this work is deliberately breaking the kernel to watch the tests catch it.
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>Poison before you clean.</strong> The emulator hands the kernel memory that is already zero, so the loop that clears memory at boot "works" even if it is deleted. The kernel fills that memory with all ones first and only then zeroes it. A broken clear is now a wall of <code>0xFF</code> instead of a silent pass.</li>
+          <li><strong>Every assertion shown red.</strong> Before a test is trusted, the code it guards is mutated until the test fails. A dedicated lane runs forty-nine of those mutations on every change, and in a green gate every one of them is caught. More than a hundred commits record the mutation that proved their test could fail.</li>
+          <li><strong>What the mutations found.</strong> Both directions of the heap's block merging could be deleted and every test stayed green, because the tests checked the total free memory and not its shape. Deleting every cache-maintenance instruction survives the whole emulator suite, because the emulator has no data cache. The first became a better test; the second became a named limit that only the board can check. My favourite: a test that passed only after I added a print statement, because the optimiser had deleted the very allocation it was testing.</li>
+          <li><strong>Attacked on purpose.</strong> The kernel has been through independent adversarial audits; one round alone produced 59 findings, all fixed or written down as named limits. And on the board, a task that reached into its neighbour's memory was killed by the processor itself, with the neighbour finishing unharmed.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="gate-heading">
+      <div class="container">
+        <h2 id="gate-heading">Forty-three lanes</h2>
+        <p>
+          Nothing reaches the kernel without passing the gate, and the gate is forty-three lanes run on every change. They fall into a few families:
+        </p>
+        <ul class="values" role="list">
+          <li><strong>Two machines, two profiles.</strong> Every test kernel boots on the emulator as if handed off at EL1 and at EL2, in debug and in release — a register bug once showed in debug and hid at -O2.</li>
+          <li><strong>The real image.</strong> The exact image the Pi boots is built and run on an emulated Pi too, and a separate lane checks the kernel that ships, not only the test kernels.</li>
+          <li><strong>Zero warnings, everywhere.</strong> Six builds, one per configuration, each failing on a single warning.</li>
+          <li><strong>Documentation that cannot lie.</strong> Line counts, memory sizes and test counts in the docs are re-measured; every citation to a file and line must still resolve; the line budget is enforced.</li>
+          <li><strong>Architecture as a test.</strong> Module cycles, layer direction, one source for each fact, every <code>unsafe</code> block with a written contract.</li>
+          <li><strong>The gate tests itself.</strong> One lane checks that the gate really fails when it should, and another that a step designed to be red stays red.</li>
+          <li><strong>And the board.</strong> What no emulator can model — the spare UARTs, the DAC, MIDI, real timing — runs on the Raspberry Pi on the bench, and its transcripts are kept.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="skill-heading">
+      <div class="container">
+        <h2 id="skill-heading">Teaching the method a new floor: Provision</h2>
+        <p>
+          I architect with twelve design primitives — Boundary, Contract, Ownership, Source of truth, Invalidation, Budget, Seam, Policy vs mechanism, Composition, Identity, Isolation, Lifetime. Every design decision takes a stance on them, and every bug breaks one of them. I keep them as skills for Claude, one per stack: iOS, tvOS, Android, the web, the backend, the Claude API.
+        </p>
+        <p>
+          After a lot of reflection I wrote one more, for bare metal: the twelve primitives cast in the dialect of registers, exception levels, page tables and memory-mapped devices. And writing it, I found that the twelve were not enough. They all quietly assume a platform that already provides them. On a bare machine, none of them exists until you build it: no lifetime without an allocator, no isolation without a scheduler, no boundary without an address space.
+        </p>
+        <p class="callout">
+          Provision — the thirteenth primitive: on a bare machine you must manufacture what every other stack takes for granted, and the order of provision is the order of bring-up. Bring up the thing that can report first, then use it to bring up the rest.
+        </p>
+        <p>
+          It explains, in one sentence, the most expensive morning of the project: diagnosing a serial console before the console itself could be trusted, when every hypothesis was unfalsifiable. It is now part of how I work with Claude on any system that starts from nothing.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="above-heading">
+      <div class="container">
+        <h2 id="above-heading">Why it informs how I build above it</h2>
+        <p>
+          The job description was right about the second half of its sentence. Going down changed how I work up top:
+        </p>
+        <ul class="values" role="list">
+          <li><strong>Every claim gets a measurement.</strong> A number in the kernel's documentation is re-measured on every run, and the build fails when prose and measurement disagree. I now want the same from any system I architect.</li>
+          <li><strong>Make the illegal state impossible to build.</strong> Two of the worst bugs in the kernel were fixed by deleting a capability from a type, not by adding a check — the compiler now refuses the mistake.</li>
+          <li><strong>A budget for everything.</strong> Every step had a line budget set before it was written, and the overruns are recorded instead of hidden. The same discipline applies to frames on a phone and tokens in an agent.</li>
+          <li><strong>AI as a pair, judgment as mine.</strong> tānaOS is built with AI assistance under the method I describe in <a href="/combined-force/">Combined Force</a>. A kernel is the most unforgiving place to test that method, and it has held.</li>
+        </ul>
+        <p>
+          Two months after reading that line, I write Rust on bare metal every week, read datasheets for fun, and own a logic analyzer. The instinct was always there. Now it has a language.
+        </p>
+
+        <div class="cta-cards" style="margin-top: var(--space-md);">
+          <a href="/tanaos/" class="cta-card">
+            <span class="cta-card__label">The project, in full</span>
+            <span class="cta-card__title">tānaOS — status and measurements</span>
+          </a>
+          <a href="/engineering/" class="cta-card">
+            <span class="cta-card__label">The layer above</span>
+            <span class="cta-card__title">The engineering chapter</span>
+          </a>
+          <a href="/combined-force/" class="cta-card">
+            <span class="cta-card__label">The method</span>
+            <span class="cta-card__title">Combined Force</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../es/systems/">Español</a>
+        <a href="../pt/systems/">Português</a>
+        <a href="/ja/systems/">日本語</a>
+        <a href="../">← Home</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. Built with care, in Mexico.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -77,6 +77,14 @@ Founded in the summer of 2012 (logo, color palette and typography by Leonor Hern
 - Sung by a fictional crew: El Caballero Intergaláctico and his three cats, Europa, Aurelio and Figo — https://suno.com/@tattva20
 - Expertise: AI engineering, AI-assisted music composition, AI-assisted software development, AI-assisted building (from workbench electronics to tānaOS, a real-time audio OS that hosts his own synthesizers)
 
+## Systems and low-level engineering (dedicated page: https://tattva20.github.io/systems/)
+
+- Since August 2026: low-level and systems engineering in Rust on bare metal (AArch64, Raspberry Pi 4), on top of the mobile architecture career
+- Started from a Staff-level job description asking for C, C++, Rust or Zig; learned Rust by writing a kernel (tan_k, the kernel of tānaOS), first commit 2026-08-11, first boot on silicon 2026-08-19
+- Hardware bring-up: I²S DAC, DMA, logic analyzer, MIDI over an H11L1 optocoupler, soldering and measurement on his own bench
+- Verification practice: memory poisoning before zeroing, mutation testing (49 mutations in the gate), 43 gate lanes, board-only lanes with kept transcripts
+- Design: ARINC 653-style partitioning for audio; authored a bare-metal skill for Claude that adds a thirteenth design primitive, Provision
+
 ## tānaOS — real-time audio operating system (dedicated page: https://tattva20.github.io/tanaos/)
 
 - A real-time audio operating system written from scratch in Rust for the Raspberry Pi 4 (Cortex-A72); the kernel is called tan_k

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>システム — Octavio Rojas · Tattva | 低レイヤー・エンジニアリング、Rust、ベアメタル</title>
+  <meta name="description" content="システムの章。C か Rust を求める求人票が、ひとりのモバイル・アーキテクトを電源投入直後の最初の命令へと連れ戻した話。ベアメタルの Rust カーネル、Raspberry Pi 4、温度設定を間違えたはんだごて、そしてエミュレーターには教えられなかったことをシリコンが教えてくれた記録です。" />
+  <meta name="author" content="Octavio Rojas" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://tattva20.github.io/ja/systems/" />
+  <link rel="alternate" hreflang="en" href="https://tattva20.github.io/systems/" />
+  <link rel="alternate" hreflang="es" href="https://tattva20.github.io/es/systems/" />
+  <link rel="alternate" hreflang="pt" href="https://tattva20.github.io/pt/systems/" />
+  <link rel="alternate" hreflang="ja" href="https://tattva20.github.io/ja/systems/" />
+  <link rel="alternate" hreflang="x-default" href="https://tattva20.github.io/systems/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="システム — ひとつ下のレイヤーへ · Octavio Rojas" />
+  <meta property="og:description" content="ベアメタルの Rust カーネル、Raspberry Pi 4、そして作業台。ひとつ下のレイヤーに降りて、モバイル・アーキテクトが学んだこと。" />
+  <meta property="og:url" content="https://tattva20.github.io/ja/systems/" />
+  <meta property="og:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="システム — ひとつ下のレイヤーへ · Octavio Rojas" />
+  <meta name="twitter:image" content="https://tattva20.github.io/images/octavio-architect.png" />
+  <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="icon" type="image/png" href="../../images/octavio-current.png" />
+</head>
+<body>
+  <a href="#main" class="skip-link">本文へスキップ</a>
+
+  <nav class="lang-switcher" aria-label="言語の選択">
+    <a href="../../systems/" hreflang="en">EN</a>
+    <a href="../../es/systems/" hreflang="es">ES</a>
+    <a href="../../pt/systems/" hreflang="pt">PT</a>
+    <a href="../systems/" aria-current="true" hreflang="ja" lang="ja">日本語</a>
+  </nav>
+
+  <nav class="top-nav" aria-label="セクション">
+    <div class="top-nav__inner">
+      <a href="/ja/" class="top-nav__link">ホーム</a>
+      <a href="/ja/music/" class="top-nav__link">音楽</a>
+      <a href="/ja/tattva/" class="top-nav__link">Tattva</a>
+      <a href="/ja/engineering/" class="top-nav__link">エンジニアリング</a>
+      <a href="/ja/systems/" class="top-nav__link is-active">システム</a>
+      <a href="/ja/tanaos/" class="top-nav__link">tānaOS</a>
+      <a href="/ja/heritage/" class="top-nav__link">系譜</a>
+      <a href="/ja/combined-force/" class="top-nav__link">Combined Force</a>
+      <a href="/ja/random/" class="top-nav__link">ランダム</a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header class="page-hero">
+      <div class="container">
+        <span class="page-hero__eyebrow">システム · 低レイヤー・エンジニアリング · 2026 —</span>
+        <h1 class="page-hero__title">ひとつ下のレイヤーへ</h1>
+        <p class="page-hero__tagline">十年間、オペレーティング・システムの上でアプリをつくってきました。2026 年 8 月、私はプロセッサーが電源投入直後に実行する最初の命令まで降りていきました。そしてスタックの底で、頂上で愛してきたのと同じものを見つけました。</p>
+      </div>
+    </header>
+
+    <section aria-labelledby="origin-heading">
+      <div class="container">
+        <h2 id="origin-heading">始まりは、求人票の一行</h2>
+        <p>
+          2026 年の夏、アメリカの大手企業との契約のひとつが終わりに近づき、私は求人市場を眺めていました。ある求人に目が止まりました。AI ラボの Staff 職。アーキテクチャの方向を決め、本番環境でエージェントを動かし、何をつくり何をつくらないかを担う、まさに私のための仕事です。そして、この一行がありました。
+        </p>
+        <p class="callout">
+          「抽象化のひとつかふたつ下のレイヤーまで、本能的に降りていける。C、C++、Rust、Zig などのシステム言語を少なくともひとつ経験しており、それが今もその上で何かをつくるときの考え方に生きている。」
+        </p>
+        <p>
+          本能はありました。言語がありませんでした。九十年代の私は Linux に夢中で、自分の設定でマシンが立ち上がるのを見る喜びのために、カーネルをコンパイルしていました。けれども仕事の人生は Swift、Kotlin、TypeScript で、いつも金属から数レイヤー上にいました。
+        </p>
+        <p>
+          そこで Rust に興味を持ちました。読めば読むほど、郷愁に満ちた心の鼓動が大きくなりました。言語について読むだけでは足りない。DJ を覚えたときと同じやり方で学ぶことにしました。目の前にある、いちばん難しくて本物のことをやるのです。<strong>カーネルを書こう、と決めました。</strong>
+        </p>
+        <p>
+          どんなカーネルか。もちろん、オーディオのためのカーネルです。仕事は音だけという小さなオペレーティング・システム。シンセサイザーとエフェクト・プロセッサーをホストし、Raspberry Pi の Cortex-A72 に専用の DSP チップと同じことをさせる。十六年の音楽と十年のソフトウェアが、ついに同じマシンの上で動くのです。
+        </p>
+        <p>
+          最初のコミットは <strong>2026 年 8 月 11 日</strong>。最初の数時間、カーネルは <em>tattva</em> という名前でした。その日の終わりには自分の名前 <strong>tan_k</strong> を持ち、そのまわりのシステムはやがて <a href="/ja/tanaos/">tānaOS</a> になりました。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="silicon-heading">
+      <div class="container">
+        <h2 id="silicon-heading">エミュレーターからシリコンへ</h2>
+        <p>
+          最初の一週間は、エミュレーターの QEMU の中で過ごしました。起動し、シリアル・ポートに出力し、障害を捕まえ、報告する。テスト・ハーネスはゼロから作り直しました。普通のものは動かすためにオペレーティング・システムを必要としますが、まだそれがなかったからです。テストはどれも小さな独立したカーネルになり、起動され、判定されます。中には、わざとマシンをクラッシュさせることで合格するものもあります。
+        </p>
+        <p>
+          8 月 14 日、ハードウェアが手元に届く前に Raspberry Pi 4 への移植を書き、同じ日に Pi、USB シリアル・アダプター、メモリーカードを注文しました。<strong>8 月 19 日</strong>、カーネルは初めて本物のシリコンで起動しました。ファームウェアが制御を渡し、六つの起動マーカーがすべて表示されました。そして、すべての文字が文字化けしていました。
+        </p>
+        <p>
+          でたらめな文字化けではなく、決まった変換でした。各バイトを七つずらしてビットを反転すると文章が戻ったのです。私は午前中ずっと、自分のカーネルの起動ログを暗号解読していました。シリアル・ポートのクロック値を五通り、三千を超える変換の総当たり、ファームウェアの設定を三通り試しました。すべて失敗しました。原因はコードの中にはありませんでした。<strong>黒いグラウンド線が 6 番ピンではなく、Pi の送信線である 8 番ピンに挿さっていたのです。</strong>ボードを見て気づきました。クロックはその朝の最初のコミットからずっと正しかったのです。
+        </p>
+        <p>
+          この探索の途中で、本物のソフトウェアのバグもひとつ見つかりました。そしてエミュレーターはそのすべてを隠していました。QEMU のシリアル・ポートにはクロックがなく、分周値を無視するので、どのテストも再現されていないものの上で合格していたのです。それがこの章の最初の教訓であり、今も変わりません。<strong>エミュレーターは、自分が再現していないものについてのテストを不合格にできない。</strong>そしてコードを疑う前に、配線を見ること。六週間後、私はピン一列ずれた同じ間違いをしました。今度は、分周値に誰かが触れる前に、パルス幅のヒストグラムが「ボーレートの誤りではなく、ノイズだ」と教えてくれました。
+        </p>
+        <p>
+          そこから一気に動き出しました。8 月 19 日に 35 コミット、20 日に 56、21 日に 91。最初のコミットから十日以内に、カーネル憲章の八つのステップすべてが実機で検証されました。コンテキスト切り替え、割り込み、仮想メモリ、ヒープ、プリエンプティブ・スケジューラー、ユーザー・モード、システムコール、そしてシェルです。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="bench-heading">
+      <div class="container">
+        <h2 id="bench-heading">作業台：まずは間違った道具で学ぶ</h2>
+        <p>
+          ソフトウェアは半分にすぎませんでした。音を出すには Pi に DAC が必要で、DAC をつなぐにははんだ付けが必要で、何も動かない理由を知るには測定が必要でした。良い機材から始めたわけではありません。安い 30 ワットのはんだごてから始め、残りは正直なやり方で学びました。
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>ダイヤルひとつ、症状みっつ。</strong>二日間、はんだは富士山形ではなく玉になり、ピンははんだの中で滑り、最後にははんだがこて先にのらなくなりました。三つの問題を別々に診断しました。原因はひとつ。こてが 200 °C に設定されていて、有鉛はんだの融点は 183 °C なので、何も濡れていなかったのです。もう半分は、安くてメッキの悪いこて先でした。同じ安い 30 ワットのこてでも、こて先を再生すればきれいに付きました。技術の問題ではなかったのです。</li>
+          <li><strong>すべて緑なのに、無音。</strong>最初の DAC は 8 月 24 日に届きました。カーネルはオーディオを送り、レジスタはすべて正しく読み返せるのに、スピーカーは三日間沈黙したままでした。一本の線が正しいピンの隣に挿さっていて、モジュール自体のミュート・ピンが抵抗で Low に保たれていたのです。<strong>9 月 1 日</strong>、ついに聴こえました。左耳に 750 Hz、右耳に 1500 Hz、一オクターブ違いで、テストが求めたとおりに。</li>
+          <li><strong>音量はケーブルについていく。</strong>二枚のボードが他より大きく鳴るように思えました。はんだ不良でも設定ピンでもなく、オーディオを取り出すために私がはんだ付けした二本の線のせいでした。線を動かすと、音量も一緒に動いたのです。</li>
+          <li><strong>十四秒に七回のポップ・ノイズ。</strong>ひとつひとつが信号のちょうど二倍、歪みのない +6 dB でした。オーディオのフレームが 1 ビットずれたときの指紋です。犯人はスピーカーの USB 電源を通るグラウンド・ループでした。別の電源に替えると止まりました。</li>
+          <li><strong>長いピンは、挿す先のほうへ。</strong>MIDI コネクタはボードを縦に立たせるので、平らなボードで身につけた習慣がすべて逆さまになります。三枚目で正しく付けるまでに、二枚を逆向きにはんだ付けしてしまいました。</li>
+          <li><strong>七つの故障、不良部品はゼロ。</strong>MIDI 入力を立ち上げるのに、10 月の四日間と七つの故障がかかりました。すべて接点の問題でした。ブレッドボードをつかまないピン、一列ずれたグラウンド線、測定後に差し直しの甘かった抵抗、そして外見は完璧なのに被覆の中で断線していたジャンパー線。部品を測っても証明できるのは部品だけで、その二つの接点ではないのです。</li>
+        </ul>
+        <p>
+          機材はカーネルとともに増えていきました。コードが新しいハードウェアにたどり着くたびに、作業台もそれを迎えられるところまで上がらなければなりませんでした。
+        </p>
+        <div class="table-scroll">
+          <table class="status-table">
+            <thead><tr><th>初使用</th><th>作業台に加わったもの</th><th>可能になったこと</th></tr></thead>
+            <tbody>
+              <tr><td>8/19</td><td>Raspberry Pi 4 · USB シリアル・アダプター</td><td>本物のシリコンでの初起動と、エミュレーターについての最初の教訓。</td></tr>
+              <tr><td>8/24</td><td>PCM5102A I²S DAC</td><td>9 月 1 日、音が出ました。</td></tr>
+              <tr><td>8/31</td><td>安い 30 ワットのはんだごてと入門キット</td><td>「まずは間違った道具で」の時代。はんだについて知っていることの大半。</td></tr>
+              <tr><td>9/2</td><td>24 MHz のロジック・アナライザー</td><td>推測ではなく、配線そのものを見ること。Pi 自身のオーディオ・クロックに対して 36 ppm の精度で校正。</td></tr>
+              <tr><td>9/9–14</td><td>90 ワットの温度制御はんだごて、リワーク・ステーション、顕微鏡</td><td>しっかり付くはんだと、ボードを犠牲にしない修理。</td></tr>
+              <tr><td>9/23</td><td>DIN-5 端子 · H11L1 フォトカプラ</td><td>Pi が光を通して自分自身に MIDI を送る。アナライザーで 31,250 ボーを確認、288 µs はちょうど 9 ビット分。</td></tr>
+              <tr><td>10/5</td><td>DAC の出力につないだオーディオ・インターフェース</td><td>音を測定で判定。スペクトル純度 100%、750.0 Hz と 1500.0 Hz ちょうど。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="taught-heading">
+      <div class="container">
+        <h2 id="taught-heading">マシンが教えてくれたこと</h2>
+        <p>
+          この下のレイヤーでは、上のレイヤーで培った直感がしばしば外れます。確かめる方法は、数えることだけです。このレイヤーでも、その上でも、私の考え方を変えた数字をいくつか挙げます。
+        </p>
+        <ul class="facts-grid" role="list">
+          <li><span class="facts-grid__value">9×</span><span class="facts-grid__label">DRAM へのキャッシュ・ミス一回は、オーディオ・フィルター九つ分のコスト。計算は安く、メモリこそが予算です。</span></li>
+          <li><span class="facts-grid__value">34,356</span><span class="facts-grid__label">エミュレーターでは常にゼロだった領域に、本物の Pi が残していたワード数。</span></li>
+          <li><span class="facts-grid__value">948 MiB</span><span class="facts-grid__label">2 GiB のボードでファームウェアが報告する値。デバイスツリーのほうが正しく知っていました。</span></li>
+          <li><span class="facts-grid__value">268 対 493</span><span class="facts-grid__label">別のコアに届くサイクル数と、自分のカーネルに届くサイクル数。別のコアのほうが近いのです。</span></li>
+        </ul>
+        <p>
+          どれも特殊なことではありません。すべてのオペレーティング・システムとすべてのアプリが、黙って立っている土台です。それを知ると、スマートフォンの性能プロファイルの読み方も、動画プレイヤーのバッファについての考え方も、本番とは違う場所で走った緑のテストをどこまで信じるかも変わります。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="arinc-heading">
+      <div class="container">
+        <h2 id="arinc-heading">なぜアビオニクスなのか：ARINC 653 を選ぶ</h2>
+        <p>
+          音楽ソフトはどれも、プラグインをひとつの共有空間とひとつの共有締め切りの中でホストしています。ひとつのプラグインが長引くと、全体がいっしょに乱れます。私が欲しかったのは逆の保証でした。おかしな振る舞いをした楽器は切り離され、残りの音楽は鳴り続けること。
+        </p>
+        <p>
+          先行事例を探すと、答えはオペレーティング・システムの研究ではなく、航空機の中にありました。<strong>ARINC 653</strong> 規格は航空機のコンピューターをパーティションに分け、重要度の低い機能が故障しても重要度の高い機能を巻き込まないようにします。各パーティションは自分のメモリと自分の時間を持ち、超過したパーティションは止められます。「飛行制御」を<em>オーディオ・クロック</em>に、「サードパーティのモジュール」を<em>誰かが書いたシンセサイザー</em>に置き換えれば、まさにこの設計です。要約ではなく一次資料を読んで、<strong>2026 年 8 月 27 日</strong>に決めました。
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>チャネルは構成時に固定。</strong>ARINC 653 では、ポートとチャネルはシステムの構成時に定義され、実行中には変えられません。オーディオのグラフも同じです。どのステージがどこに供給するかは最初のサンプルより前にわかっているので、リンカーもそれを知ることができます。</li>
+          <li><strong>受け渡しはサンプリング・ポート。</strong>サンプリング・ポートは最新のメッセージだけを保持し、それがまだ新鮮かどうかを伝えます。それはオーディオのコアが周期ごとに問うことそのものです。<em>前のステージは、このバッファを時間内に終えたか。</em></li>
+          <li><strong>何も待たない。</strong>この規格の縮小プロファイルは、プロセス管理を単純に保つためにブロッキング・キューを取り除いています。決してブロックしないオーディオ専用コアは近道ではなく、そのプロファイルが求めているものです。</li>
+          <li><strong>正直な違いがひとつ。</strong>ARINC 653 は一つのプロセッサーの時間を分けます。tānaOS は Pi の四つのコアを分けます。時間ではなく空間で。同じ保証、別の仕組みです。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="poison-heading">
+      <div class="container">
+        <h2 id="poison-heading">自分のカーネルに毒を盛る</h2>
+        <p>
+          一度も失敗したことのないテストは、何も証明していません。だからこの仕事の大きな部分は、わざとカーネルを壊し、テストがそれを捕まえるのを確かめることです。
+        </p>
+        <ul class="values-block" role="list">
+          <li><strong>掃除の前に毒を。</strong>エミュレーターはすでにゼロになったメモリをカーネルに渡すので、起動時にメモリを消去するループは、削除しても「動いて」しまいます。そこでカーネルは、まずそのメモリをすべて 1 で埋め、それからゼロにします。壊れた消去は、黙った合格ではなく、<code>0xFF</code> の壁として姿を現すようになりました。</li>
+          <li><strong>すべてのアサーションを、一度は赤に。</strong>テストを信頼する前に、それが守るコードを変異させ、テストが失敗するまで壊します。専用のレーンがそうした変異を四十九個、変更のたびに走らせ、検証が緑のときはそのすべてが捕まります。百を超えるコミットが、自分のテストが失敗しうることを証明した変異を記録しています。</li>
+          <li><strong>変異が見つけたもの。</strong>ヒープのブロック結合を両方向とも削除しても、テストはすべて緑のままでした。テストが空きメモリの合計だけを見て、その形を見ていなかったからです。キャッシュ保守の命令をすべて削除しても、エミュレーターのテストはすべて通ります。エミュレーターにはデータ・キャッシュがないからです。前者はより良いテストになり、後者は実機でしか確かめられない名前付きの制約になりました。私のお気に入りは、print 文を足したときだけ合格するテストです。最適化が、テストしていたメモリ割り当てそのものを消していたのです。</li>
+          <li><strong>わざと攻撃させる。</strong>カーネルは独立した敵対的な監査を何度も受けてきました。ある一回だけで 59 件の指摘が出て、すべて修正されるか、名前付きの制約として記録されました。そして実機では、隣のタスクのメモリに手を伸ばしたタスクがプロセッサー自身によって停止され、隣のタスクは無傷で仕事を終えました。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="gate-heading">
+      <div class="container">
+        <h2 id="gate-heading">四十三本のレーン</h2>
+        <p>
+          検証を通らずにカーネルに入るものはありません。その検証は、変更のたびに走る四十三本のレーンです。いくつかの系統に分かれます。
+        </p>
+        <ul class="values" role="list">
+          <li><strong>二つのマシン、二つのプロファイル。</strong>テスト用カーネルはすべて、EL1 と EL2 の両方で制御を受け取ったものとしてエミュレーターで起動し、debug と release で実行されます。あるレジスタのバグは、debug では現れ、-O2 では隠れていました。</li>
+          <li><strong>本物のイメージ。</strong>Pi が起動するのとまったく同じイメージを、エミュレートした Pi でも構築・実行します。別のレーンは、テスト用カーネルだけでなく、出荷するカーネルそのものを確かめます。</li>
+          <li><strong>警告ゼロを、どこでも。</strong>構成ごとに六つのビルドがあり、警告がひとつでも出れば失敗します。</li>
+          <li><strong>嘘をつけないドキュメント。</strong>ドキュメントにある行数、メモリ・サイズ、テスト数は測り直され、ファイルと行へのすべての参照は解決し続けなければならず、行数の予算は強制されます。</li>
+          <li><strong>テストとしてのアーキテクチャ。</strong>モジュール間の循環、レイヤーの向き、事実ごとにひとつの出典、そしてすべての <code>unsafe</code> ブロックに書かれた契約。</li>
+          <li><strong>検証が自分自身を検証する。</strong>あるレーンは検証が失敗すべきときに本当に失敗するかを確かめ、別のレーンは赤であるべきステップが赤のままであることを確かめます。</li>
+          <li><strong>そして実機。</strong>どのエミュレーターも再現できないもの、つまり空き UART、DAC、MIDI、実時間の挙動は、作業台の Raspberry Pi で走り、その記録が保存されます。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section aria-labelledby="skill-heading">
+      <div class="container">
+        <h2 id="skill-heading">方法に新しい床を：Provision</h2>
+        <p>
+          私は十二の設計プリミティブでアーキテクチャを考えます。境界、契約、所有、唯一の情報源、無効化、予算、継ぎ目、ポリシーとメカニズム、合成、同一性、隔離、ライフタイム。設計上の決定はどれもこれらに立場をとり、バグはどれもこれらのひとつを壊します。私はこれを Claude のためのスキルとして、スタックごとに持っています。iOS、tvOS、Android、Web、バックエンド、Claude API。
+        </p>
+        <p>
+          深く考えた末に、ベアメタルのためのスキルをもうひとつ書きました。十二のプリミティブを、レジスタ、例外レベル、ページテーブル、メモリマップド・デバイスの言葉で語り直したものです。そして書きながら、十二では足りないことに気づきました。どれも、それらをすでに提供してくれるプラットフォームを暗黙のうちに前提としているのです。裸のマシンでは、自分でつくるまで何も存在しません。アロケーターなしにライフタイムはなく、スケジューラーなしに隔離はなく、アドレス空間なしに境界はありません。
+        </p>
+        <p class="callout">
+          Provision、十三番目のプリミティブ。裸のマシンでは、他のどのスタックも当然とみなしているものを自らつくり出さなければならず、用意する順序がそのまま立ち上げの順序になる。まず報告できるものを立ち上げ、それを使って残りを立ち上げよ。
+        </p>
+        <p>
+          この一文が、プロジェクトでいちばん高くついた朝を説明してくれます。コンソールそのものを信頼できないうちにシリアル・コンソールを診断しようとして、どの仮説も反証できなかったあの朝です。今ではこれが、ゼロから始まるあらゆるシステムで Claude と働くときの、私のやり方の一部になっています。
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="above-heading">
+      <div class="container">
+        <h2 id="above-heading">それが、上でつくるときの考え方に生きる理由</h2>
+        <p>
+          求人票の一文の後半は正しかったのです。下に降りたことで、上での働き方が変わりました。
+        </p>
+        <ul class="values" role="list">
+          <li><strong>主張にはすべて測定を。</strong>カーネルのドキュメントにある数字は実行のたびに測り直され、文章と測定が食い違えばビルドが失敗します。今では、自分が設計するどんなシステムにも同じことを求めています。</li>
+          <li><strong>不正な状態を、つくれないようにする。</strong>カーネルで最も深刻だったバグのうち二つは、チェックを足すのではなく、型から能力を取り除くことで直しました。今ではコンパイラーがその間違いを拒否します。</li>
+          <li><strong>すべてに予算を。</strong>各ステップには書く前に行数の予算を決め、超過は隠さずに記録しています。同じ規律が、スマートフォンのフレームにも、エージェントのトークンにも当てはまります。</li>
+          <li><strong>AI は相棒、判断は私のもの。</strong>tānaOS は、<a href="/ja/combined-force/">Combined Force</a> で説明している方法のもと、AI の支援を受けてつくっています。カーネルはその方法を試すのに最も容赦のない場所であり、方法は持ちこたえています。</li>
+        </ul>
+        <p>
+          あの一行を読んでから二か月。今では毎週ベアメタルで Rust を書き、楽しみでデータシートを読み、ロジック・アナライザーを持っています。本能はずっとそこにありました。今、それには言語があります。
+        </p>
+
+        <div class="cta-cards" style="margin-top: var(--space-md);">
+          <a href="/ja/tanaos/" class="cta-card">
+            <span class="cta-card__label">プロジェクトのすべて</span>
+            <span class="cta-card__title">tānaOS — 現状と測定結果</span>
+          </a>
+          <a href="/ja/engineering/" class="cta-card">
+            <span class="cta-card__label">上のレイヤー</span>
+            <span class="cta-card__title">エンジニアリングの章</span>
+          </a>
+          <a href="/ja/combined-force/" class="cta-card">
+            <span class="cta-card__label">方法</span>
+            <span class="cta-card__title">Combined Force</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    document.querySelectorAll('.lang-switcher a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        var lang = this.getAttribute('hreflang');
+        if (lang) {
+          try { localStorage.setItem('preferredLang', lang); } catch (e) { }
+        }
+      });
+    });
+  </script>
+
+  <footer>
+    <div class="container">
+      <div class="footer__links">
+        <a href="https://github.com/tattva20" rel="noopener noreferrer">GitHub</a>
+        <a href="../../systems/">English</a>
+        <a href="../../es/systems/">Español</a>
+        <a href="../../pt/systems/">Português</a>
+        <a href="../">← ホーム</a>
+      </div>
+      <p>© Octavio Rojas — DJ Forza. メキシコで、心を込めてつくりました。</p>
+    </div>
+  </footer>
+</body>
+</html>

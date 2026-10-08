@@ -14,6 +14,10 @@ https://tattva20.github.io/engineering/
 https://tattva20.github.io/es/engineering/
 https://tattva20.github.io/pt/engineering/
 https://tattva20.github.io/ja/engineering/
+https://tattva20.github.io/systems/
+https://tattva20.github.io/es/systems/
+https://tattva20.github.io/pt/systems/
+https://tattva20.github.io/ja/systems/
 https://tattva20.github.io/tanaos/
 https://tattva20.github.io/es/tanaos/
 https://tattva20.github.io/pt/tanaos/
